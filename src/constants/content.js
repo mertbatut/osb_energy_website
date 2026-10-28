@@ -102,62 +102,23 @@ export const MARQUEE_IMAGES = Object.freeze([
 ]);
 
 export const BESS_TECH = Object.freeze({
-  sectionLabel: "Teknoloji",
-  headline: "Enerji akışını yeniden tasarlıyoruz.",
+  sectionLabel: "TEKNOLOJİ",
+  headline: "Yüksek kapasiteli\nenerji depolama\nsistemleri.",
   description:
-    "BESS teknolojimiz üretimden tüketime kadar enerji akışının her aşamasını optimize eder.",
-  flowSteps: [
+    "Endüstriyel ölçekte güvenli, verimli ve uzun ömürlü BESS çözümleriyle şebeke dengesini destekliyor, enerjinin her an kullanılabilir olmasını sağlıyoruz.",
+  cta: "Teknolojimizi keşfedin",
+  features: [
+    { title: "Yüksek Kapasite", description: "MW ölçeğinde esnek konfigürasyonlar", icon: "Zap" },
     {
-      id: "01",
-      label: "Üretim",
-      icon: "Zap",
-      description: "Rüzgâr türbinleri ve güneş panellerinden elde edilen elektrik enerjisi.",
+      title: "Üst Düzey Güvenlik",
+      description: "Çok katmanlı BMS ve yangın koruma sistemi",
+      icon: "ShieldCheck",
     },
+    { title: "Akıllı Yönetim", description: "Gerçek zamanlı izleme ve optimizasyon", icon: "Cpu" },
     {
-      id: "02",
-      label: "PCS",
-      icon: "ArrowRightLeft",
-      description: "AC/DC güç dönüşüm sistemi ile enerji akışının yönetimi.",
-    },
-    {
-      id: "03",
-      label: "BESS",
-      icon: "Battery",
-      description: "Lityum-iyon batarya modülleri ile enerji depolama ve dengeleme.",
-    },
-    {
-      id: "04",
-      label: "Transfer",
-      icon: "Cable",
-      description: "Şebeke bağlantısı ve enerji transfer altyapısı.",
-    },
-    {
-      id: "05",
-      label: "Tüketim",
-      icon: "Factory",
-      description: "Endüstriyel tesislere kesintisiz enerji tedariki.",
-    },
-  ],
-  pillars: [
-    {
-      title: "Modüler Mimari",
-      description: "İhtiyaca göre ölçeklenen konteyner bazlı depolama üniteleri.",
-      icon: "Boxes",
-    },
-    {
-      title: "Akıllı BMS",
-      description: "Hücre seviyesinde izleme ve termal yönetim sistemi.",
-      icon: "Cpu",
-    },
-    {
-      title: "Hızlı Yanıt",
-      description: "Milisaniye düzeyinde şebeke tepki süresi.",
-      icon: "Timer",
-    },
-    {
-      title: "Uzun Ömür",
-      description: "6000+ döngü kapasitesi ile 15 yıl üzeri ekonomik ömür.",
-      icon: "Clock",
+      title: "Sürdürülebilir Gelecek",
+      description: "Yenilenebilir enerji entegrasyonuna tam uyum",
+      icon: "Layers",
     },
   ],
 });

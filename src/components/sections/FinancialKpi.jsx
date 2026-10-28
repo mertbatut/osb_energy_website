@@ -4,7 +4,7 @@ import SectionLabel from "../ui/SectionLabel.jsx";
 /** Financial benefit cards + ROI feasibility box. */
 export default function FinancialKpi() {
   return (
-    <section className="bg-surface-subtle py-24">
+    <section id="finansal" className="bg-surface-subtle py-24">
       <div className="mx-auto max-w-7xl px-6">
         <SectionLabel label={FINANCIAL.sectionLabel} icon="TrendingUp" />
         <h2 data-animate="headline" className="text-display-lg mt-4 text-text-main">
