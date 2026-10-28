@@ -56,8 +56,8 @@ export default function Navbar() {
   return (
     <header className="fixed top-0 right-0 left-0 z-50 bg-transparent">
       <nav aria-label="Ana gezinme" className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-4">
-        <a href="#" className="-mx-3 -my-2 inline-flex shrink-0 rounded-lg bg-surface-page/95 px-3 py-2">
-          <img src={logo} alt="OSB ENERGY" width="1000" height="260" className="h-auto w-36 sm:w-40" />
+        <a href="#" className="-mx-2 -my-1.5 inline-flex shrink-0 rounded-lg bg-surface-page/95 px-2 py-1.5 sm:-mx-3 sm:-my-2 sm:px-3 sm:py-2">
+          <img src={logo} alt="OSB ENERGY" width="1000" height="260" className="h-auto w-28 sm:w-40" />
         </a>
 
         <ul className="hidden items-center gap-4 xl:gap-8 lg:flex">
@@ -104,7 +104,7 @@ export default function Navbar() {
         >
           <div className="flex shrink-0 items-center justify-between border-b border-border-subtle py-5">
             <a href="#hero" onClick={closeMobile}>
-              <img src={logo} alt="OSB ENERGY ana sayfa" width="1000" height="260" className="h-auto w-36 sm:w-40" />
+              <img src={logo} alt="OSB ENERGY ana sayfa" width="1000" height="260" className="h-auto w-28 sm:w-40" />
             </a>
             <button type="button" onClick={closeMobile} aria-label="Menüyü kapat" className="flex h-11 w-11 items-center justify-center rounded-full border border-border-subtle text-text-main transition-colors hover:bg-surface-subtle">
               <X className="h-5 w-5" />
