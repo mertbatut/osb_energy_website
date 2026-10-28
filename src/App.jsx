@@ -1,4 +1,4 @@
-import { useEffect, useRef, useSyncExternalStore } from "react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
@@ -20,28 +20,7 @@ import useReducedMotion from "./hooks/useReducedMotion.js";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const SCROLL_THRESHOLD = 50;
-
-function subscribeScroll(callback) {
-  window.addEventListener("scroll", callback, { passive: true });
-  return () => window.removeEventListener("scroll", callback);
-}
-function getScrollSnapshot() {
-  const hero = document.getElementById("hero");
-  if (!hero) return window.scrollY > SCROLL_THRESHOLD;
-  // While pinned rect.top stays 0; after unpin it scrolls negative
-  return hero.getBoundingClientRect().top < -1;
-}
-function getScrollServerSnapshot() {
-  return false;
-}
-
 export default function App() {
-  const scrolled = useSyncExternalStore(
-    subscribeScroll,
-    getScrollSnapshot,
-    getScrollServerSnapshot,
-  );
   const mainRef = useRef(null);
   const prefersReducedMotion = useReducedMotion();
 
@@ -155,7 +134,7 @@ export default function App() {
 
   return (
     <>
-      <Navbar scrolled={scrolled} />
+      <Navbar />
       <main ref={mainRef}>
         <CinematicHero />
         <CorporateIntro />

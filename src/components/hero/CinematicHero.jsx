@@ -1,5 +1,5 @@
 import { HERO } from "../../constants/content.js";
-import heroImage from "../../assets/images/scene-01.jpg";
+import heroImage from "../../assets/images/Gün Doğumunda Rüzgâr Türbinleri.png";
 import AeroButton from "../ui/AeroButton.jsx";
 import useHeroParallax from "../../hooks/useHeroParallax.js";
 
