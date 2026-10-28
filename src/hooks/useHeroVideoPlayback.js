@@ -9,7 +9,8 @@ import useReducedMotion from "./useReducedMotion.js";
  * @param {string} videoSrc - Path to the video file
  * @returns {{ videoRef: React.RefObject, isPlaying: boolean, hasError: boolean, isVideoReady: boolean }}
  */
-export default function useHeroVideoPlayback(videoSrc) {
+export default function useHeroVideoPlayback(desktopSrc, mobileSrc) {
+  const [videoSrc] = useState(() => window.matchMedia("(max-width: 767px)").matches && mobileSrc ? mobileSrc : desktopSrc);
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [hasError, setHasError] = useState(false);
@@ -25,6 +26,8 @@ export default function useHeroVideoPlayback(videoSrc) {
   const tryPlay = useCallback(() => {
     const video = videoRef.current;
     if (!video || !isVisibleRef.current || !isTabActiveRef.current) return;
+    video.defaultPlaybackRate = 0.7;
+    video.playbackRate = 0.7;
     if (video.paused) {
       video.play().catch((err) => {
         if (err.name === "NotSupportedError") {
@@ -41,6 +44,17 @@ export default function useHeroVideoPlayback(videoSrc) {
       video.pause();
     }
   }, []);
+
+  // Prioritize the above-the-fold source without waiting for an observer.
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video || shouldSkipVideo) return;
+    loadedSrcRef.current = videoSrc;
+    video.defaultPlaybackRate = 0.7;
+    video.playbackRate = 0.7;
+    video.src = videoSrc;
+    video.load();
+  }, [videoSrc, shouldSkipVideo]);
 
   // Intersection observer: track hero visibility + lazy-load video src
   useEffect(() => {

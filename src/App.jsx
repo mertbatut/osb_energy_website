@@ -158,8 +158,8 @@ export default function App() {
       <Navbar scrolled={scrolled} />
       <main ref={mainRef}>
         <CinematicHero />
-        <StoryboardStrip />
         <CorporateIntro />
+        <StoryboardStrip />
         <CoreServices />
         <IndustrialMarquee />
         <BessTechnology />

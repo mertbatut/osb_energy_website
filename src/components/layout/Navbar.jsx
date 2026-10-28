@@ -1,3 +1,4 @@
+import logo from "../../assets/images/osb-energy-logo.png";
 import { useState, useEffect, useCallback } from "react";
 import { Menu, X } from "lucide-react";
 import { NAV_LINKS } from "../../constants/navigation.js";
@@ -44,7 +45,7 @@ export default function Navbar({ scrolled }) {
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         {/* Logo */}
         <a href="#" className="font-display text-xl font-semibold tracking-tight text-white">
-          OSB ENERGY
+          <img src={logo} alt="OSB ENERGY" width="1000" height="260" className="h-auto w-36 sm:w-40" />
         </a>
 
         {/* Desktop nav */}

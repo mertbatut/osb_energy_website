@@ -1,3 +1,4 @@
+import useSectionParallax from "../../hooks/useSectionParallax.js";
 import { Leaf } from "lucide-react";
 import { PROJECTS } from "../../constants/content.js";
 import SectionLabel from "../ui/SectionLabel.jsx";
@@ -5,14 +6,15 @@ import ProjectCard from "../ui/ProjectCard.jsx";
 
 /** Reference projects — 2-column editorial layout. */
 export default function ProjectsPortfolio() {
+  const sectionRef = useSectionParallax();
   return (
-    <section id="projeler" className="bg-dark-hero py-24">
+    <section ref={sectionRef} id="projeler" className="relative overflow-hidden border-y border-border-subtle bg-surface-blue py-24">
       <div className="mx-auto max-w-7xl px-6">
         <div className="grid gap-12 lg:grid-cols-5">
           {/* Left column — header + sustainability */}
-          <div className="lg:col-span-2">
-            <SectionLabel label={PROJECTS.sectionLabel} icon="FolderKanban" theme="dark" />
-            <h2 data-animate="headline" className="text-display-lg mt-4 text-white">
+          <div data-section-parallax="-60" className="min-w-0 lg:col-span-2">
+            <SectionLabel label={PROJECTS.sectionLabel} icon="FolderKanban" />
+            <h2 data-animate="headline" className="text-display-lg mt-4 text-text-main">
               {PROJECTS.headline}
             </h2>
 
@@ -40,7 +42,7 @@ export default function ProjectsPortfolio() {
           </div>
 
           {/* Right column — project cards */}
-          <div className="overflow-hidden lg:col-span-3">
+          <div data-section-parallax="70" className="min-w-0 lg:col-span-3">
             <div data-animate="stagger-parent" className="grid gap-6 sm:grid-cols-2">
               {PROJECTS.items.map((project) => (
                 <ProjectCard key={project.title} {...project} />

@@ -1,3 +1,4 @@
+import logo from "../../assets/images/osb-energy-logo.png";
 import { FOOTER } from "../../constants/content.js";
 
 /** Minimal dark footer with bottom bar badges. */
@@ -10,7 +11,7 @@ export default function Footer() {
           {/* Brand column */}
           <div>
             <a href="#" className="font-display text-xl font-semibold tracking-tight text-white">
-              {FOOTER.brand}
+              <img src={logo} alt={FOOTER.brand} width="1000" height="260" className="h-auto w-44" />
             </a>
             <p className="mt-3 text-sm text-white/40">{FOOTER.tagline}</p>
           </div>

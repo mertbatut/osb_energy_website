@@ -9,39 +9,20 @@ export const HERO = Object.freeze({
   ctaSecondary: "Çözümlerimiz",
   secondaryHeadline: "Doğa ile Teknoloji, Bir Arada.",
   secondaryDescription: "Türkiye'nin enerji geleceğini şekillendiren projeler.",
-  telemetry: [
-    { label: "Aktif Kapasite", value: "1.2 GW" },
-    { label: "Çalışma Süresi", value: "%99.7" },
-    { label: "CO₂ Azaltım", value: "840K ton" },
-  ],
 });
 
+// Set startSeconds to measured scene cuts; null uses equal thirds of duration.
 export const STORYBOARD = Object.freeze({
+  sectionLabel: "UÇTAN UCA MÜHENDİSLİK",
+  headline: "Fikirden enerjiye. Her aşamada mühendislik.",
+  description: "Saha potansiyelini analiz ediyor, doğru enerji sistemini tasarlıyor ve projeyi devreye alıyoruz.",
+  video: "/videos/osb-engineering-process.mp4",
+  mobileVideo: "/videos/osb-engineering-process-mobile.mp4",
+  poster: "/videos/osb-engineering-process-poster.jpg",
   frames: [
-    {
-      id: "01",
-      title: "Saha Analizi",
-      description: "Rüzgâr ve güneş potansiyeli ölçümü, arazi değerlendirmesi",
-      image: "https://images.unsplash.com/photo-1532601224476-15c79f2f7a51?w=600&q=80",
-    },
-    {
-      id: "02",
-      title: "Mühendislik",
-      description: "Hibrit sistem tasarımı ve optimizasyon",
-      image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=600&q=80",
-    },
-    {
-      id: "03",
-      title: "Kurulum",
-      description: "Anahtar teslim proje yönetimi ve devreye alma",
-      image: "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=600&q=80",
-    },
-    {
-      id: "04",
-      title: "İşletme",
-      description: "7/24 uzaktan izleme ve bakım hizmetleri",
-      image: "https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=600&q=80",
-    },
+    { id: "01", startSeconds: 0, title: "Saha Analizi", description: "Rüzgâr ve güneş potansiyelinin değerlendirilmesi, arazi koşullarının incelenmesi ve proje ihtiyaçlarının belirlenmesi." },
+    { id: "02", startSeconds: null, title: "Mühendislik", description: "Üretim, depolama ve enerji yönetimi bileşenlerinin proje ihtiyaçlarına uygun şekilde tasarlanması." },
+    { id: "03", startSeconds: null, title: "Kurulum ve Devreye Alma", description: "Saha uygulamalarının koordinasyonu, sistem entegrasyonu, test ve devreye alma süreçlerinin yürütülmesi." },
   ],
 });
 
@@ -102,22 +83,30 @@ export const MARQUEE_IMAGES = Object.freeze([
 ]);
 
 export const BESS_TECH = Object.freeze({
-  sectionLabel: "TEKNOLOJİ",
-  headline: "Yüksek kapasiteli\nenerji depolama\nsistemleri.",
+  sectionLabel: "ENERJİ DEPOLAMA TEKNOLOJİSİ",
+  headline: "Enerjinizi yalnızca tüketmeyin. Yönetin.",
   description:
-    "Endüstriyel ölçekte güvenli, verimli ve uzun ömürlü BESS çözümleriyle şebeke dengesini destekliyor, enerjinin her an kullanılabilir olmasını sağlıyoruz.",
-  cta: "Teknolojimizi keşfedin",
+    "OSB ENERGY batarya enerji depolama çözümleriyle elektrik tüketiminizi daha kontrollü, esnek ve verimli yönetin. Enerjiyi ihtiyaç duyduğunuz zamanlarda kullanın, yüksek güç taleplerini dengeleyin ve işletmenizin enerji yönetimini güçlendirin.",
+  cta: "BESS çözümlerimizi keşfedin",
   features: [
-    { title: "Yüksek Kapasite", description: "MW ölçeğinde esnek konfigürasyonlar", icon: "Zap" },
     {
-      title: "Üst Düzey Güvenlik",
-      description: "Çok katmanlı BMS ve yangın koruma sistemi",
+      title: "Akıllı Enerji Yönetimi",
+      description: "Şarj ve deşarj süreçlerini tesisinizin enerji ihtiyacına göre yönetin.",
+      icon: "Zap",
+    },
+    {
+      title: "Gelişmiş Termal Yönetim",
+      description: "Aktif soğutma teknolojisiyle bataryaların çalışma sıcaklığını kontrol altında tutun.",
       icon: "ShieldCheck",
     },
-    { title: "Akıllı Yönetim", description: "Gerçek zamanlı izleme ve optimizasyon", icon: "Cpu" },
     {
-      title: "Sürdürülebilir Gelecek",
-      description: "Yenilenebilir enerji entegrasyonuna tam uyum",
+      title: "Entegre Güvenlik",
+      description: "BMS izleme, elektriksel koruma ve yangın güvenliği sistemleriyle çok katmanlı koruma.",
+      icon: "Cpu",
+    },
+    {
+      title: "Ölçeklenebilir Altyapı",
+      description: "İşletmenizin enerji ihtiyacına göre genişleyebilen modüler depolama çözümleri.",
       icon: "Layers",
     },
   ],

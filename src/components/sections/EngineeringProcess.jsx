@@ -1,3 +1,4 @@
+import useSectionParallax from "../../hooks/useSectionParallax.js";
 import { PROCESS } from "../../constants/content.js";
 import SectionLabel from "../ui/SectionLabel.jsx";
 import AeroButton from "../ui/AeroButton.jsx";
@@ -26,13 +27,14 @@ function BentoPanel({ step, className = "" }) {
 
 /** 6-step bento grid on dark background. */
 export default function EngineeringProcess() {
+  const sectionRef = useSectionParallax();
   const lastStep = PROCESS.steps[PROCESS.steps.length - 1];
   const gridSteps = PROCESS.steps.slice(0, -1);
 
   return (
-    <section id="surec" className="bg-dark-hero py-24">
+    <section ref={sectionRef} id="surec" className="relative overflow-hidden bg-dark-hero py-24">
       <div className="mx-auto max-w-7xl px-6">
-        <div className="mx-auto max-w-2xl text-center">
+        <div data-section-parallax="-65" className="mx-auto max-w-2xl text-center">
           <SectionLabel label={PROCESS.sectionLabel} icon="GitBranch" theme="dark" />
           <h2 data-animate="headline" className="text-display-lg mt-4 text-white">
             {PROCESS.headline}
@@ -40,6 +42,7 @@ export default function EngineeringProcess() {
         </div>
 
         <div
+          data-section-parallax="55"
           data-animate="stagger-parent"
           className="mt-16 grid gap-4 md:grid-cols-2 lg:grid-cols-3"
         >
