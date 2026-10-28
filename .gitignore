@@ -1,0 +1,36 @@
+# Always
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+secrets/
+CLAUDE.md
+CLAUDE.local.md
+AGENTS.md
+.claude/
+.DS_Store
+Thumbs.db
+*.log
+coverage/
+
+# Node / React / Vite
+node_modules/
+dist/
+build/
+.vercel
+.turbo/
+npm-debug.log*
+yarn-error.log*
+
+# Blender
+blender/render_output/
+blender/assets/*.hdr
+blender/assets/*.exr
+blender/assets/*.glb
+blender/assets/*.fbx
+*.blend
+*.blend1
+*.blend2
