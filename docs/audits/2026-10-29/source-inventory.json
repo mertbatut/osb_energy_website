@@ -1,0 +1,546 @@
+{
+  "entry": "src/main.jsx",
+  "files": [
+    {
+      "path": "src/App.jsx",
+      "lines": 163,
+      "active": true,
+      "sha256": "125f3a1cc5554eaa9f7783e0c1b4958bcc7549fa48f6cb2a3da4195c1047430d",
+      "imports": [
+        "src/components/layout/Navbar.jsx",
+        "src/components/layout/Footer.jsx",
+        "src/components/hero/CinematicHero.jsx",
+        "src/components/sections/StoryboardStrip.jsx",
+        "src/components/sections/CorporateIntro.jsx",
+        "src/components/sections/CoreServices.jsx",
+        "src/components/sections/IndustrialMarquee.jsx",
+        "src/components/sections/BessTechnology.jsx",
+        "src/components/sections/FinancialKpi.jsx",
+        "src/components/sections/HybridSynergy.jsx",
+        "src/components/sections/SectorApplications.jsx",
+        "src/components/sections/EngineeringProcess.jsx",
+        "src/components/sections/ProjectsPortfolio.jsx",
+        "src/components/sections/CtaContact.jsx",
+        "src/hooks/useReducedMotion.js",
+        "src/hooks/useOpeningSectionTransitions.js"
+      ],
+      "importers": [
+        "src/main.jsx"
+      ]
+    },
+    {
+      "path": "src/components/hero/CameraRig.jsx",
+      "lines": 62,
+      "active": false,
+      "sha256": "dc6daac7c52dee06a08251d19e32d8f1a6abb653942c6012c2debbfc37267e95",
+      "imports": [],
+      "importers": [
+        "src/components/hero/WindScene.jsx"
+      ]
+    },
+    {
+      "path": "src/components/hero/CinematicHero.jsx",
+      "lines": 48,
+      "active": true,
+      "sha256": "715bf0141bd4f139d1e8d5679bea7c5258ef4ba5fa064b52dae36729d5bb460d",
+      "imports": [
+        "src/constants/content.js",
+        "src/assets/images/hero-wind-turbines.png",
+        "src/components/ui/AeroButton.jsx"
+      ],
+      "importers": [
+        "src/App.jsx"
+      ]
+    },
+    {
+      "path": "src/components/hero/DroneParallaxHero.jsx",
+      "lines": 96,
+      "active": false,
+      "sha256": "6e44f9e1956aff4468f21c0926037b4c85f14e24c5829bd373a2bf3363139bd2",
+      "imports": [
+        "src/assets/images/background_approx.webp",
+        "src/assets/images/landscape_reveal.webp",
+        "src/assets/images/turbine_foreground.png"
+      ],
+      "importers": [
+        "src/components/hero/HeroSection.jsx"
+      ]
+    },
+    {
+      "path": "src/components/hero/FrameSequencePlayer.jsx",
+      "lines": 108,
+      "active": false,
+      "sha256": "abf39235bf9e372aad32cb38cefd5b48d514be48088e80d77867f51bfbed4276",
+      "imports": [
+        "src/hooks/useFrameLoader.js"
+      ],
+      "importers": []
+    },
+    {
+      "path": "src/components/hero/HeroSection.jsx",
+      "lines": 250,
+      "active": false,
+      "sha256": "b0f3e87ecf688b22b1936e7fec09b4defb66d7097bb45e6706d6e22aad0a5607",
+      "imports": [
+        "src/constants/content.js",
+        "src/components/ui/AeroButton.jsx",
+        "src/hooks/useReducedMotion.js",
+        "src/assets/images/poster.webp",
+        "src/components/hero/DroneParallaxHero.jsx"
+      ],
+      "importers": []
+    },
+    {
+      "path": "src/components/hero/HeroVideoBackground.jsx",
+      "lines": 29,
+      "active": false,
+      "sha256": "2d279fa8bd31a2a1af5d4404b6bd69f9f15a6bb5c8487cb27c39800560e6a99d",
+      "imports": [
+        "src/assets/images/hero-poster.jpg"
+      ],
+      "importers": []
+    },
+    {
+      "path": "src/components/hero/TurbineModel.jsx",
+      "lines": 74,
+      "active": false,
+      "sha256": "246995a71f5903551a73f76d50302889fdc9248957b9b3ceae664d363e73e1f2",
+      "imports": [],
+      "importers": [
+        "src/components/hero/WindScene.jsx"
+      ]
+    },
+    {
+      "path": "src/components/hero/WindScene.jsx",
+      "lines": 117,
+      "active": false,
+      "sha256": "0a0d11eeaa41dceadfe19006bba4ce33e9dff13ee058d98147460147caed1a00",
+      "imports": [
+        "src/components/hero/TurbineModel.jsx",
+        "src/components/hero/CameraRig.jsx"
+      ],
+      "importers": []
+    },
+    {
+      "path": "src/components/layout/Footer.jsx",
+      "lines": 56,
+      "active": true,
+      "sha256": "c350ae35897e0439e56e5d68c4d5316203350b419c07ff2db999a8f56144122c",
+      "imports": [
+        "src/assets/images/osb-energy-logo.png",
+        "src/constants/content.js"
+      ],
+      "importers": [
+        "src/App.jsx"
+      ]
+    },
+    {
+      "path": "src/components/layout/Navbar.jsx",
+      "lines": 137,
+      "active": true,
+      "sha256": "1b27cf83be083abef4001623a59a08cc795a9fbd4c51b49b82344a274aa134fc",
+      "imports": [
+        "src/assets/images/osb-energy-logo.png",
+        "src/constants/navigation.js",
+        "src/components/ui/AeroButton.jsx"
+      ],
+      "importers": [
+        "src/App.jsx"
+      ]
+    },
+    {
+      "path": "src/components/sections/BessTechnology.jsx",
+      "lines": 177,
+      "active": true,
+      "sha256": "4953834c5f65ddf374863557fb5621d4b78016a45ad7779d131d66dff51c524a",
+      "imports": [
+        "src/constants/content.js",
+        "src/components/ui/IconMap.jsx",
+        "src/hooks/useReducedMotion.js",
+        "src/assets/images/bess-showcase.png"
+      ],
+      "importers": [
+        "src/App.jsx"
+      ]
+    },
+    {
+      "path": "src/components/sections/CoreServices.jsx",
+      "lines": 61,
+      "active": true,
+      "sha256": "b8316540399f497aee8ea7fbfd24c900de83c7a693996f29b1a78daa8f321352",
+      "imports": [
+        "src/constants/content.js",
+        "src/components/ui/SectionLabel.jsx",
+        "src/components/ui/AeroButton.jsx"
+      ],
+      "importers": [
+        "src/App.jsx"
+      ]
+    },
+    {
+      "path": "src/components/sections/CorporateIntro.jsx",
+      "lines": 40,
+      "active": true,
+      "sha256": "10b70aa460abfb2d44f473cf7aaae4e93104848a7a5c2c0b97aa3fabcb98c529",
+      "imports": [
+        "src/constants/content.js",
+        "src/components/ui/SectionLabel.jsx",
+        "src/components/ui/KpiMetric.jsx"
+      ],
+      "importers": [
+        "src/App.jsx"
+      ]
+    },
+    {
+      "path": "src/components/sections/CtaContact.jsx",
+      "lines": 75,
+      "active": true,
+      "sha256": "b04bb113c846f87da89395826f71bd71568894b1d9ff9a454b8a18faa2ae2099",
+      "imports": [
+        "src/constants/content.js",
+        "src/components/ui/AeroButton.jsx"
+      ],
+      "importers": [
+        "src/App.jsx"
+      ]
+    },
+    {
+      "path": "src/components/sections/EngineeringProcess.jsx",
+      "lines": 76,
+      "active": true,
+      "sha256": "5259f2ea52def667446cb0136fdc8681827e3eb0dcb3b636e23f0f43ab957ccf",
+      "imports": [
+        "src/hooks/useSectionParallax.js",
+        "src/constants/content.js",
+        "src/components/ui/SectionLabel.jsx",
+        "src/components/ui/AeroButton.jsx"
+      ],
+      "importers": [
+        "src/App.jsx"
+      ]
+    },
+    {
+      "path": "src/components/sections/FinancialKpi.jsx",
+      "lines": 51,
+      "active": true,
+      "sha256": "a42f8333724a7c265cf48f2b47491888625b75f5159d39bc8f98e932632efde7",
+      "imports": [
+        "src/constants/content.js",
+        "src/components/ui/SectionLabel.jsx"
+      ],
+      "importers": [
+        "src/App.jsx"
+      ]
+    },
+    {
+      "path": "src/components/sections/HybridSynergy.jsx",
+      "lines": 61,
+      "active": true,
+      "sha256": "98e073700a4d83af2b211e6abc333e8fd6371755489115eaf8a9402c3c882ce3",
+      "imports": [
+        "src/constants/content.js",
+        "src/components/ui/SectionLabel.jsx",
+        "src/components/ui/IconMap.jsx"
+      ],
+      "importers": [
+        "src/App.jsx"
+      ]
+    },
+    {
+      "path": "src/components/sections/IndustrialMarquee.jsx",
+      "lines": 68,
+      "active": true,
+      "sha256": "ff50cc261af5b3a75fa1e05e734d66de2a49a02b79351cfda15efe2d59f162d8",
+      "imports": [
+        "src/constants/content.js",
+        "src/components/ui/AeroButton.jsx"
+      ],
+      "importers": [
+        "src/App.jsx"
+      ]
+    },
+    {
+      "path": "src/components/sections/ProjectsPortfolio.jsx",
+      "lines": 56,
+      "active": true,
+      "sha256": "c7a71ef2e438d0de07aeaf392e48522bad7b5f25a0917f4a3d3903071b886cd0",
+      "imports": [
+        "src/hooks/useSectionParallax.js",
+        "src/constants/content.js",
+        "src/components/ui/SectionLabel.jsx",
+        "src/components/ui/ProjectCard.jsx"
+      ],
+      "importers": [
+        "src/App.jsx"
+      ]
+    },
+    {
+      "path": "src/components/sections/SectorApplications.jsx",
+      "lines": 33,
+      "active": true,
+      "sha256": "25343f186a94c2eb34f3055b16176a79cb4838204640dedc2cce64350ac43720",
+      "imports": [
+        "src/constants/content.js",
+        "src/components/ui/SectionLabel.jsx",
+        "src/components/ui/SectorCard.jsx"
+      ],
+      "importers": [
+        "src/App.jsx"
+      ]
+    },
+    {
+      "path": "src/components/sections/StoryboardStrip.jsx",
+      "lines": 139,
+      "active": true,
+      "sha256": "f75485319ee66cbe88ecf3a28aacc580c7526feb5fc1aeb1599c1ab466bad9fa",
+      "imports": [
+        "src/constants/content.js",
+        "src/hooks/useReducedMotion.js"
+      ],
+      "importers": [
+        "src/App.jsx"
+      ]
+    },
+    {
+      "path": "src/components/ui/AeroButton.jsx",
+      "lines": 57,
+      "active": true,
+      "sha256": "bc630b383448bbdd6e940af7d41aed9361ec48cb5e9377c7e908702e9d9c283d",
+      "imports": [],
+      "importers": [
+        "src/components/hero/CinematicHero.jsx",
+        "src/components/hero/HeroSection.jsx",
+        "src/components/layout/Navbar.jsx",
+        "src/components/sections/CoreServices.jsx",
+        "src/components/sections/CtaContact.jsx",
+        "src/components/sections/EngineeringProcess.jsx",
+        "src/components/sections/IndustrialMarquee.jsx"
+      ]
+    },
+    {
+      "path": "src/components/ui/IconMap.jsx",
+      "lines": 78,
+      "active": true,
+      "sha256": "2bfe9c55f62059511461eab8f65d527e626924ff17888c0206fb37f6c6af665e",
+      "imports": [],
+      "importers": [
+        "src/components/sections/BessTechnology.jsx",
+        "src/components/sections/HybridSynergy.jsx",
+        "src/components/ui/SectionLabel.jsx",
+        "src/components/ui/SectorCard.jsx"
+      ]
+    },
+    {
+      "path": "src/components/ui/KpiMetric.jsx",
+      "lines": 21,
+      "active": true,
+      "sha256": "4f327d536a536ae53f2f95da88439d46923440be4f536dc11688af2edf61b361",
+      "imports": [],
+      "importers": [
+        "src/components/sections/CorporateIntro.jsx"
+      ]
+    },
+    {
+      "path": "src/components/ui/ProjectCard.jsx",
+      "lines": 46,
+      "active": true,
+      "sha256": "b1914c51380403c8962195e5c638e6c7f21839d0ad9cd11b20172b30e04a878a",
+      "imports": [],
+      "importers": [
+        "src/components/sections/ProjectsPortfolio.jsx"
+      ]
+    },
+    {
+      "path": "src/components/ui/SectionLabel.jsx",
+      "lines": 20,
+      "active": true,
+      "sha256": "c104b0c38cb7da0cb7617ab07443319d566e9c993dd17c7d4604fca3177fa771",
+      "imports": [
+        "src/components/ui/IconMap.jsx"
+      ],
+      "importers": [
+        "src/components/sections/CoreServices.jsx",
+        "src/components/sections/CorporateIntro.jsx",
+        "src/components/sections/EngineeringProcess.jsx",
+        "src/components/sections/FinancialKpi.jsx",
+        "src/components/sections/HybridSynergy.jsx",
+        "src/components/sections/ProjectsPortfolio.jsx",
+        "src/components/sections/SectorApplications.jsx"
+      ]
+    },
+    {
+      "path": "src/components/ui/SectorCard.jsx",
+      "lines": 34,
+      "active": true,
+      "sha256": "07c539ff8630af80f774e938c79948cb4fab19a79ff5f0ac9aa33f91c273ec9d",
+      "imports": [
+        "src/components/ui/IconMap.jsx"
+      ],
+      "importers": [
+        "src/components/sections/SectorApplications.jsx"
+      ]
+    },
+    {
+      "path": "src/constants/content.js",
+      "lines": 327,
+      "active": true,
+      "sha256": "d465342228fc8af97578e6e45d64672f6bc7577562074fb18b015cd30f2a7ff0",
+      "imports": [],
+      "importers": [
+        "src/components/hero/CinematicHero.jsx",
+        "src/components/hero/HeroSection.jsx",
+        "src/components/layout/Footer.jsx",
+        "src/components/sections/BessTechnology.jsx",
+        "src/components/sections/CoreServices.jsx",
+        "src/components/sections/CorporateIntro.jsx",
+        "src/components/sections/CtaContact.jsx",
+        "src/components/sections/EngineeringProcess.jsx",
+        "src/components/sections/FinancialKpi.jsx",
+        "src/components/sections/HybridSynergy.jsx",
+        "src/components/sections/IndustrialMarquee.jsx",
+        "src/components/sections/ProjectsPortfolio.jsx",
+        "src/components/sections/SectorApplications.jsx",
+        "src/components/sections/StoryboardStrip.jsx"
+      ]
+    },
+    {
+      "path": "src/constants/heroScenes.js",
+      "lines": 18,
+      "active": false,
+      "sha256": "9746cce8cefe1389e47fa7c00edd6e30ab5dd96d806e06b95e94ae3bba1d308d",
+      "imports": [
+        "src/assets/images/scene-01.jpg",
+        "src/assets/images/scene-02.jpg",
+        "src/assets/images/scene-03.jpg",
+        "src/assets/images/scene-04.jpg",
+        "src/assets/images/scene-05.jpg"
+      ],
+      "importers": []
+    },
+    {
+      "path": "src/constants/navigation.js",
+      "lines": 15,
+      "active": true,
+      "sha256": "4d411e06703408a0fc02f6d1611e0e10cb9b71535ea622ded9a32fd91f403745",
+      "imports": [],
+      "importers": [
+        "src/components/layout/Navbar.jsx"
+      ]
+    },
+    {
+      "path": "src/hooks/useFrameLoader.js",
+      "lines": 175,
+      "active": false,
+      "sha256": "b9ab32fc372336fc2061f228a0d1186b549a767d862e2f48db9ab6dab55bb9f9",
+      "imports": [],
+      "importers": [
+        "src/components/hero/FrameSequencePlayer.jsx"
+      ]
+    },
+    {
+      "path": "src/hooks/useHeroParallax.js",
+      "lines": 55,
+      "active": false,
+      "sha256": "7918e6fab4cb02255e1288fa96e1b127e572535d5aaef0c7308aab0dfa3d6b23",
+      "imports": [
+        "src/hooks/useReducedMotion.js"
+      ],
+      "importers": []
+    },
+    {
+      "path": "src/hooks/useHeroVideoPlayback.js",
+      "lines": 143,
+      "active": false,
+      "sha256": "869c3d870464fdbf1f05c9deb6001cdbb44868015a1e86b6f700004ec409bd60",
+      "imports": [
+        "src/hooks/useReducedMotion.js"
+      ],
+      "importers": []
+    },
+    {
+      "path": "src/hooks/useOpeningSectionTransitions.js",
+      "lines": 157,
+      "active": true,
+      "sha256": "57a864a9512202c72b29d294147ccf42a66501aa1f79a8ca0905f0e1221cc80e",
+      "imports": [
+        "src/hooks/useReducedMotion.js"
+      ],
+      "importers": [
+        "src/App.jsx"
+      ]
+    },
+    {
+      "path": "src/hooks/useReducedMotion.js",
+      "lines": 25,
+      "active": true,
+      "sha256": "5a12ce292aa1fb33eea80881adf7d59711fbcd7c7978347457f270e9bdbfd501",
+      "imports": [],
+      "importers": [
+        "src/App.jsx",
+        "src/components/hero/HeroSection.jsx",
+        "src/components/sections/BessTechnology.jsx",
+        "src/components/sections/StoryboardStrip.jsx",
+        "src/hooks/useHeroParallax.js",
+        "src/hooks/useHeroVideoPlayback.js",
+        "src/hooks/useOpeningSectionTransitions.js",
+        "src/hooks/useSectionParallax.js"
+      ]
+    },
+    {
+      "path": "src/hooks/useSectionParallax.js",
+      "lines": 48,
+      "active": true,
+      "sha256": "b2557a0a9ee15a46f5ebd9ea708b0b1438ff18fb940577ea7cc8c92d86060493",
+      "imports": [
+        "src/hooks/useReducedMotion.js"
+      ],
+      "importers": [
+        "src/components/sections/EngineeringProcess.jsx",
+        "src/components/sections/ProjectsPortfolio.jsx"
+      ]
+    },
+    {
+      "path": "src/index.css",
+      "lines": 264,
+      "active": true,
+      "sha256": "fa1e1ddc2fd9bd6bad136afda06bc05d6334f5b8c074d005ef3961207161887a",
+      "imports": [],
+      "importers": [
+        "src/main.jsx"
+      ]
+    },
+    {
+      "path": "src/main.jsx",
+      "lines": 10,
+      "active": true,
+      "sha256": "26ef0ac188568363bdc4a343b410f75cc631330a454c67ca2b5cd63e4cc92d09",
+      "imports": [
+        "src/index.css",
+        "src/App.jsx"
+      ],
+      "importers": []
+    }
+  ],
+  "missingImports": [
+    {
+      "importer": "src/components/hero/DroneParallaxHero.jsx",
+      "specifier": "../../assets/images/background_approx.webp",
+      "resolved": "src/assets/images/background_approx.webp"
+    },
+    {
+      "importer": "src/components/hero/DroneParallaxHero.jsx",
+      "specifier": "../../assets/images/landscape_reveal.webp",
+      "resolved": "src/assets/images/landscape_reveal.webp"
+    },
+    {
+      "importer": "src/components/hero/DroneParallaxHero.jsx",
+      "specifier": "../../assets/images/turbine_foreground.png",
+      "resolved": "src/assets/images/turbine_foreground.png"
+    },
+    {
+      "importer": "src/components/hero/HeroSection.jsx",
+      "specifier": "../../assets/images/poster.webp",
+      "resolved": "src/assets/images/poster.webp"
+    }
+  ]
+}

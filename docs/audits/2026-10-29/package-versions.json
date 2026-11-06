@@ -1,0 +1,78 @@
+{
+  "@gsap/react": {
+    "range": "^2.1.2",
+    "locked": "2.1.2"
+  },
+  "@react-three/drei": {
+    "range": "^10.7.9",
+    "locked": "10.7.9"
+  },
+  "@react-three/fiber": {
+    "range": "^9.8.2",
+    "locked": "9.8.2"
+  },
+  "@tailwindcss/vite": {
+    "range": "^4.3.3",
+    "locked": "4.3.3"
+  },
+  "gsap": {
+    "range": "^3.15.0",
+    "locked": "3.15.0"
+  },
+  "lenis": {
+    "range": "^1.3.27",
+    "locked": "1.3.27"
+  },
+  "lucide-react": {
+    "range": "^1.62.0",
+    "locked": "1.62.0"
+  },
+  "react": {
+    "range": "^19.3.1",
+    "locked": "19.3.1"
+  },
+  "react-dom": {
+    "range": "^19.3.1",
+    "locked": "19.3.1"
+  },
+  "tailwindcss": {
+    "range": "^4.3.3",
+    "locked": "4.3.3"
+  },
+  "three": {
+    "range": "^0.186.1",
+    "locked": "0.186.1"
+  },
+  "@eslint/js": {
+    "range": "^9.39.5",
+    "locked": "9.39.5"
+  },
+  "@vitejs/plugin-react": {
+    "range": "^6.1.2",
+    "locked": "6.1.2"
+  },
+  "eslint": {
+    "range": "^9.39.5",
+    "locked": "9.39.5"
+  },
+  "eslint-config-prettier": {
+    "range": "^10.1.8",
+    "locked": "10.1.8"
+  },
+  "eslint-plugin-react": {
+    "range": "^7.37.5",
+    "locked": "7.37.5"
+  },
+  "eslint-plugin-react-hooks": {
+    "range": "^7.1.1",
+    "locked": "7.1.1"
+  },
+  "prettier": {
+    "range": "^3.9.10",
+    "locked": "3.9.10"
+  },
+  "vite": {
+    "range": "^8.3.5",
+    "locked": "8.3.5"
+  }
+}

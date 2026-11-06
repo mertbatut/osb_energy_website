@@ -1,0 +1,173 @@
+[
+  {
+    "path": "src/assets/images/OSB_Energy_Logo.jpg",
+    "bytes": 223053,
+    "width": 3742,
+    "height": 2722,
+    "format": "JPEG"
+  },
+  {
+    "path": "src/assets/images/bess-showcase.png",
+    "bytes": 2327611,
+    "width": 1672,
+    "height": 941,
+    "format": "PNG"
+  },
+  {
+    "path": "src/assets/images/hero-poster.jpg",
+    "bytes": 98458,
+    "width": 1280,
+    "height": 720,
+    "format": "JPEG"
+  },
+  {
+    "path": "src/assets/images/hero-wind-turbines.png",
+    "bytes": 2186595,
+    "width": 1672,
+    "height": 940,
+    "format": "PNG"
+  },
+  {
+    "path": "src/assets/images/hero.png",
+    "bytes": 2637647,
+    "width": 1448,
+    "height": 1086,
+    "format": "PNG"
+  },
+  {
+    "path": "src/assets/images/osb-energy-logo.png",
+    "bytes": 86559,
+    "width": 1000,
+    "height": 263,
+    "format": "PNG"
+  },
+  {
+    "path": "src/assets/images/scene-01.jpg",
+    "bytes": 585711,
+    "width": 1672,
+    "height": 941,
+    "format": "JPEG"
+  },
+  {
+    "path": "src/assets/images/scene-02.jpg",
+    "bytes": 785736,
+    "width": 1672,
+    "height": 941,
+    "format": "JPEG"
+  },
+  {
+    "path": "src/assets/images/scene-03.jpg",
+    "bytes": 781582,
+    "width": 1672,
+    "height": 941,
+    "format": "JPEG"
+  },
+  {
+    "path": "src/assets/images/scene-04.jpg",
+    "bytes": 712603,
+    "width": 1672,
+    "height": 941,
+    "format": "JPEG"
+  },
+  {
+    "path": "src/assets/images/scene-05.jpg",
+    "bytes": 837572,
+    "width": 1672,
+    "height": 941,
+    "format": "JPEG"
+  },
+  {
+    "path": "public/brand/apple-touch-icon.png",
+    "bytes": 207,
+    "width": 180,
+    "height": 180,
+    "format": "PNG"
+  },
+  {
+    "path": "public/brand/favicon-32.png",
+    "bytes": 83,
+    "width": 32,
+    "height": 32,
+    "format": "PNG"
+  },
+  {
+    "path": "public/brand/icon-192.png",
+    "bytes": 223,
+    "width": 192,
+    "height": 192,
+    "format": "PNG"
+  },
+  {
+    "path": "public/brand/icon-512.png",
+    "bytes": 1097,
+    "width": 512,
+    "height": 512,
+    "format": "PNG"
+  },
+  {
+    "path": "public/favicon.ico",
+    "bytes": 301,
+    "width": 48,
+    "height": 48,
+    "format": "ICO"
+  },
+  {
+    "path": "public/frames/desktop/.gitkeep",
+    "bytes": 0
+  },
+  {
+    "path": "public/frames/tablet/.gitkeep",
+    "bytes": 0
+  },
+  {
+    "path": "public/icons.svg",
+    "bytes": 5031
+  },
+  {
+    "path": "public/models/OSB_BESS_Acik_Kapakli_Detayli.glb",
+    "bytes": 482788
+  },
+  {
+    "path": "public/models/OSB_Energy_Dis_Container.glb",
+    "bytes": 64880
+  },
+  {
+    "path": "public/models/OSB_Energy_Ic_Batarya_Kabini.glb",
+    "bytes": 70008
+  },
+  {
+    "path": "public/models/osb_bess_exterior_interior_prototype.glb",
+    "bytes": 155988
+  },
+  {
+    "path": "public/models/wind_turbine_procedural.glb",
+    "bytes": 40472
+  },
+  {
+    "path": "public/site.webmanifest",
+    "bytes": 281
+  },
+  {
+    "path": "public/videos/Wind_turbines_and_solar_panels_159d8ea5_1080p.mp4",
+    "bytes": 6436854
+  },
+  {
+    "path": "public/videos/osb-engineering-process-mobile.mp4",
+    "bytes": 1295340
+  },
+  {
+    "path": "public/videos/osb-engineering-process-poster.jpg",
+    "bytes": 143435,
+    "width": 1280,
+    "height": 720,
+    "format": "JPEG"
+  },
+  {
+    "path": "public/videos/osb-engineering-process.mp4",
+    "bytes": 5978949
+  },
+  {
+    "path": "public/videos/osb-hero-mobile.mp4",
+    "bytes": 910989
+  }
+]

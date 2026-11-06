@@ -1,327 +1,255 @@
-// All text content extracted from Stitch design reference.
-// Single source of truth for copy — keeps components data-free.
+// All text content — single source of truth for copy.
+// Source: sayfa-metinleri.txt (birebir)
 
 export const HERO = Object.freeze({
-  headline: "ENERJİNİN ÖTESİNDE.",
-  description:
-    "Rüzgâr, güneş ve depolama sistemlerini entegre ederek Türkiye'nin enerji altyapısını yeniden tanımlıyoruz. Sanayi için kesintisiz, sürdürülebilir ve maliyet-etkin enerji çözümleri.",
-  ctaPrimary: "Fizibilite Talebi",
-  ctaSecondary: "Çözümlerimiz",
-  secondaryHeadline: "Doğa ile Teknoloji, Bir Arada.",
-  secondaryDescription: "Türkiye'nin enerji geleceğini şekillendiren projeler.",
+  kicker: "Öz tüketimli fabrikalar için",
+  h1Lines: ["Enerji depolama", "yatırımı"],
+  lead: "Elektriği ucuz saatlerde depolayın, pahalı saatlerde kullanın. Fabrikanıza özel batarya sistemini projelendirir, kurar ve yıllarca işletiriz.",
+  cta: "Ücretsiz ön değerlendirme",
+  ctaSecondary: "Nasıl çalışır?",
+  scrollLabel: "Aşağı kaydırın",
+  backword: "OSB ENERGY",
+  productAlt: "OSB ENERGY logolu beyaz batarya enerji depolama konteyneri",
+  batteryStages: Object.freeze([
+    { label: "Gece şarjı", hours: [0, 6] },
+    { label: "Sabah depolama", hours: [6, 12] },
+    { label: "Puant kullanım", hours: [12, 18] },
+    { label: "Akşam dengesi", hours: [18, 24] },
+  ]),
 });
 
-// Set startSeconds to measured scene cuts; null uses equal thirds of duration.
-export const STORYBOARD = Object.freeze({
-  sectionLabel: "UÇTAN UCA MÜHENDİSLİK",
-  headline: "Fikirden enerjiye. Her aşamada mühendislik.",
-  description: "Saha potansiyelini analiz ediyor, doğru enerji sistemini tasarlıyor ve projeyi devreye alıyoruz.",
-  video: "/videos/osb-engineering-process.mp4",
-  mobileVideo: "/videos/osb-engineering-process-mobile.mp4",
-  poster: "/videos/osb-engineering-process-poster.jpg",
-  frames: [
-    { id: "01", startSeconds: 0, title: "Saha Analizi", description: "Rüzgâr ve güneş potansiyelinin değerlendirilmesi, arazi koşullarının incelenmesi ve proje ihtiyaçlarının belirlenmesi." },
-    { id: "02", startSeconds: null, title: "Mühendislik", description: "Üretim, depolama ve enerji yönetimi bileşenlerinin proje ihtiyaçlarına uygun şekilde tasarlanması." },
-    { id: "03", startSeconds: null, title: "Kurulum ve Devreye Alma", description: "Saha uygulamalarının koordinasyonu, sistem entegrasyonu, test ve devreye alma süreçlerinin yürütülmesi." },
-  ],
+export const TRUST_STRIP = Object.freeze({
+  stats: Object.freeze([
+    { value: "2018", label: "yılından beri sahada", dataCount: 2018, dataFrom: 1990, isYear: true },
+    { value: "100", suffix: "+", label: "tamamlanan proje", dataCount: 100, dataFrom: 0 },
+    { value: "%20–30", label: "faturada ortalama tasarruf potansiyeli" },
+    { value: "7/24", label: "uzaktan izleme ve teknik destek" },
+  ]),
 });
 
-export const CORPORATE = Object.freeze({
-  sectionLabel: "Kurumsal",
-  headline: "Sanayi için enerji dönüşümü.",
-  description:
-    "2018'den bu yana Türkiye'nin önde gelen sanayi bölgelerinde yenilenebilir enerji ve depolama çözümleri sunuyoruz. Mühendislikten işletmeye, uçtan uca entegre hizmet anlayışımızla sektörün güvenilir iş ortağıyız.",
-  kpis: [
-    { value: "2018", label: "Kuruluş Yılı", suffix: "" },
-    { value: "100", label: "Tamamlanan Proje", suffix: "+" },
-    { value: "100", label: "Yerli Mühendislik", suffix: "%" },
-    { value: "10", label: "Yanıt Süresi", suffix: "ms", prefix: "<" },
-  ],
+export const SOLUTIONS = Object.freeze({
+  kicker: "Depolama sistemi",
+  headline: "Neyi çözer?",
+  lead: "Enerji artık yalnızca tüketilen bir kalem değil; yönetilen bir varlık. Tesisinizde bu dört durumdan biri varsa batarya kendini öder.",
+  imageAlt: "Kapağı açık batarya kabini, raflarda batarya modülleri",
+  items: Object.freeze([
+    {
+      title: "Puant saatlerinde yüksek fatura",
+      text: "Batarya enerjiyi ucuzken depolar, pahalıyken kullanır. Faturada ortalama %20–30 oranında tasarruf sağlanabilir.",
+      iconKey: "chart-bar",
+      chartKey: "peak-pricing",
+    },
+    {
+      title: "Pik talep ve güç aşımı cezaları",
+      text: "Talep belirli saatlerde sıçrar. Batarya bu pikleri karşılar; ceza ödemezsiniz, trafo büyütmeyi erteleyebilirsiniz.",
+      iconKey: "chart-spike",
+      chartKey: "peak-shaving",
+    },
+    {
+      title: "Elektrik kesintileri ve üretim duruşları",
+      text: "Her saniye bir kesinti bir kayıptır. Sistem arızayı otomatik algılar, milisaniyeler içinde devreye girer; kritik prosesler durmaz.",
+      iconKey: "lightning",
+      chartKey: "backup-power",
+    },
+    {
+      title: "GES ve RES fazlası boşa gidiyor",
+      text: "Güneş ve rüzgârın üretim fazlası depolanır, ihtiyaç anında kullanılır. Öz tüketim oranınız ve yatırım getiriniz artar.",
+      iconKey: "sun",
+      chartKey: "solar-surplus",
+    },
+  ]),
 });
 
-export const SERVICES = Object.freeze({
-  sectionLabel: "Hizmetler",
-  items: [
+export const STAGE = Object.freeze({
+  kicker: "BESS nasıl çalışır?",
+  headline: "Elektriğin yolunu izleyin.",
+  lead: "Şebeke, batarya ve fabrikanız arasındaki enerji akışı. Bir aşama seçin; sahadaki ışık ve sistemin davranışı değişsin.",
+  labels: Object.freeze({
+    grid: "Şebeke",
+    bess: "OSB ENERGY BESS",
+    factory: "Fabrika",
+  }),
+  phases: Object.freeze([
     {
-      id: "res",
-      title: "Yenilenebilir Enerji Santralleri",
-      subtitle: "RES & GES",
-      description:
-        "Rüzgâr ve güneş enerjisi santrallerinin fizibilite, tasarım, kurulum ve işletme süreçlerini uçtan uca yönetiyoruz.",
-      features: [
-        "Saha analizi ve rüzgâr/güneş ölçümü",
-        "Türbin ve panel seçimi optimizasyonu",
-        "Şebeke bağlantı mühendisliği",
-        "SCADA entegrasyonu ve uzaktan izleme",
-      ],
-      image: "https://images.unsplash.com/photo-1532601224476-15c79f2f7a51?w=800&q=80",
+      num: "01",
+      title: "Gece şarjı",
+      text: "Ucuz tarifede şebekeden bataryaya enerji akışı.",
+      time: "00:00 – 06:00",
+      flow: "Şebeke → Batarya",
     },
     {
-      id: "bess",
-      title: "Enerji Depolama Sistemleri",
-      subtitle: "BESS",
-      description:
-        "Lityum-iyon batarya teknolojisi ile şebeke dengesi, pik yönetimi ve kesintisiz enerji sağlıyoruz.",
-      features: [
-        "Pik tıraşlama ve yük kaydırma",
-        "Frekans regülasyonu desteği",
-        "Kısıntı telafisi ve gelir optimizasyonu",
-        "Modüler ve ölçeklenebilir mimari",
-      ],
-      image: "https://images.unsplash.com/photo-1620714223084-8fcacc6dfd8d?w=800&q=80",
-    },
-  ],
-});
-
-export const MARQUEE_IMAGES = Object.freeze([
-  "https://images.unsplash.com/photo-1532601224476-15c79f2f7a51?w=400&q=80",
-  "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=400&q=80",
-  "https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=400&q=80",
-  "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=400&q=80",
-  "https://images.unsplash.com/photo-1620714223084-8fcacc6dfd8d?w=400&q=80",
-  "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=400&q=80",
-]);
-
-export const BESS_TECH = Object.freeze({
-  sectionLabel: "ENERJİ DEPOLAMA TEKNOLOJİSİ",
-  headline: "Enerjinizi yalnızca tüketmeyin. Yönetin.",
-  description:
-    "OSB ENERGY batarya enerji depolama çözümleriyle elektrik tüketiminizi daha kontrollü, esnek ve verimli yönetin. Enerjiyi ihtiyaç duyduğunuz zamanlarda kullanın, yüksek güç taleplerini dengeleyin ve işletmenizin enerji yönetimini güçlendirin.",
-  cta: "BESS çözümlerimizi keşfedin",
-  features: [
-    {
-      title: "Akıllı Enerji Yönetimi",
-      description: "Şarj ve deşarj süreçlerini tesisinizin enerji ihtiyacına göre yönetin.",
-      icon: "Zap",
+      num: "02",
+      title: "Gündüz dengesi",
+      text: "Fabrika şebekeden beslenirken batarya beklemede.",
+      time: "06:00 – 17:00",
+      flow: "Şebeke → Fabrika",
     },
     {
-      title: "Gelişmiş Termal Yönetim",
-      description: "Aktif soğutma teknolojisiyle bataryaların çalışma sıcaklığını kontrol altında tutun.",
-      icon: "ShieldCheck",
+      num: "03",
+      title: "Puant boşaltma",
+      text: "Pahalı saatlerde batarya devreye girer, şebeke yükü düşer.",
+      time: "17:00 – 22:00",
+      flow: "Batarya → Fabrika",
     },
     {
-      title: "Entegre Güvenlik",
-      description: "BMS izleme, elektriksel koruma ve yangın güvenliği sistemleriyle çok katmanlı koruma.",
-      icon: "Cpu",
+      num: "04",
+      title: "Acil yedek",
+      text: "Kesinti algılandığında batarya milisaniyeler içinde devreye girer.",
+      time: "Kesinti anı",
+      flow: "Batarya → Fabrika (acil)",
     },
-    {
-      title: "Ölçeklenebilir Altyapı",
-      description: "İşletmenizin enerji ihtiyacına göre genişleyebilen modüler depolama çözümleri.",
-      icon: "Layers",
-    },
-  ],
+  ]),
 });
 
 export const FINANCIAL = Object.freeze({
-  sectionLabel: "Kazanımlar",
-  headline: "Somut finansal etki.",
-  benefits: [
+  kicker: "Enerji depolamanın",
+  headline: "Finansal etkisi",
+  lead: "Örnek hesaplama: orta ölçekli bir fabrika. Uygun projelendirme ve doğru enerji yönetimiyle yatırım kısa sürede geri döner.",
+  metrics: Object.freeze([
+    { label: "Yıllık elektrik tüketimi", value: "10.000.000", unit: "kWh", dataCount: 10000000 },
+    { label: "Depolama kapasitesi", value: "2.500", unit: "kWh / 1.000 kW", dataCount: 2500 },
     {
-      value: "%20-30",
-      title: "Enerji Maliyeti Düşüşü",
-      description: "Pik tıraşlama ve optimizasyon ile doğrudan maliyet tasarrufu.",
+      label: "Yıllık tahmini tasarruf potansiyeli",
+      value: "1,5–2",
+      unit: "milyon TL",
+      highlighted: true,
     },
-    {
-      value: "0 TL",
-      title: "Kısıntı Cezası",
-      description: "Depolama ile kısıntı telafisi, sıfır ceza riski.",
-    },
-    {
-      value: "0",
-      title: "Plansız Duruş",
-      description: "Kesintisiz enerji ile üretim sürekliliği garantisi.",
-    },
-  ],
-  roi: {
-    title: "Yatırım Fizibilitesi",
-    metrics: [
-      { label: "Geri Ödeme", value: "4-6 Yıl" },
-      { label: "IRR", value: "%18-24" },
-      { label: "NPV Pozitif", value: "3. Yıl" },
-      { label: "Ekonomik Ömür", value: "15+ Yıl" },
-    ],
-  },
+    { label: "Tahmini geri dönüş süresi", value: "3–5", unit: "yıl", highlighted: true },
+  ]),
+  disclaimer:
+    "Hesaplamalar örnektir; gerçek değerler tesisin tüketim profili ve şartlarına göre değişir.",
+  cta: "Kendi rakamlarınızı hesaplatın",
 });
 
-export const HYBRID = Object.freeze({
-  sectionLabel: "Hibrit Sinerji",
-  headline: "Rüzgâr + Depolama:\nKesintisiz güç.",
-  description:
-    "Rüzgâr enerjisi üretimi ile BESS'i entegre ederek kısıntı kayıplarını sıfırlar, şebeke dengesini sağlar ve yatırım getirisini maksimize ederiz.",
-  features: [
+export const JOURNEY = Object.freeze({
+  captions: Object.freeze([
     {
-      title: "Kısıntı Sıfırlama",
-      description: "Üretim fazlasını depolayarak kısıntı kayıplarını ortadan kaldırır.",
-      icon: "ShieldCheck",
+      kicker: "Kaydırın, içeri girelim",
+      headline: "Dışarıdan bir konteyner.",
     },
     {
-      title: "Frekans Desteği",
-      description: "Anlık şebeke frekans regülasyonu ile ek gelir kaynağı oluşturur.",
-      icon: "Activity",
-    },
-  ],
-  image: "https://images.unsplash.com/photo-1532601224476-15c79f2f7a51?w=900&q=80",
-});
-
-export const SECTORS = Object.freeze({
-  sectionLabel: "Sektörler",
-  headline: "Her sektöre özel enerji çözümü.",
-  items: [
-    {
-      title: "Organize Sanayi",
-      icon: "Factory",
-      image: "https://images.unsplash.com/photo-1513828583688-c52646db42da?w=400&q=80",
+      kicker: "İçeride",
+      headline: "Fabrikanızın yedek enerjisi.",
+      body: "Raf raf batarya modülleri, sıvı soğutma ve 7/24 uzaktan izleme. Kesinti anında milisaniyeler içinde devreye girer.",
     },
     {
-      title: "Otomotiv",
-      icon: "Car",
-      image: "https://images.unsplash.com/photo-1565043666747-69f6646db940?w=400&q=80",
+      kicker: "Üretim sürekliliği ve",
+      headline: "operasyonel güvenlik.",
+      body: "Makineleriniz durmaz, ürününüz fireye gitmez, veriniz kaybolmaz.",
     },
-    {
-      title: "Gıda & İçecek",
-      icon: "UtensilsCrossed",
-      image: "https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=400&q=80",
-    },
-    {
-      title: "Tekstil",
-      icon: "Shirt",
-      image: "https://images.unsplash.com/photo-1558171813-01342dfc331a?w=400&q=80",
-    },
-    {
-      title: "Kimya",
-      icon: "FlaskConical",
-      image: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=400&q=80",
-    },
-    {
-      title: "Madencilik",
-      icon: "Mountain",
-      image: "https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?w=400&q=80",
-    },
-    {
-      title: "Lojistik",
-      icon: "Truck",
-      image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=400&q=80",
-    },
-    {
-      title: "Tarım",
-      icon: "Wheat",
-      image: "https://images.unsplash.com/photo-1500595046743-cd271d694d30?w=400&q=80",
-    },
-  ],
+  ]),
+  outerAlt: "Gün batımında fabrika yanında OSB ENERGY batarya konteyneri",
+  innerAlt: "Konteynerin içinde sıralı batarya rafları",
 });
 
 export const PROCESS = Object.freeze({
-  sectionLabel: "Süreç",
-  headline: "Uçtan uca mühendislik süreci.",
-  steps: [
+  kicker: "Uçtan uca",
+  headline: "Proje sürecimiz",
+  lead: "İhtiyaç analizinden işletmeye kadar tek ekip, tek muhatap.",
+  steps: Object.freeze([
     {
-      id: "01",
-      title: "Keşif & Analiz",
-      description: "Saha ziyareti, enerji tüketim analizi ve potansiyel değerlendirmesi.",
+      num: "01",
+      title: "İhtiyaç analizi ve keşif",
+      text: "Faturanız ve tüketim profilinizle başlarız.",
     },
     {
-      id: "02",
-      title: "Fizibilite",
-      description: "Teknik ve finansal fizibilite raporu, yatırım modeli.",
+      num: "02",
+      title: "Fizibilite ve sistem tasarımı",
+      text: "Kapasite, tasarruf ve geri dönüş hesabı.",
     },
     {
-      id: "03",
-      title: "Tasarım",
-      description: "Detaylı mühendislik tasarımı, ekipman seçimi ve tedarik.",
-    },
-    { id: "04", title: "Kurulum", description: "Anahtar teslim inşaat, montaj ve devreye alma." },
-    {
-      id: "05",
-      title: "Entegrasyon",
-      description: "Şebeke bağlantısı, SCADA ve otomasyon entegrasyonu.",
+      num: "03",
+      title: "Projelendirme ve mühendislik",
+      text: "Tesisinize özel çözüm ve izin süreçleri.",
     },
     {
-      id: "06",
-      title: "İşletme & Bakım",
-      description: "7/24 uzaktan izleme, periyodik bakım ve performans optimizasyonu.",
+      num: "04",
+      title: "Tedarik ve kurulum",
+      text: "Dünya standartlarında ekipman ve saha kurulumu.",
     },
-  ],
+    { num: "05", title: "Test, devreye alma ve eğitim", text: "Ekibinize sistemi teslim ederiz." },
+    {
+      num: "06",
+      title: "Sürekli destek ve izleme",
+      text: "7/24 uzaktan izleme, bakım ve raporlama.",
+    },
+  ]),
 });
 
-export const PROJECTS = Object.freeze({
-  sectionLabel: "Projeler",
-  headline: "Referans projelerimiz.",
-  items: [
-    {
-      title: "Manisa OSB RES",
-      capacity: "50 MW",
-      type: "Rüzgâr Enerji Santrali",
-      status: "Tamamlandı",
-      image: "https://images.unsplash.com/photo-1532601224476-15c79f2f7a51?w=600&q=80",
-    },
-    {
-      title: "Kayseri OSB BESS",
-      capacity: "25 MW / 100 MWh",
-      type: "Enerji Depolama",
-      status: "Devam Ediyor",
-      image: "https://images.unsplash.com/photo-1620714223084-8fcacc6dfd8d?w=600&q=80",
-    },
-    {
-      title: "Bursa OSB Hibrit",
-      capacity: "30 MW RES + 15 MW BESS",
-      type: "Hibrit Sistem",
-      status: "Planlama",
-      image: "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=600&q=80",
-    },
-  ],
-  sustainability: {
-    title: "Sürdürülebilirlik Taahhüdü",
-    description:
-      "Projelerimiz toplam 840.000 ton CO₂ emisyon azaltımı sağlamış, 12.000'den fazla haneye eşdeğer temiz enerji üretmiştir.",
-    stats: [
-      { value: "840K", label: "Ton CO₂ Azaltım" },
-      { value: "12K+", label: "Hane Eşdeğeri" },
-    ],
-  },
+export const SECTORS = Object.freeze({
+  kicker: "Kullanım alanlarımız",
+  row1: Object.freeze([
+    { text: "Demir-çelik", variant: "s" },
+    { text: "Otomotiv", variant: "o" },
+    { text: "Tekstil", variant: "s" },
+    { text: "Çimento", variant: "o" },
+    { text: "Kimya", variant: "s" },
+    { text: "Demir-çelik", variant: "o" },
+    { text: "Otomotiv", variant: "s" },
+  ]),
+  row2: Object.freeze([
+    { text: "Gıda", variant: "o" },
+    { text: "Lojistik", variant: "s" },
+    { text: "Soğuk hava depoları", variant: "o" },
+    { text: "Veri merkezleri", variant: "s" },
+    { text: "Elektronik", variant: "o" },
+    { text: "Gıda", variant: "s" },
+  ]),
 });
 
-export const CTA = Object.freeze({
-  headline: "Enerji dönüşümüne\nbugün başlayın.",
-  description:
-    "Tesisiniz için ücretsiz fizibilite raporu talep edin. Mühendislik ekibimiz 48 saat içinde size özel analiz sunacaktır.",
-  ctaPrimary: "Fizibilite Talebi",
-  ctaSecondary: "info@osbenergy.com",
-  phone: "+90 (312) 000 00 00",
-  address: "OSB ENERGY Merkez Ofis, Ankara Sanayi Odası, Türkiye",
+export const CONTACT = Object.freeze({
+  kicker: "Bizimle",
+  headline: "iletişime geçin",
+  lead: "Uzman ekibimiz, fabrikanız için en uygun enerji depolama çözümünü sunmaya hazır.",
+  infoItems: Object.freeze([
+    {
+      label: "Telefon",
+      values: [
+        { text: "0534 949 92 52", href: "tel:+905349499252" },
+        { text: "0533 721 16 13", href: "tel:+905337211613" },
+      ],
+    },
+    {
+      label: "E-posta",
+      values: [
+        { text: "contact@osbinternational.com", href: "mailto:contact@osbinternational.com" },
+      ],
+    },
+    {
+      label: "Web",
+      values: [{ text: "osbenergy.com.tr", href: "https://www.osbenergy.com.tr" }],
+    },
+    {
+      label: "Adres",
+      values: [{ text: "Central Balat" }],
+    },
+  ]),
+  formLabels: Object.freeze({
+    greeting: "Merhaba, ben",
+    namePlaceholder: "adınız",
+    namePostfix: ".",
+    companyPrefix: "",
+    companyPlaceholder: "firma ve OSB",
+    companyPostfix: "için enerji depolama değerlendirmesi istiyorum. Beni",
+    phonePlaceholder: "telefon",
+    phonePostfix: "numarasından arayabilirsiniz.",
+    fileLabel: "Elektrik faturanız",
+    fileOptional: "(isteğe bağlı)",
+    fileHint: "Son 12 ayın faturası değerlendirmeyi hızlandırır. Fotoğraf da olur.",
+    submit: "Ön değerlendirme isteyin",
+  }),
+  privacyNote: "Bilgileriniz yalnızca bu değerlendirme için kullanılır.",
 });
 
 export const FOOTER = Object.freeze({
-  brand: "OSB ENERGY",
-  tagline: "Enerjinin Ötesinde.",
-  columns: [
-    {
-      title: "Hizmetler",
-      links: [
-        { label: "Rüzgâr Enerjisi", href: "#hizmetler" },
-        { label: "Güneş Enerjisi", href: "#hizmetler" },
-        { label: "Enerji Depolama", href: "#hizmetler" },
-        { label: "Hibrit Sistemler", href: "#hizmetler" },
-      ],
-    },
-    {
-      title: "Kurumsal",
-      links: [
-        { label: "Hakkımızda", href: "#hakkimizda" },
-        { label: "Projeler", href: "#projeler" },
-        { label: "Sürdürülebilirlik", href: "#projeler" },
-        { label: "Kariyer", href: "#iletisim" },
-      ],
-    },
-    {
-      title: "İletişim",
-      links: [
-        { label: "info@osbenergy.com", href: "mailto:info@osbenergy.com" },
-        { label: "+90 (312) 000 00 00", href: "tel:+903120000000" },
-        { label: "LinkedIn", href: "#" },
-        { label: "Twitter", href: "#" },
-      ],
-    },
-  ],
-  legal: `© ${new Date().getFullYear()} OSB ENERGY. Tüm hakları saklıdır.`,
-  badges: ["ISO 9001", "ISO 14001", "ISO 45001"],
+  taglineKicker: "Doğru enerji yönetimi,",
+  taglineHeadline: "geleceğinizi güçlendirir.",
+  cta: "Teklif alın",
+  logoHint: "İmleci logonun üzerinde gezdirin",
+  links: Object.freeze([
+    { text: "0534 949 92 52", href: "tel:+905349499252" },
+    { text: "contact@osbinternational.com", href: "mailto:contact@osbinternational.com" },
+    { text: "osbenergy.com.tr", href: "https://www.osbenergy.com.tr" },
+  ]),
+  legal: "\u00A9 2026 OSB ENERGY",
 });

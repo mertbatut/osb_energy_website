@@ -1,0 +1,1331 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<title>OSB ENERGY — Enerji depolama yatırımı</title>
+<script src="./support.js"></script>
+<script src="vendor/gsap.min.js"></script>
+<script src="vendor/ScrollTrigger.min.js"></script>
+<script src="vendor/three-r147-bundle.js"></script>
+<script src="code/liquid-engine.js"></script>
+<script src="vendor/lenis.min.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wdth,wght@75..100,400..700&amp;family=Hanken+Grotesk:wght@300..700&amp;family=Geist:wght@300..700&amp;display=swap">
+<style>
+body{margin:0;background:#FFFFFF}
+/* yazı aileleri */
+.osb.font-a{--font:'Instrument Sans','Helvetica Neue',Arial,sans-serif;--disp-w:500;--disp-track:-0.04em}
+.osb.font-b{--font:'Hanken Grotesk','Helvetica Neue',Arial,sans-serif;--disp-w:500;--disp-track:-0.045em}
+.osb.font-c{--font:'Geist','Helvetica Neue',Arial,sans-serif;--disp-w:500;--disp-track:-0.045em}
+/* renk paletleri: ilk iki renk ana, üçüncüsü detay */
+.osb.pal-a{--bg:#FFFFFF;--bg-alt:#F3F4F6;--card:#FFFFFF;--ink:#1C1F23;--brand:#2541B2;--brand-on-dark:#8EA2F5;--accent:#F28C28;--on-accent:#1C1F23;--dark:#1C1F23;--dark-2:#121417;--dark-3:#2A2E34;--dark-glow:#2C3340;--on-dark-muted:#C9CDD3;--chip:#E8ECFA;--line:#DFE2E7;--muted:#545B66;--text:#1C1F23;--charge:#8EA2F5;--rest:#E3E6EC}
+.osb.pal-b{--bg:#FBF8F3;--bg-alt:#F4EDF5;--card:#FFFFFF;--ink:#2B1640;--brand:#5B2A86;--brand-on-dark:#CDAEF0;--accent:#F49AC2;--on-accent:#2B1640;--dark:#2B1640;--dark-2:#1D0E2C;--dark-3:#3B2156;--dark-glow:#4A2870;--on-dark-muted:#E5D8EF;--chip:#EFE4F7;--line:#E7DFEA;--muted:#5E5468;--text:#2B1640;--charge:#CDAEF0;--rest:#EADFF1}
+.osb.pal-c{--bg:#F6FBFA;--bg-alt:#E4F6F2;--card:#FFFFFF;--ink:#0B1A3A;--brand:#0B7C6C;--brand-on-dark:#6FE6CF;--accent:#A7D3F5;--on-accent:#0B1A3A;--dark:#0B1A3A;--dark-2:#07112A;--dark-3:#142A55;--dark-glow:#173572;--on-dark-muted:#C6D6EE;--chip:#DDF5EF;--line:#D3E4E2;--muted:#4C5A70;--text:#0B1A3A;--charge:#6FE6CF;--rest:#DCEAF6}
+a{color:var(--brand)}a:hover{color:var(--ink)}
+.osb *{box-sizing:border-box}
+.osb h1,.osb h2,.osb h3,.osb p,.osb figure,.osb dl,.osb dd{margin:0}
+.osb .wrap{max-width:1440px;margin:0 auto;padding-left:clamp(20px,5vw,80px);padding-right:clamp(20px,5vw,80px)}
+.osb .mont{font-family:var(--font);font-variant-numeric:tabular-nums}
+
+/* başlık sistemi: PDF dili — lacivert üst satır, yeşil ana satır */
+.osb .ln{display:block;overflow:hidden;padding-bottom:0.04em}
+.osb .ln > span{display:block}
+.osb .sh-a{font-family:var(--font);font-weight:500;font-size:clamp(1rem,1.25vw,1.15rem);line-height:1.3;letter-spacing:-0.005em;color:var(--muted)}
+.osb .sh-b{font-family:var(--font);font-weight:var(--disp-w);font-size:clamp(2.5rem,4.8vw,4.75rem);line-height:1.0;letter-spacing:var(--disp-track);color:var(--ink);text-wrap:balance}
+.osb .lead{font-size:clamp(1.05rem,1.3vw,1.2rem);line-height:1.65;color:var(--muted);max-width:40rem}
+
+/* butonlar: süpürme dolgu + ok */
+.osb .btn{position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;gap:16px;min-height:58px;padding:0 30px;background:var(--brand);color:#FFFFFF;text-decoration:none;font:inherit;font-weight:700;font-size:15px;letter-spacing:0.01em;border:0;border-radius:2px;cursor:pointer}
+.osb .btn::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--accent);transform:scaleX(0);transform-origin:right center;transition:transform 650ms cubic-bezier(0.65,0,0.35,1)}
+.osb .btn:hover{color:var(--on-accent)}
+.osb .btn:hover::before{transform:scaleX(1);transform-origin:left center}
+.osb .btn .arr{display:inline-flex;transition:transform 500ms cubic-bezier(0.16,1,0.3,1)}
+.osb .btn:hover .arr{transform:translateX(5px)}
+.osb .btn.light{background:#FFFFFF;color:var(--dark)}
+.osb .btn.light:hover{color:var(--on-accent)}
+.osb .btn:focus-visible{outline:2px solid var(--brand);outline-offset:4px}
+.osb .ulink{color:var(--ink);font-weight:700;text-decoration:none;padding:14px 0;background:linear-gradient(currentColor,currentColor) 0 100%/100% 1.5px no-repeat;transition:background-size 500ms cubic-bezier(0.65,0,0.35,1)}
+.osb .ulink:hover{color:var(--ink);background-size:0 1.5px;background-position:100% 100%}
+.osb .navlink{color:var(--ink);text-decoration:none;font-weight:600;font-size:15px;padding:12px 0;background:linear-gradient(var(--accent),var(--accent)) 0 100%/0 2px no-repeat;transition:background-size 450ms cubic-bezier(0.65,0,0.35,1)}
+.osb .navlink:hover{color:var(--ink);background-size:100% 2px}
+
+/* görsel çerçeveleri (parallax için taşma gizli) */
+.osb .frame{position:relative;overflow:hidden;background:var(--line)}
+.osb .frame img{position:absolute;left:0;top:-8%;width:100%;height:116%;object-fit:cover;display:block}
+
+/* akordeon */
+.osb .q{font:inherit;width:100%;text-align:left;background:transparent;border:0;border-top:1px solid var(--line);padding:26px 0;cursor:pointer;display:flex;align-items:center;gap:22px;color:var(--ink)}
+.osb .q .ic{flex:0 0 auto;width:48px;height:48px;border-radius:50%;background:var(--chip);color:var(--brand);display:inline-flex;align-items:center;justify-content:center;transition:background-color 300ms ease,color 300ms ease}
+.osb .q.on .ic,.osb .q:hover .ic{background:var(--brand);color:#FFFFFF}
+.osb .q .qt{flex:1;font-family:var(--font);font-weight:600;font-size:clamp(1.15rem,1.9vw,1.6rem);line-height:1.2}
+.osb .q .pm{flex:0 0 auto;width:20px;height:20px;position:relative;transition:transform 450ms cubic-bezier(0.16,1,0.3,1)}
+.osb .q.on .pm{transform:rotate(135deg)}
+.osb .q:focus-visible{outline:2px solid var(--brand);outline-offset:4px}
+.osb .ans{display:flex;flex-wrap:wrap;gap:24px 48px;align-items:center;padding:0 0 36px 70px;animation:osb-in 600ms cubic-bezier(0.16,1,0.3,1) both}
+
+/* gün döngüsü */
+.osb .liq{transition:fill 700ms ease}
+.osb .ph0 .liq{fill:var(--charge)}
+.osb .ph1 .liq{fill:var(--rest)}
+.osb .ph2 .liq{fill:var(--accent)}
+.osb .level{transition:transform 500ms cubic-bezier(0.16,1,0.3,1)}
+.osb .wave{animation:osb-wave 5s linear infinite}
+.osb .scrub{-webkit-appearance:none;appearance:none;position:absolute;inset:0;width:100%;height:100%;margin:0;background:transparent;cursor:ew-resize}
+.osb .scrub::-webkit-slider-runnable-track{height:48px;background:transparent}
+.osb .scrub::-webkit-slider-thumb{-webkit-appearance:none;width:6px;height:48px;border-radius:3px;background:#FFFFFF;box-shadow:0 0 0 7px rgba(255,255,255,0.18)}
+.osb .scrub::-moz-range-track{height:48px;background:transparent}
+.osb .scrub::-moz-range-thumb{width:6px;height:48px;border:0;border-radius:3px;background:#FFFFFF;box-shadow:0 0 0 7px rgba(255,255,255,0.18)}
+.osb .scrub:focus-visible{outline:2px solid var(--brand-on-dark);outline-offset:4px}
+
+/* enerji lifleri */
+.osb .strand{fill:none;stroke:color-mix(in srgb, var(--on-dark-muted) 14%, transparent);stroke-width:1.2}
+.osb .pulse{fill:none;stroke:var(--accent);stroke-width:2.4;stroke-linecap:round;stroke-dasharray:3 46 2 1800;opacity:.9;animation:osb-flow 8s linear infinite;transition:opacity 700ms ease,stroke 700ms ease}
+.osb .pulse.p2{stroke:var(--on-dark-muted);stroke-width:1.8}
+.osb .flow.ph1 .pulse{opacity:.22}
+.osb .flow.ph2 .pulse{stroke:var(--accent);animation-direction:reverse}
+.osb .flow.ph2 .pulse.p2{stroke:#FFFFFF}
+@keyframes osb-flow{from{stroke-dashoffset:1850}to{stroke-dashoffset:0}}
+/* hero */
+.osb .backword{position:absolute;left:50%;bottom:-0.17em;transform:translateX(-50%);margin:0;font-weight:600;font-size:clamp(6rem,19vw,22rem);line-height:1;letter-spacing:-0.06em;color:color-mix(in srgb,var(--ink) 5%,transparent);white-space:nowrap;pointer-events:none;z-index:0}
+.osb .stg{display:flex;align-items:center;justify-content:flex-end;gap:10px;font-size:14px;color:var(--muted)}
+.osb .stg.on{color:var(--ink);font-weight:600}
+.osb .stg .d{width:8px;height:8px;border-radius:50%;border:1px solid var(--line)}
+.osb .stg.on .d{background:var(--accent);border-color:var(--accent)}
+/* sahne fotoğrafı: aşamaya göre ışık */
+.osb .stage-imgs{position:absolute;inset:0}
+.osb .stage-imgs .si{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.03);transition:opacity 1400ms cubic-bezier(0.65,0,0.35,1),filter 1400ms ease,transform 6s cubic-bezier(0.16,1,0.3,1)}
+.osb .stage-imgs .sun{opacity:0}
+.osb .stage-imgs.tone1 .sun,.osb .stage-imgs.tone2 .sun{opacity:1}
+.osb .stage-imgs.tone1 .sun{filter:saturate(.5) brightness(1.12) contrast(.94)}
+.osb .stage-imgs.tone2 .sun{transform:scale(1.07)}
+.osb .stage-imgs.tone0 .night{transform:scale(1.07)}
+.osb .stage-imgs.tone3 .night{filter:grayscale(.85) brightness(.42) contrast(1.15);transform:scale(1.1)}
+.osb .stage-tint{position:absolute;inset:0;pointer-events:none;transition:background 1200ms ease}
+.osb .stage-tint.tone0,.osb .stage-tint.tone1,.osb .stage-tint.tone2{background:linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,0) 35%,rgba(0,0,0,0) 70%,rgba(0,0,0,.35))}
+.osb .stage-tint.tone3{background:radial-gradient(55% 55% at 45% 60%,color-mix(in srgb,var(--accent) 26%,transparent),rgba(0,0,0,.5));animation:osb-alert 1.2s ease-in-out infinite}
+.osb .prod-shadow{position:absolute;left:6%;right:4%;bottom:-3%;height:12%;background:radial-gradient(50% 50% at 50% 50%,rgba(20,22,30,0.32),rgba(20,22,30,0) 70%);filter:blur(4px);pointer-events:none}
+@keyframes osb-alert{0%,100%{opacity:1}50%{opacity:.7}}
+/* 3D sahne ve aşamalar */
+.osb .lbl{position:absolute;left:0;top:0;padding:6px 12px;border-radius:999px;font-size:13px;font-weight:500;color:#FFFFFF;background:rgba(0,0,0,0.45);border:1px solid rgba(255,255,255,0.14);backdrop-filter:blur(8px);white-space:nowrap;pointer-events:none;opacity:0;margin-top:-10px}
+.osb .step{font:inherit;color:inherit;text-align:left;width:100%;background:transparent;border:0;padding:22px 24px 8px 0;cursor:pointer;display:flex;flex-direction:column;gap:8px;position:relative}
+.osb .step .bar{position:absolute;left:0;right:24px;top:-1px;height:2px;background:transparent;overflow:hidden}
+.osb .step .fill{position:absolute;inset:0;background:var(--accent);transform-origin:left center;animation:osb-step 5.2s linear both}
+.osb .step .st-n{font-size:13px;color:var(--on-dark-muted);font-variant-numeric:tabular-nums}
+.osb .step .st-t{font-size:20px;font-weight:500;letter-spacing:-0.015em;color:rgba(255,255,255,0.6);transition:color 300ms ease}
+.osb .step .st-d{font-size:15px;line-height:1.5;color:var(--on-dark-muted);opacity:.7;transition:opacity 300ms ease;max-width:30ch}
+.osb .step.on .st-t,.osb .step:hover .st-t{color:#FFFFFF}
+.osb .step.on .st-d{opacity:1}
+.osb .step:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+@keyframes osb-step{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+/* inherit butonlar: dolgusuz; blur yalnız hover'da */
+.osb .btn{background:transparent;color:inherit;border:1px solid currentColor;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none;transition:background-color 500ms ease,box-shadow 500ms ease,-webkit-backdrop-filter 500ms ease,backdrop-filter 500ms ease,border-color 500ms ease}
+.osb .btn::before{display:none}
+.osb .btn:hover{color:inherit;background:color-mix(in srgb,currentColor 7%,transparent);-webkit-backdrop-filter:blur(14px) saturate(1.4);backdrop-filter:blur(14px) saturate(1.4);box-shadow:0 14px 34px rgba(0,0,0,0.12);border-color:color-mix(in srgb,currentColor 35%,transparent)}
+.osb .btn.light{background:transparent;color:#FFFFFF;border-color:rgba(255,255,255,0.7)}
+.osb .btn.light:hover{color:#FFFFFF;background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.35)}
+.osb .btn .arr{transition:transform 500ms cubic-bezier(0.16,1,0.3,1),filter 500ms ease}
+.osb .btn:hover .arr{transform:translateX(5px)}
+.osb .bt{position:relative;display:inline-block;overflow:hidden;line-height:1.4;vertical-align:middle}
+.osb .bt > span{display:block;transition:transform 600ms cubic-bezier(0.65,0,0.35,1),filter 600ms ease,opacity 600ms ease}
+.osb .bt > span + span{position:absolute;left:0;top:0;transform:translateY(100%);filter:blur(6px);opacity:0}
+.osb .btn:hover .bt > span:first-child{transform:translateY(-100%);filter:blur(6px);opacity:0}
+.osb .btn:hover .bt > span + span{transform:none;filter:blur(0);opacity:1}
+.osb .navbar{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 72%,transparent);-webkit-backdrop-filter:blur(18px) saturate(1.4);backdrop-filter:blur(18px) saturate(1.4);box-shadow:0 0 0 100vmax color-mix(in srgb,var(--bg) 72%,transparent);clip-path:inset(0 -100vmax)}
+/* sektör şeridi */
+.osb .mq{display:flex;gap:0.5em;white-space:nowrap;font-family:var(--font);font-weight:400;font-size:clamp(3rem,7vw,7rem);line-height:1.04;letter-spacing:-0.045em;will-change:transform}
+.osb .mq .o{color:var(--muted);opacity:.55}
+.osb .mq .s{color:var(--ink)}
+
+/* form */
+.osb .lib{font:inherit;font-weight:700;color:var(--brand);background:transparent;border:0;border-bottom:2px solid var(--brand);padding:0 2px 2px;margin:0 4px;font-size:inherit;border-radius:0;min-height:48px}
+.osb .lib::placeholder{color:var(--muted);opacity:1}
+.osb .lib:focus{outline:none;border-bottom-color:var(--ink);background:color-mix(in srgb, var(--brand) 8%, transparent)}
+.osb .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.osb input:focus-visible,.osb a:focus-visible{outline:2px solid var(--brand);outline-offset:3px}
+
+@keyframes osb-wave{from{transform:translateX(0)}to{transform:translateX(-240px)}}
+@keyframes osb-in{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion: reduce){.osb *{animation:none !important;transition:none !important}}
+@media (max-width: 980px){.osb .navlinks,.osb .navphone{display:none !important}}
+@media (max-width: 760px){.osb .ans{padding-left:0}.osb .livecard{position:relative !important;left:auto !important;bottom:auto !important;margin:-60px 16px 0 !important;width:auto !important}.osb .stat{border-left:0 !important;padding-left:0 !important}}
+</style>
+</helmet>
+
+<div class="osb {{palClass}}" style="font-family: var(--font); color: var(--text); background: var(--bg); font-size: 17px; line-height: 1.6; overflow-x: clip">
+
+<!-- ============ NAV ============ -->
+<nav class="wrap navbar" aria-label="Ana menü" style="display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-top: 26px; padding-bottom: 26px">
+  <a href="#top" aria-label="OSB ENERGY ana sayfa" style="display: flex"><img src="../assets/logo-blue.png" alt="OSB ENERGY" style="height: 42px; width: auto; display: block"></a>
+  <div class="navlinks" style="display: flex; gap: 36px">
+    <a class="navlink" href="#cozum">Çözümler</a>
+    <a class="navlink" href="#finans">Finansal etki</a>
+    <a class="navlink" href="#surec">Proje süreci</a>
+    <a class="navlink" href="#iletisim">İletişim</a>
+  </div>
+  <div style="display: flex; align-items: center; gap: 28px">
+    <a class="navphone" href="tel:+905349499252" style="color: var(--ink); font-weight: 700; text-decoration: none; font-size: 15px">0534 949 92 52</a>
+    <a class="btn" href="#iletisim" style="min-height: 48px; padding: 0 22px; font-size: 14px"><span class="bt"><span>Teklif alın</span><span aria-hidden="true">Teklif alın</span></span></a>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header id="top" class="hero" style="position: relative; overflow: hidden; display: flex; flex-direction: column; min-height: 820px">
+  <p class="backword" aria-hidden="true">OSB ENERGY</p>
+
+  <div class="wrap" style="position: relative; z-index: 2; flex: 1; width: 100%; display: flex; flex-wrap: wrap; gap: 40px 56px; align-items: center; padding-top: clamp(16px, 3vw, 40px); padding-bottom: 32px">
+    <div style="flex: 1 1 500px; min-width: 0; display: flex; flex-direction: column; gap: 28px">
+      <h1 style="display: flex; flex-direction: column; gap: 18px">
+        <span class="ln"><span class="sh-a">Öz tüketimli fabrikalar için</span></span>
+        <span style="display: flex; flex-direction: column; font-weight: var(--disp-w); font-size: clamp(3.4rem, 7vw, 7.2rem); line-height: 0.94; letter-spacing: var(--disp-track); color: var(--ink)">
+          <span class="ln"><span>Enerji depolama</span></span>
+          <span class="ln"><span>yatırımı<span style="color: var(--accent)">.</span></span></span>
+        </span>
+      </h1>
+      <p class="hero-fade lead" style="max-width: 30rem">Elektriği ucuz saatlerde depolayın, pahalı saatlerde kullanın. Fabrikanıza özel batarya sistemini projelendirir, kurar ve yıllarca işletiriz.</p>
+      <div class="hero-fade" style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px 36px">
+        <a class="btn magnet" href="#iletisim"><span class="bt"><span>Ücretsiz ön değerlendirme</span><span aria-hidden="true">Ücretsiz ön değerlendirme</span></span><span class="arr" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18"><path d="M2 9h13M10 4l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8"></path></svg></span></a>
+        <a class="ulink" href="#gun">Nasıl çalışır?</a>
+      </div>
+    </div>
+
+    <div style="flex: 1.35 1 520px; min-width: 0; display: flex; justify-content: flex-end">
+      <div class="hero-prod" style="position: relative; width: min(100%, 820px); margin-right: -5%">
+        <span class="prod-shadow" aria-hidden="true"></span>
+        <img class="hero-static" src="../assets/hero-container-cutout.png" alt="OSB ENERGY logolu beyaz batarya enerji depolama konteyneri" style="position: relative; width: 100%; height: auto; display: block">
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap" style="position: relative; z-index: 2; width: 100%; display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; padding-bottom: 36px">
+    <a href="#cozum" class="hero-fade" style="display: inline-flex; align-items: center; gap: 12px; color: var(--ink); text-decoration: none; font-size: 14px; padding: 10px 0"><svg width="16" height="24" viewBox="0 0 16 24" aria-hidden="true"><rect x="1" y="1" width="14" height="22" rx="7" fill="none" stroke="currentColor" stroke-width="1.4"></rect><path d="M8 6v5" stroke="currentColor" stroke-width="1.6"></path></svg>Aşağı kaydırın</a>
+    <ul class="hero-fade" aria-label="Bataryanın şu anki durumu" style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px">
+      <sc-for list="{{heroStages}}" as="h" hint-placeholder-count="4">
+        <li class="stg {{h.cls}}"><span>{{h.label}}</span><span class="d" aria-hidden="true"></span></li>
+      </sc-for>
+    </ul>
+  </div>
+</header>
+
+<!-- ============ GÜVEN ŞERİDİ ============ -->
+<section aria-label="OSB ENERGY rakamlarla" style="background: var(--bg); color: var(--ink); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line)">
+  <dl class="wrap" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 32px 0; padding-top: 56px; padding-bottom: 56px">
+    <div class="stat up" style="padding-right: 24px; display: flex; flex-direction: column; gap: 6px">
+      <dt class="mont" style="font-weight: 500; font-size: clamp(2.6rem, 4vw, 3.6rem); line-height: 1; letter-spacing: -0.02em"><span data-count="2018" data-from="1990">2018</span></dt>
+      <dd style="color: var(--muted)">yılından beri sahada</dd>
+    </div>
+    <div class="stat up" style="padding: 0 24px; border-left: 1px solid var(--line); display: flex; flex-direction: column; gap: 6px">
+      <dt class="mont" style="font-weight: 500; font-size: clamp(2.6rem, 4vw, 3.6rem); line-height: 1; letter-spacing: -0.02em"><span data-count="100" data-from="0">100</span><span style="color: var(--accent)">+</span></dt>
+      <dd style="color: var(--muted)">tamamlanan proje</dd>
+    </div>
+    <div class="stat up" style="padding: 0 24px; border-left: 1px solid var(--line); display: flex; flex-direction: column; gap: 6px">
+      <dt class="mont" style="font-weight: 500; font-size: clamp(2.6rem, 4vw, 3.6rem); line-height: 1; letter-spacing: -0.02em">%20–30</dt>
+      <dd style="color: var(--muted)">faturada ortalama tasarruf potansiyeli</dd>
+    </div>
+    <div class="stat up" style="padding-left: 24px; border-left: 1px solid var(--line); display: flex; flex-direction: column; gap: 6px">
+      <dt class="mont" style="font-weight: 500; font-size: clamp(2.6rem, 4vw, 3.6rem); line-height: 1; letter-spacing: -0.02em">7/24</dt>
+      <dd style="color: var(--muted)">uzaktan izleme ve teknik destek</dd>
+    </div>
+  </dl>
+</section>
+
+<main>
+
+<!-- ============ ÇÖZÜMLER ============ -->
+<section id="cozum" style="padding: clamp(96px, 10vw, 150px) 0">
+  <div class="wrap" style="display: flex; flex-wrap: wrap; gap: 56px 96px; align-items: flex-start">
+    <div style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 28px">
+      <h2 class="reveal" style="display: flex; flex-direction: column; gap: 8px">
+        <span class="ln"><span class="sh-a">Depolama sistemi</span></span>
+        <span class="ln"><span class="sh-b">Neyi çözer?</span></span>
+      </h2>
+      <p class="lead up">Enerji artık yalnızca tüketilen bir kalem değil; yönetilen bir varlık. Tesisinizde bu dört durumdan biri varsa batarya kendini öder.</p>
+      <div class="frame up" style="aspect-ratio: 4 / 3; max-width: 440px; border-radius: 4px; background: var(--bg-alt)">
+        <img data-parallax="6" src="../assets/battery-cabinet.jpg" alt="Kapağı açık batarya kabini, raflarda batarya modülleri" style="object-fit: contain; padding: 24px">
+      </div>
+    </div>
+
+    <div style="flex: 1.4 1 560px; min-width: 0; display: flex; flex-direction: column; border-bottom: 1px solid var(--line)">
+      <button class="q {{c0}}" type="button" onClick="{{pick0}}" aria-expanded="{{e0}}">
+        <span class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 20h18M6 16v-4M11 16V8M16 16V4" fill="none" stroke="currentColor" stroke-width="2"></path></svg></span>
+        <span class="qt">Puant saatlerinde yüksek fatura</span>
+        <span class="pm" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20"><path d="M10 2v16M2 10h16" stroke-width="2" style="stroke: var(--ink)"></path></svg></span>
+      </button>
+      <sc-if value="{{open0}}" hint-placeholder-val="{{true}}">
+        <div class="ans">
+          <p style="flex: 1 1 240px; color: var(--muted); max-width: 34ch">Batarya enerjiyi ucuzken depolar, pahalıyken kullanır. Faturada ortalama %20–30 oranında tasarruf sağlanabilir.</p>
+          <svg viewBox="0 0 460 210" role="img" aria-label="Örnek günlük elektrik fiyatı: gece ve gündüz düşük, akşam puantta en yüksek" style="flex: 1 1 320px; max-width: 440px; height: auto; font-family: var(--font)">
+            <line x1="20" y1="170" x2="440" y2="170" style="stroke: var(--line)"></line>
+            <path d="M20,160 L80,156 L140,154 L200,158 L260,160 L320,160 L340,90 L370,22 L400,40 L420,110 L440,140 L440,170 L20,170 Z" style="fill: var(--chip)"></path>
+            <path d="M320,160 L340,90 L370,22 L400,40 L420,110 L440,140 L440,170 L320,170 Z" opacity="0.85" style="fill: var(--brand)"></path>
+            <path d="M20,160 L80,156 L140,154 L200,158 L260,160 L320,160 L340,90 L370,22 L400,40 L420,110 L440,140" fill="none" stroke-width="2.5" stroke-linejoin="round" style="stroke: var(--ink)"></path>
+            <text x="120" y="140" text-anchor="middle" font-size="14" font-weight="700" style="fill: var(--ink)">Ucuzken depola</text>
+            <text x="300" y="40" text-anchor="end" font-size="14" font-weight="700" style="fill: var(--brand)">Pahalıyken kullan</text>
+            <text x="20" y="194" font-size="13" style="fill: var(--muted)">00:00</text>
+            <text x="230" y="194" text-anchor="middle" font-size="13" style="fill: var(--muted)">12:00</text>
+            <text x="440" y="194" text-anchor="end" font-size="13" style="fill: var(--muted)">24:00</text>
+          </svg>
+        </div>
+      </sc-if>
+
+      <button class="q {{c1}}" type="button" onClick="{{pick1}}" aria-expanded="{{e1}}">
+        <span class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 18l5-7 4 4 4-9 5 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"></path></svg></span>
+        <span class="qt">Pik talep ve güç aşımı cezaları</span>
+        <span class="pm" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20"><path d="M10 2v16M2 10h16" stroke-width="2" style="stroke: var(--ink)"></path></svg></span>
+      </button>
+      <sc-if value="{{open1}}" hint-placeholder-val="{{false}}">
+        <div class="ans">
+          <p style="flex: 1 1 240px; color: var(--muted); max-width: 34ch">Talep belirli saatlerde sıçrar. Batarya bu pikleri karşılar; ceza ödemezsiniz, trafo büyütmeyi erteleyebilirsiniz.</p>
+          <svg viewBox="0 0 460 210" role="img" aria-label="Depolama yokken güç talebi pik yapıyor, depolama varken daha dengeli kalıyor" style="flex: 1 1 320px; max-width: 440px; height: auto; font-family: var(--font)">
+            <line x1="20" y1="170" x2="440" y2="170" style="stroke: var(--line)"></line>
+            <path d="M20,150 L80,120 L140,80 L190,24 L240,60 L300,120 L380,150 L440,160" fill="none" stroke-width="2.5" stroke-dasharray="7 6" style="stroke: var(--ink)"></path>
+            <path d="M20,150 L80,128 L140,108 L190,92 L240,104 L300,124 L380,150 L440,160" fill="none" stroke-width="3.5" style="stroke: var(--brand)"></path>
+            <text x="200" y="18" font-size="13" font-weight="700" style="fill: var(--ink)">Depolama yok</text>
+            <text x="250" y="96" font-size="13" font-weight="700" style="fill: var(--brand)">Depolama var</text>
+            <text x="230" y="196" text-anchor="middle" font-size="13" style="fill: var(--muted)">Gün içinde güç talebi</text>
+          </svg>
+        </div>
+      </sc-if>
+
+      <button class="q {{c2}}" type="button" onClick="{{pick2}}" aria-expanded="{{e2}}">
+        <span class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"></path></svg></span>
+        <span class="qt">Elektrik kesintileri ve üretim duruşları</span>
+        <span class="pm" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20"><path d="M10 2v16M2 10h16" stroke-width="2" style="stroke: var(--ink)"></path></svg></span>
+      </button>
+      <sc-if value="{{open2}}" hint-placeholder-val="{{false}}">
+        <div class="ans">
+          <p style="flex: 1 1 240px; color: var(--muted); max-width: 34ch">Her saniye bir kesinti bir kayıptır. Sistem arızayı otomatik algılar, milisaniyeler içinde devreye girer; kritik prosesler durmaz.</p>
+          <svg viewBox="0 0 460 210" role="img" aria-label="Şebekede kesinti oluyor, fabrikaya giden güç kesilmiyor" style="flex: 1 1 320px; max-width: 440px; height: auto; font-family: var(--font)">
+            <text x="20" y="34" font-size="14" font-weight="600" style="fill: var(--muted)">Şebeke</text>
+            <path d="M20,58 H190 L198,110 H246 L254,58 H440" fill="none" stroke-width="2.5" style="stroke: var(--ink)"></path>
+            <rect x="190" y="44" width="64" height="134" opacity="0.14" style="fill: var(--brand)"></rect>
+            <text x="222" y="196" text-anchor="middle" font-size="13" font-weight="700" style="fill: var(--brand)">Batarya devrede</text>
+            <text x="20" y="140" font-size="14" font-weight="700" style="fill: var(--brand)">Fabrikaya giden</text>
+            <path d="M20,158 H440" fill="none" stroke-width="4" style="stroke: var(--brand)"></path>
+          </svg>
+        </div>
+      </sc-if>
+
+      <button class="q {{c3}}" type="button" onClick="{{pick3}}" aria-expanded="{{e3}}">
+        <span class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"></circle><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2" stroke="currentColor" stroke-width="2"></path></svg></span>
+        <span class="qt">GES ve RES fazlası boşa gidiyor</span>
+        <span class="pm" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20"><path d="M10 2v16M2 10h16" stroke-width="2" style="stroke: var(--ink)"></path></svg></span>
+      </button>
+      <sc-if value="{{open3}}" hint-placeholder-val="{{false}}">
+        <div class="ans">
+          <p style="flex: 1 1 240px; color: var(--muted); max-width: 34ch">Güneş ve rüzgârın üretim fazlası depolanır, ihtiyaç anında kullanılır. Öz tüketim oranınız ve yatırım getiriniz artar.</p>
+          <svg viewBox="0 0 460 210" role="img" aria-label="Öğlen güneş üretimi tesis yükünü aşıyor, fazlası depolanıyor" style="flex: 1 1 320px; max-width: 440px; height: auto; font-family: var(--font)">
+            <defs><clipPath id="osb-c3"><rect x="0" y="0" width="460" height="110"></rect></clipPath></defs>
+            <path d="M20,170 C140,170 160,30 230,30 C300,30 320,170 440,170 Z" opacity="0.85" clip-path="url(#osb-c3)" style="fill: var(--brand)"></path>
+            <path d="M20,170 C140,170 160,30 230,30 C300,30 320,170 440,170" fill="none" stroke-width="2.5" style="stroke: var(--brand)"></path>
+            <line x1="20" y1="110" x2="440" y2="110" stroke-width="2" stroke-dasharray="7 6" style="stroke: var(--ink)"></line>
+            <text x="440" y="132" text-anchor="end" font-size="13" font-weight="700" style="fill: var(--ink)">Tesis yükü</text>
+            <text x="230" y="196" text-anchor="middle" font-size="13" style="fill: var(--muted)">Fazla üretim depoya</text>
+          </svg>
+        </div>
+      </sc-if>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BESS NASIL ÇALIŞIR (3D) ============ -->
+<section id="gun" style="background: var(--dark-2); color: #FFFFFF; padding: clamp(96px, 10vw, 150px) 0">
+  <div class="wrap" style="display: flex; flex-direction: column; gap: 48px">
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 28px 80px">
+      <h2 class="reveal" style="display: flex; flex-direction: column; gap: 14px">
+        <span class="ln"><span class="sh-a" style="color: var(--on-dark-muted)">BESS nasıl çalışır?</span></span>
+        <span class="ln"><span class="sh-b" style="color: #FFFFFF">Elektriğin yolunu izleyin.</span></span>
+      </h2>
+      <p class="up" style="color: var(--on-dark-muted); max-width: 34rem; font-size: 17px">Şebeke, batarya ve fabrikanız arasındaki enerji akışı. Bir aşama seçin; sahadaki ışık ve sistemin davranışı değişsin.</p>
+    </div>
+
+    <div class="stage up" style="position: relative; height: clamp(440px, 50vw, 720px); border-radius: 6px; overflow: hidden; background: var(--dark-2); border: 1px solid rgba(255,255,255,0.08)">
+      <div class="stage-imgs tone{{mech}}" role="img" aria-label="Sahada OSB ENERGY batarya konteyneri, aşama: {{mechTitle}}"><img class="si night" src="../assets/stage-night.jpg" alt=""><img class="si sun" src="../assets/stage-sunset.jpg" alt=""></div>
+      <div class="stage-tint tone{{mech}}" aria-hidden="true"></div>
+      <canvas class="stage-gl" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; display: block; opacity: 0; transition: opacity 600ms ease"></canvas>
+      <sc-if value="{{use3d}}" hint-placeholder-val="{{false}}">
+      <canvas class="stage-canvas" role="img" aria-label="3D sahne: şebeke trafosu, iki OSB ENERGY batarya konteyneri ve fabrika arasındaki enerji akışı. {{mechFlow}}" style="position: absolute; inset: 0; width: 100%; height: 100%; display: block"></canvas>
+      <div aria-hidden="true" style="position: absolute; inset: 0; pointer-events: none; background: radial-gradient(120% 90% at 50% 40%, transparent 55%, color-mix(in srgb, var(--dark-2) 85%, transparent) 100%)"></div>
+      <span class="lbl" aria-hidden="true">Şebeke</span>
+      <span class="lbl" aria-hidden="true">OSB ENERGY BESS</span>
+      <span class="lbl" aria-hidden="true">Fabrika</span>
+      </sc-if>
+      <div aria-live="polite" style="position: absolute; left: clamp(16px, 2.5vw, 32px); top: clamp(16px, 2.5vw, 32px); width: min(340px, calc(100% - 32px)); padding: 20px 22px; border-radius: 6px; background: color-mix(in srgb, var(--dark-2) 62%, transparent); border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(14px); display: flex; flex-direction: column; gap: 8px">
+        <span style="font-size: 13px; color: var(--on-dark-muted); font-variant-numeric: tabular-nums">{{mechTime}}</span>
+        <span style="font-size: 24px; font-weight: 500; letter-spacing: -0.02em">{{mechTitle}}</span>
+        <span style="display: flex; align-items: center; gap: 10px; font-size: 15px; color: #FFFFFF"><span aria-hidden="true" style="width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 12px var(--accent)"></span>{{mechFlow}}</span>
+      </div>
+    </div>
+
+    <ol role="tablist" aria-label="Çalışma aşamaları" style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 0; border-top: 1px solid rgba(255,255,255,0.12)">
+      <sc-for list="{{mechSteps}}" as="m" hint-placeholder-count="4">
+        <li style="display: flex">
+          <sc-if value="{{m.active}}" hint-placeholder-val="{{false}}">
+            <button class="step on" type="button" role="tab" aria-selected="true" onClick="{{m.pick}}">
+              <span class="bar" aria-hidden="true"><span class="fill"></span></span>
+              <span class="st-n">{{m.num}}</span><span class="st-t">{{m.title}}</span><span class="st-d">{{m.text}}</span>
+            </button>
+          </sc-if>
+          <sc-if value="{{m.idle}}" hint-placeholder-val="{{true}}">
+            <button class="step" type="button" role="tab" aria-selected="false" onClick="{{m.pick}}">
+              <span class="bar" aria-hidden="true"></span>
+              <span class="st-n">{{m.num}}</span><span class="st-t">{{m.title}}</span><span class="st-d">{{m.text}}</span>
+            </button>
+          </sc-if>
+        </li>
+      </sc-for>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ FİNANSAL ETKİ ============ -->
+<section id="finans" style="background: var(--bg-alt); padding: clamp(96px, 10vw, 150px) 0">
+  <div class="wrap" style="display: flex; flex-direction: column; gap: 64px">
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 28px 80px">
+      <h2 class="reveal" style="display: flex; flex-direction: column; gap: 8px">
+        <span class="ln"><span class="sh-a">Enerji depolamanın</span></span>
+        <span class="ln"><span class="sh-b">Finansal etkisi</span></span>
+      </h2>
+      <p class="lead up" style="max-width: 30rem">Örnek hesaplama: orta ölçekli bir fabrika. Uygun projelendirme ve doğru enerji yönetimiyle yatırım kısa sürede geri döner.</p>
+    </div>
+    <dl class="fin" style="position: relative; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(440px, 100%), 1fr))"><span class="fin-line" aria-hidden="true" style="position: absolute; left: 0; right: 0; top: 0; height: 2px; background: var(--ink); transform-origin: left center"></span>
+      <div class="up" style="padding: 36px 32px 36px 0; border-bottom: 1px solid var(--line); display: flex; flex-direction: column; gap: 10px">
+        <dt style="color: var(--muted)">Yıllık elektrik tüketimi</dt>
+        <dd class="mont" style="font-weight: 500; font-size: clamp(2.2rem, 3.6vw, 3.4rem); line-height: 1; color: var(--ink); letter-spacing: -0.02em"><span data-count="10000000" data-from="0">10.000.000</span> <span style="font-size: 0.45em; font-weight: 700">kWh</span></dd>
+      </div>
+      <div class="up" style="padding: 36px 32px; border-bottom: 1px solid var(--line); border-left: 1px solid var(--line); display: flex; flex-direction: column; gap: 10px">
+        <dt style="color: var(--muted)">Depolama kapasitesi</dt>
+        <dd class="mont" style="font-weight: 500; font-size: clamp(2.2rem, 3.6vw, 3.4rem); line-height: 1; color: var(--ink); letter-spacing: -0.02em"><span data-count="2500" data-from="0">2.500</span> <span style="font-size: 0.45em; font-weight: 700">kWh / 1.000 kW</span></dd>
+      </div>
+      <div class="up" style="padding: 36px 32px 36px 0; border-bottom: 1px solid var(--line); display: flex; flex-direction: column; gap: 10px">
+        <dt style="color: var(--muted)">Yıllık tahmini tasarruf potansiyeli</dt>
+        <dd class="mont" style="font-weight: 500; font-size: clamp(2.2rem, 3.6vw, 3.4rem); line-height: 1; color: var(--brand); letter-spacing: -0.02em">1,5–2 <span style="font-size: 0.45em; font-weight: 700">milyon TL</span></dd>
+      </div>
+      <div class="up" style="padding: 36px 32px; border-bottom: 1px solid var(--line); border-left: 1px solid var(--line); display: flex; flex-direction: column; gap: 10px">
+        <dt style="color: var(--muted)">Tahmini geri dönüş süresi</dt>
+        <dd class="mont" style="font-weight: 500; font-size: clamp(2.2rem, 3.6vw, 3.4rem); line-height: 1; color: var(--brand); letter-spacing: -0.02em">3–5 <span style="font-size: 0.45em; font-weight: 700">yıl</span></dd>
+      </div>
+    </dl>
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 24px">
+      <p style="font-size: 14px; color: var(--muted); max-width: 60ch">Hesaplamalar örnektir; gerçek değerler tesisin tüketim profili ve şartlarına göre değişir.</p>
+      <a class="btn magnet" href="#iletisim"><span class="bt"><span>Kendi rakamlarınızı hesaplatın</span><span aria-hidden="true">Kendi rakamlarınızı hesaplatın</span></span><span class="arr" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18"><path d="M2 9h13M10 4l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8"></path></svg></span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ KONTEYNERİN İÇİNE YOLCULUK ============ -->
+<section id="yolculuk" class="journey" aria-label="Konteynerin içine yolculuk" style="position: relative; height: 880px; overflow: hidden; background: #0B0C0E; color: #FFFFFF">
+  <img class="j-out" src="../assets/stage-sunset.jpg" alt="Gün batımında fabrika yanında OSB ENERGY batarya konteyneri" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform-origin: 66% 62%">
+  <img class="j-in" src="../assets/racks-interior.jpg" alt="Konteynerin içinde sıralı batarya rafları" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transform: scale(1.3)">
+  <div aria-hidden="true" style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(8,9,11,0.82) 0%, rgba(8,9,11,0.35) 50%, rgba(8,9,11,0.05) 100%); pointer-events: none"></div>
+  <div class="wrap" style="position: relative; height: 100%; display: flex; align-items: flex-end; padding-bottom: 88px">
+    <div class="j-cap c1" style="position: absolute; left: clamp(20px, 5vw, 80px); bottom: 88px; max-width: 34rem; display: flex; flex-direction: column; gap: 16px">
+      <p class="sh-a" style="color: rgba(255,255,255,0.75)">Kaydırın, içeri girelim</p>
+      <p class="sh-b" style="color: #FFFFFF">Dışarıdan bir konteyner.</p>
+    </div>
+    <div class="j-cap c2" style="position: absolute; left: clamp(20px, 5vw, 80px); bottom: 88px; max-width: 36rem; display: flex; flex-direction: column; gap: 16px; opacity: 0">
+      <p class="sh-a" style="color: rgba(255,255,255,0.75)">İçeride</p>
+      <p class="sh-b" style="color: #FFFFFF">Fabrikanızın yedek enerjisi.</p>
+      <p style="color: rgba(255,255,255,0.8); font-size: 17px; max-width: 30rem">Raf raf batarya modülleri, sıvı soğutma ve 7/24 uzaktan izleme. Kesinti anında milisaniyeler içinde devreye girer.</p>
+    </div>
+    <div class="j-cap c3" style="position: absolute; left: clamp(20px, 5vw, 80px); bottom: 88px; max-width: 38rem; display: flex; flex-direction: column; gap: 16px; opacity: 0">
+      <p class="sh-a" style="color: rgba(255,255,255,0.75)">Üretim sürekliliği ve</p>
+      <p class="sh-b" style="color: #FFFFFF">operasyonel güvenlik.</p>
+      <p style="color: rgba(255,255,255,0.8); font-size: 17px; max-width: 30rem">Makineleriniz durmaz, ürününüz fireye gitmez, veriniz kaybolmaz.</p>
+    </div>
+  </div>
+  <div class="j-bar" aria-hidden="true" style="position: absolute; left: 0; bottom: 0; height: 3px; width: 100%; background: var(--accent); transform: scaleX(0); transform-origin: left center"></div>
+</section>
+
+<!-- ============ PROJE SÜRECİ ============ -->
+<section id="surec" style="padding: clamp(96px, 10vw, 150px) 0">
+  <div class="wrap" style="display: flex; flex-direction: column; gap: 72px">
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 28px 80px">
+      <h2 class="reveal" style="display: flex; flex-direction: column; gap: 8px">
+        <span class="ln"><span class="sh-a">Uçtan uca</span></span>
+        <span class="ln"><span class="sh-b">Proje sürecimiz</span></span>
+      </h2>
+      <p class="lead up" style="max-width: 28rem">İhtiyaç analizinden işletmeye kadar tek ekip, tek muhatap.</p>
+    </div>
+    <div class="proc" style="position: relative">
+      <div aria-hidden="true" style="position: absolute; left: 0; right: 0; top: 11px; height: 2px; background: var(--line)"></div>
+      <div class="proc-line" aria-hidden="true" style="position: absolute; left: 0; right: 0; top: 11px; height: 2px; background: var(--brand); transform-origin: left center"></div>
+      <ol style="position: relative; list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(190px, 100%), 1fr)); gap: 40px 28px">
+        <li style="display: flex; flex-direction: column; gap: 14px"><span aria-hidden="true" style="width: 24px; height: 24px; border-radius: 50%; background: var(--bg); border: 6px solid var(--accent)"></span><span class="mont" style="font-weight: 500; font-size: 15px; color: var(--brand)">01</span><h3 class="mont" style="font-weight: 600; font-size: 19px; line-height: 1.25; color: var(--ink)">İhtiyaç analizi ve keşif</h3><p style="font-size: 15px; color: var(--muted)">Faturanız ve tüketim profilinizle başlarız.</p></li>
+        <li style="display: flex; flex-direction: column; gap: 14px"><span aria-hidden="true" style="width: 24px; height: 24px; border-radius: 50%; background: var(--bg); border: 6px solid var(--accent)"></span><span class="mont" style="font-weight: 500; font-size: 15px; color: var(--brand)">02</span><h3 class="mont" style="font-weight: 600; font-size: 19px; line-height: 1.25; color: var(--ink)">Fizibilite ve sistem tasarımı</h3><p style="font-size: 15px; color: var(--muted)">Kapasite, tasarruf ve geri dönüş hesabı.</p></li>
+        <li style="display: flex; flex-direction: column; gap: 14px"><span aria-hidden="true" style="width: 24px; height: 24px; border-radius: 50%; background: var(--bg); border: 6px solid var(--accent)"></span><span class="mont" style="font-weight: 500; font-size: 15px; color: var(--brand)">03</span><h3 class="mont" style="font-weight: 600; font-size: 19px; line-height: 1.25; color: var(--ink)">Projelendirme ve mühendislik</h3><p style="font-size: 15px; color: var(--muted)">Tesisinize özel çözüm ve izin süreçleri.</p></li>
+        <li style="display: flex; flex-direction: column; gap: 14px"><span aria-hidden="true" style="width: 24px; height: 24px; border-radius: 50%; background: var(--bg); border: 6px solid var(--accent)"></span><span class="mont" style="font-weight: 500; font-size: 15px; color: var(--brand)">04</span><h3 class="mont" style="font-weight: 600; font-size: 19px; line-height: 1.25; color: var(--ink)">Tedarik ve kurulum</h3><p style="font-size: 15px; color: var(--muted)">Dünya standartlarında ekipman ve saha kurulumu.</p></li>
+        <li style="display: flex; flex-direction: column; gap: 14px"><span aria-hidden="true" style="width: 24px; height: 24px; border-radius: 50%; background: var(--bg); border: 6px solid var(--accent)"></span><span class="mont" style="font-weight: 500; font-size: 15px; color: var(--brand)">05</span><h3 class="mont" style="font-weight: 600; font-size: 19px; line-height: 1.25; color: var(--ink)">Test, devreye alma ve eğitim</h3><p style="font-size: 15px; color: var(--muted)">Ekibinize sistemi teslim ederiz.</p></li>
+        <li style="display: flex; flex-direction: column; gap: 14px"><span aria-hidden="true" style="width: 24px; height: 24px; border-radius: 50%; background: var(--bg); border: 6px solid var(--accent)"></span><span class="mont" style="font-weight: 500; font-size: 15px; color: var(--brand)">06</span><h3 class="mont" style="font-weight: 600; font-size: 19px; line-height: 1.25; color: var(--ink)">Sürekli destek ve izleme</h3><p style="font-size: 15px; color: var(--muted)">7/24 uzaktan izleme, bakım ve raporlama.</p></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ============ KULLANIM ALANLARI ============ -->
+<section aria-label="Kullanım alanları" style="padding: 0 0 clamp(96px, 10vw, 150px); overflow: hidden">
+  <div class="wrap" style="padding-bottom: 40px">
+    <h2 class="reveal" style="display: flex; flex-direction: column; gap: 8px">
+      <span class="ln"><span class="sh-a">Kullanım alanlarımız</span></span>
+    </h2>
+  </div>
+  <div style="display: flex; flex-direction: column; gap: 8px">
+    <p class="mq" data-dir="-1" aria-label="Demir-çelik, otomotiv, tekstil, çimento, kimya"><span class="s">Demir-çelik</span><span class="o">Otomotiv</span><span class="s">Tekstil</span><span class="o">Çimento</span><span class="s">Kimya</span><span class="o">Demir-çelik</span><span class="s">Otomotiv</span></p>
+    <p class="mq" data-dir="1" aria-label="Gıda, lojistik, soğuk hava depoları, veri merkezleri, elektronik" style="margin-left: -40%"><span class="o">Gıda</span><span class="s">Lojistik</span><span class="o">Soğuk hava depoları</span><span class="s">Veri merkezleri</span><span class="o">Elektronik</span><span class="s">Gıda</span></p>
+  </div>
+</section>
+
+<!-- ============ İLETİŞİM ============ -->
+<section id="iletisim" style="background: var(--bg-alt); padding: clamp(96px, 10vw, 150px) 0">
+  <div class="wrap" style="display: flex; flex-wrap: wrap; gap: 64px 96px; align-items: flex-start">
+    <div style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 32px">
+      <h2 class="reveal" style="display: flex; flex-direction: column; gap: 8px">
+        <span class="ln"><span class="sh-a">Bizimle</span></span>
+        <span class="ln"><span class="sh-b">iletişime geçin</span></span>
+      </h2>
+      <p class="lead up">Uzman ekibimiz, fabrikanız için en uygun enerji depolama çözümünü sunmaya hazır.</p>
+      <dl class="up" style="display: flex; flex-direction: column; border-top: 1px solid var(--line)">
+        <div style="display: flex; justify-content: space-between; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--line)"><dt style="color: var(--muted)">Telefon</dt><dd style="text-align: right"><a href="tel:+905349499252" style="color: var(--ink); font-weight: 700; text-decoration: none">0534 949 92 52</a><br><a href="tel:+905337211613" style="color: var(--ink); font-weight: 700; text-decoration: none">0533 721 16 13</a></dd></div>
+        <div style="display: flex; justify-content: space-between; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--line)"><dt style="color: var(--muted)">E-posta</dt><dd><a href="mailto:contact@osbinternational.com" style="color: var(--ink); font-weight: 700; text-decoration: none">contact@osbinternational.com</a></dd></div>
+        <div style="display: flex; justify-content: space-between; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--line)"><dt style="color: var(--muted)">Web</dt><dd><a href="https://www.osbenergy.com.tr" style="color: var(--ink); font-weight: 700; text-decoration: none">osbenergy.com.tr</a></dd></div>
+        <div style="display: flex; justify-content: space-between; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--line)"><dt style="color: var(--muted)">Adres</dt><dd style="color: var(--ink); font-weight: 700">Central Balat</dd></div>
+      </dl>
+    </div>
+
+    <form class="up form-card" style="flex: 1.3 1 520px; min-width: 0; background: var(--card); border-radius: 4px; padding: clamp(28px, 4vw, 56px); box-shadow: 0 30px 80px rgba(20,22,30,0.08); display: flex; flex-direction: column; gap: 36px">
+      <p class="mont" style="font-weight: 600; font-size: clamp(1.25rem, 2.1vw, 1.75rem); line-height: 1.85; color: var(--ink)">
+        Merhaba, ben
+        <label class="sr-only" for="f-ad">Adınız</label><input class="lib" id="f-ad" type="text" autocomplete="name" placeholder="adınız" style="width: 8ch">.
+        <label class="sr-only" for="f-firma">Firma ve OSB</label><input class="lib" id="f-firma" type="text" autocomplete="organization" placeholder="firma ve OSB" style="width: 11ch">
+        için enerji depolama değerlendirmesi istiyorum. Beni
+        <label class="sr-only" for="f-tel">Telefon numaranız</label><input class="lib" id="f-tel" type="tel" inputmode="tel" autocomplete="tel" placeholder="telefon" style="width: 9ch" required>
+        numarasından arayabilirsiniz.
+      </p>
+      <div style="display: flex; flex-direction: column; gap: 8px; padding: 20px; background: var(--bg-alt); border-radius: 4px">
+        <label for="f-fatura" style="font-weight: 700; color: var(--ink)">Elektrik faturanız <span style="font-weight: 500; color: var(--muted)">(isteğe bağlı)</span></label>
+        <input id="f-fatura" type="file" multiple accept=".pdf,image/*" style="font: inherit; font-size: 15px; color: var(--text)">
+        <span style="font-size: 14px; color: var(--muted)">Son 12 ayın faturası değerlendirmeyi hızlandırır. Fotoğraf da olur.</span>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px 28px">
+        <button class="btn magnet" type="submit"><span class="bt"><span>Ön değerlendirme isteyin</span><span aria-hidden="true">Ön değerlendirme isteyin</span></span><span class="arr" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18"><path d="M2 9h13M10 4l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8"></path></svg></span></button>
+        <p style="font-size: 14px; color: var(--muted); max-width: 36ch">Bilgileriniz yalnızca bu değerlendirme için kullanılır.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer style="background: var(--dark-2); color: var(--on-dark-muted)">
+  <div class="foot-logo" style="position: relative; height: clamp(240px, 30vw, 440px); border-bottom: 1px solid rgba(255,255,255,0.08)">
+    <canvas class="foot-canvas" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; display: block"></canvas>
+    <img class="foot-static" src="../assets/logo-white-hd.png" alt="OSB ENERGY" style="position: absolute; left: 50%; top: 50%; width: min(76%, 1080px); height: auto; transform: translate(-50%, -50%); transition: opacity 400ms ease">
+    <p style="position: absolute; left: 0; right: 0; bottom: 18px; text-align: center; font-size: 13px; color: rgba(255,255,255,0.45)">İmleci logonun üzerinde gezdirin</p>
+  </div>
+  <div class="wrap" style="padding-top: clamp(80px, 8vw, 120px); padding-bottom: 40px; display: flex; flex-direction: column; gap: 72px">
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 40px">
+      <p class="reveal" style="display: flex; flex-direction: column; gap: 8px">
+        <span class="ln"><span class="sh-a" style="color: var(--on-dark-muted)">Doğru enerji yönetimi,</span></span>
+        <span class="ln"><span class="sh-b" style="color: #FFFFFF">geleceğinizi güçlendirir.</span></span>
+      </p>
+      <a class="btn light magnet" href="#iletisim"><span class="bt"><span>Teklif alın</span><span aria-hidden="true">Teklif alın</span></span><span class="arr" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18"><path d="M2 9h13M10 4l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8"></path></svg></span></a>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 24px; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.14); font-size: 15px">
+      <img src="../assets/logo-white.png" alt="OSB ENERGY" style="height: 36px; width: auto">
+      <div style="display: flex; flex-wrap: wrap; gap: 12px 32px">
+        <a href="tel:+905349499252" style="color: #FFFFFF; text-decoration: none">0534 949 92 52</a>
+        <a href="mailto:contact@osbinternational.com" style="color: #FFFFFF; text-decoration: none">contact@osbinternational.com</a>
+        <a href="https://www.osbenergy.com.tr" style="color: #FFFFFF; text-decoration: none">osbenergy.com.tr</a>
+        <span>© 2026 OSB ENERGY</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"palette":{"editor":"enum","options":["A: Kömür siyahı, kraliyet mavisi, mandalina","B: Marşmelov beyazı, mor, damla sakızı pembesi","C: Akuamarin, gece mavisi, bebek mavisi"],"default":"A: Kömür siyahı, kraliyet mavisi, mandalina","section":"Renk"},"scene3d":{"editor":"boolean","default":false,"section":"Deneysel"},"font":{"editor":"enum","options":["A: Instrument Sans","B: Hanken Grotesk","C: Geist"],"default":"A: Instrument Sans","section":"Yazı"},"motion":{"editor":"boolean","default":true,"section":"Hareket"},"$preview":{"width":1440,"height":8400}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    const n = this.nowHour();
+    this.state = { open: 0, hour: n, now: n, mech: 0 };
+    this.userPicked = false;
+    this.dragged = false;
+    this.cleanups = [];
+  }
+  nowHour() {
+    const d = new Date();
+    return Math.floor((d.getHours() + d.getMinutes() / 60) * 4) / 4;
+  }
+  componentDidMount() {
+    this.clockTimer = setInterval(() => this.setState({ now: this.nowHour() }), 30000);
+    this.initTimer = setTimeout(() => { this.initStageGL(); this.initMotion(); this.initScene(); this.initFootLogo(); }, 80);
+    this.autoTimer = setInterval(() => { if (!this.userPicked && !this.pinned) this.setState({ mech: (this.state.mech + 1) % 4 }); }, 5200);
+  }
+  componentWillUnmount() {
+    clearInterval(this.clockTimer);
+    clearTimeout(this.initTimer);
+    clearInterval(this.autoTimer);
+    if (this.scene3d) this.scene3d.dispose();
+    if (this.stageGL) this.stageGL.dispose();
+    if (this.liquid) { this.liquid.destroy(); this.liquid = null; }
+    if (this.liquidRO) this.liquidRO.disconnect();
+    if (this.lenis) { this.lenis.destroy(); this.lenis = null; }
+    if (this.ctx) this.ctx.revert();
+    this.cleanups.forEach((f) => f());
+  }
+  initMotion() {
+    const g = window.gsap, ST = window.ScrollTrigger;
+    if (!g || !ST) return;
+    if ((this.props.motion ?? true) === false) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const root = document.querySelector('.osb');
+    if (!root) return;
+    g.registerPlugin(ST);
+    const de = document.documentElement;
+    const scrolls = de.scrollHeight - window.innerHeight > 1200;
+    const wide = window.innerWidth > 900;
+
+    // yumuşak kaydırma
+    if (window.Lenis && scrolls && !this.lenis) {
+      const lenis = new window.Lenis({ lerp: 0.085, wheelMultiplier: 0.95 });
+      this.lenis = lenis;
+      lenis.on('scroll', ST.update);
+      const raf = (t) => lenis.raf(t * 1000);
+      g.ticker.add(raf); g.ticker.lagSmoothing(0);
+      this.cleanups.push(() => g.ticker.remove(raf));
+      root.querySelectorAll('a[href^="#"]').forEach((a) => {
+        const go = (e) => { const id = a.getAttribute('href'); const t = id.length > 1 ? root.querySelector(id) : null; if (t) { e.preventDefault(); lenis.scrollTo(t, { offset: -20, duration: 1.6 }); } };
+        a.addEventListener('click', go); this.cleanups.push(() => a.removeEventListener('click', go));
+      });
+    }
+
+    this.ctx = g.context(() => {
+      // ---- açılış
+      const intro = g.timeline({ defaults: { ease: 'expo.out' } });
+      intro.from('.navbar', { y: -30, opacity: 0, duration: 1.1 })
+        .from('#top h1 .ln > span', { yPercent: 115, rotate: 2, duration: 1.4, stagger: 0.09 }, 0.1)
+        .from('.hero-prod', { x: 160, opacity: 0, duration: 2 }, 0.15)
+        .from('.hero-static', { rotationY: -18, transformPerspective: 1400, duration: 2.2 }, 0.15)
+        .from('.prod-shadow', { scaleX: 0.3, opacity: 0, duration: 2 }, 0.5)
+        .from('.backword', { yPercent: 40, opacity: 0, duration: 2.2 }, 0.2)
+        .from('.hero-fade', { y: 30, opacity: 0, duration: 1.1, stagger: 0.08 }, 0.6)
+        .from('.stg', { x: 30, opacity: 0, duration: 0.9, stagger: 0.07 }, 1.0);
+
+      // ---- hero kaydırma: katmanlar farklı hızda
+      const hs = { trigger: '#top', start: 'top top', end: 'bottom top', scrub: 0.6 };
+      g.to('#top h1 .ln:nth-child(1)', { yPercent: -60, ease: 'none', scrollTrigger: hs });
+      g.to('#top h1 > span:last-child', { yPercent: -18, ease: 'none', scrollTrigger: hs });
+      g.to('.hero-prod', { yPercent: -22, scale: 0.94, ease: 'none', scrollTrigger: hs });
+      g.to('.prod-shadow', { opacity: 0.2, scaleX: 0.8, ease: 'none', scrollTrigger: hs });
+      g.to('.backword', { xPercent: -14, ease: 'none', scrollTrigger: hs });
+      g.to('#top .lead, #top .btn, #top .ulink', { yPercent: -30, opacity: 0.2, ease: 'none', scrollTrigger: { trigger: '#top', start: '20% top', end: 'bottom top', scrub: 0.6 } });
+
+      // ---- ürün: nefes + imleç eğimi
+      g.to('.hero-static', { y: -12, duration: 3.2, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: 2.2 });
+      const hero = root.querySelector('#top');
+      const prodImg = root.querySelector('.hero-static');
+      if (hero && prodImg && wide) {
+        const rx = g.quickTo(prodImg, 'rotationX', { duration: 1, ease: 'power3' });
+        const ry = g.quickTo(prodImg, 'rotationY', { duration: 1, ease: 'power3' });
+        const bw = g.quickTo('.backword', 'x', { duration: 1.4, ease: 'power3' });
+        const sx = g.quickTo('.prod-shadow', 'x', { duration: 1, ease: 'power3' });
+        g.set(prodImg, { transformPerspective: 1400 });
+        const mv = (e) => { const r = hero.getBoundingClientRect(); const nx = (e.clientX - r.left) / r.width - 0.5; const ny = (e.clientY - r.top) / r.height - 0.5; ry(nx * 14); rx(-ny * 8); bw(-nx * 60); sx(nx * 30); };
+        const lv = () => { ry(0); rx(0); bw(0); sx(0); };
+        hero.addEventListener('pointermove', mv); hero.addEventListener('pointerleave', lv);
+        this.cleanups.push(() => { hero.removeEventListener('pointermove', mv); hero.removeEventListener('pointerleave', lv); });
+      }
+
+      // ---- menü: aşağı kaydırınca saklan, yukarı kaydırınca dön
+      const navHide = g.quickTo('.navbar', 'yPercent', { duration: 0.5, ease: 'power3' });
+      ST.create({ start: 'top -160', end: 'max', onUpdate: (st) => navHide(st.direction === 1 ? -110 : 0), onLeaveBack: () => navHide(0) });
+
+      // ---- rakam şeridi
+      g.from('.stat', { y: 60, opacity: 0, duration: 1.2, ease: 'expo.out', stagger: 0.1, scrollTrigger: { trigger: '.stat', start: 'top 92%', once: true } });
+
+      // ---- görsel parallax
+      g.utils.toArray('[data-parallax]').forEach((el) => {
+        const amt = parseFloat(el.getAttribute('data-parallax')) || 8;
+        g.fromTo(el, { yPercent: -amt, scale: 1.12 }, { yPercent: amt, scale: 1, ease: 'none', scrollTrigger: { trigger: el.parentElement, start: 'top bottom', end: 'bottom top', scrub: true } });
+      });
+
+      // ---- başlıklar ve bloklar
+      g.utils.toArray('.reveal').forEach((el) => {
+        g.from(el.querySelectorAll('.ln > span'), { yPercent: 115, rotate: 1.5, duration: 1.3, ease: 'expo.out', stagger: 0.1, scrollTrigger: { trigger: el, start: 'top 88%', once: true } });
+      });
+      g.utils.toArray('.up').forEach((el) => {
+        if (el.classList.contains('stat')) return;
+        g.from(el, { y: 70, opacity: 0, duration: 1.3, ease: 'expo.out', scrollTrigger: { trigger: el, start: 'top 92%', once: true } });
+      });
+
+      // ---- akordeon satırları
+      g.from('#cozum .q', { x: 60, opacity: 0, duration: 1.1, ease: 'expo.out', stagger: 0.09, scrollTrigger: { trigger: '#cozum .q', start: 'top 85%', once: true } });
+
+      // ---- sayaçlar
+      g.utils.toArray('[data-count]').forEach((el) => {
+        const end = parseFloat(el.getAttribute('data-count'));
+        const from = parseFloat(el.getAttribute('data-from')) || 0;
+        const o = { v: from };
+        g.to(o, { v: end, duration: 2.2, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 92%', once: true },
+          onUpdate: () => { el.textContent = end >= 1000 && end !== 2018 ? Math.round(o.v).toLocaleString('tr-TR') : String(Math.round(o.v)); } });
+      });
+
+      // ---- 3D/foto sahne: sabitlenir, kaydırdıkça aşamalar ilerler
+      const stage = root.querySelector('.stage');
+      g.from('.stage', { clipPath: 'inset(14% 10% 14% 10% round 6px)', ease: 'none', scrollTrigger: { trigger: '.stage', start: 'top 95%', end: 'top 35%', scrub: true } });
+      if (stage && scrolls && wide) {
+        ST.create({
+          trigger: stage, start: 'center center', end: '+=2400', pin: true, pinSpacing: true, anticipatePin: 1, scrub: true,
+          onToggle: (st) => { this.pinned = st.isActive; },
+          onUpdate: (st) => { const i = Math.min(3, Math.floor(st.progress * 4)); if (i !== this.state.mech) this.setState({ mech: i }); }
+        });
+        const zo = { z: 1 };
+        g.to(zo, { z: 1.14, ease: 'none', scrollTrigger: { trigger: stage, start: 'center center', end: '+=2400', scrub: true }, onUpdate: () => { if (this.stageGL) this.stageGL.setZoom(zo.z); } });
+        g.fromTo('.stage-imgs', { scale: 1 }, { scale: 1.12, ease: 'none', scrollTrigger: { trigger: stage, start: 'center center', end: '+=2400', scrub: true } });
+      }
+      g.from('#gun .step', { y: 40, opacity: 0, duration: 1, ease: 'expo.out', stagger: 0.08, scrollTrigger: { trigger: '#gun ol', start: 'top 92%', once: true } });
+
+      // ---- finans
+      g.from('.fin-line', { scaleX: 0, duration: 1.6, ease: 'expo.inOut', scrollTrigger: { trigger: '.fin', start: 'top 85%', once: true } });
+
+      // ---- süreç
+      g.from('.proc-line', { scaleX: 0, ease: 'none', scrollTrigger: { trigger: '.proc', start: 'top 80%', end: 'bottom 55%', scrub: true } });
+      g.from('.proc li', { y: 50, opacity: 0, duration: 1.1, ease: 'expo.out', stagger: 0.1, scrollTrigger: { trigger: '.proc', start: 'top 82%', once: true } });
+      g.from('.proc li > span:first-child', { scale: 0, duration: 0.8, ease: 'back.out(2.4)', stagger: 0.1, scrollTrigger: { trigger: '.proc', start: 'top 80%', once: true } });
+
+      // ---- sektör şeridi: kaydırma + hıza göre eğilme
+      g.utils.toArray('.mq').forEach((el) => {
+        const dir = parseFloat(el.getAttribute('data-dir')) || -1;
+        g.fromTo(el, { xPercent: dir < 0 ? 0 : -22 }, { xPercent: dir < 0 ? -22 : 0, ease: 'none', scrollTrigger: { trigger: el, start: 'top bottom', end: 'bottom top', scrub: 0.5 } });
+      });
+      const skew = g.quickTo('.mq', 'skewX', { duration: 0.6, ease: 'power3' });
+      ST.create({ trigger: '.mq', start: 'top bottom', end: 'bottom top', onUpdate: (st) => skew(g.utils.clamp(-10, 10, st.getVelocity() / -250)), onLeave: () => skew(0), onLeaveBack: () => skew(0) });
+
+      // ---- konteynerin içine yolculuk
+      if (scrolls && wide) {
+        const jt = g.timeline({ scrollTrigger: { trigger: '.journey', start: 'top top', end: '+=2800', pin: true, pinSpacing: true, scrub: 0.8, anticipatePin: 1 } });
+        jt.to('.j-out', { scale: 3.8, ease: 'power2.in', duration: 1 }, 0)
+          .to('.c1', { opacity: 0, y: -50, duration: 0.25 }, 0.05)
+          .to('.j-out', { opacity: 0, duration: 0.2 }, 0.85)
+          .fromTo('.j-in', { opacity: 0, scale: 1.4 }, { opacity: 1, scale: 1.06, duration: 0.6, ease: 'power2.out' }, 0.82)
+          .fromTo('.c2', { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.3 }, 1.15)
+          .to('.c2', { opacity: 0, y: -50, duration: 0.25 }, 1.7)
+          .to('.j-in', { scale: 1.22, xPercent: -4, ease: 'none', duration: 1.2 }, 1.3)
+          .fromTo('.c3', { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.3 }, 2.0)
+          .fromTo('.j-bar', { scaleX: 0 }, { scaleX: 1, ease: 'none', duration: 2.5 }, 0);
+      } else {
+        g.fromTo('.j-out', { scale: 1.15 }, { scale: 1, ease: 'none', scrollTrigger: { trigger: '.journey', start: 'top bottom', end: 'bottom top', scrub: true } });
+      }
+
+      // ---- form kartı ve bant metni
+      g.fromTo('.form-card', { yPercent: 10 }, { yPercent: -6, ease: 'none', scrollTrigger: { trigger: '#iletisim', start: 'top bottom', end: 'bottom top', scrub: true } });
+      g.utils.toArray('section.frame .wrap').forEach((el) => {
+        g.fromTo(el, { yPercent: 18 }, { yPercent: -12, ease: 'none', scrollTrigger: { trigger: el.parentElement, start: 'top bottom', end: 'bottom top', scrub: true } });
+      });
+    }, root);
+
+    // mıknatıs butonlar
+    root.querySelectorAll('.magnet').forEach((el) => {
+      const xTo = g.quickTo(el, 'x', { duration: 0.6, ease: 'power3' });
+      const yTo = g.quickTo(el, 'y', { duration: 0.6, ease: 'power3' });
+      const move = (e) => { const r = el.getBoundingClientRect(); xTo((e.clientX - r.left - r.width / 2) * 0.2); yTo((e.clientY - r.top - r.height / 2) * 0.3); };
+      const leave = () => { xTo(0); yTo(0); };
+      el.addEventListener('mousemove', move);
+      el.addEventListener('mouseleave', leave);
+      this.cleanups.push(() => { el.removeEventListener('mousemove', move); el.removeEventListener('mouseleave', leave); });
+    });
+    ST.refresh();
+  }
+  buildScene(canvas, labelEls, colors) {
+    const T = window.THREE;
+    if (T.ColorManagement) T.ColorManagement.legacyMode = false;
+    const renderer = new T.WebGLRenderer({ canvas: canvas, antialias: true, powerPreference: 'high-performance' });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    renderer.outputEncoding = T.sRGBEncoding;
+    renderer.toneMapping = T.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 0.95;
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = T.PCFSoftShadowMap;
+
+    const scene = new T.Scene();
+    const bg = new T.Color(colors.bg);
+    scene.background = bg;
+    scene.fog = new T.Fog(bg, 30, 62);
+    const pmrem = new T.PMREMGenerator(renderer);
+    scene.environment = pmrem.fromScene(new T.RoomEnvironment(), 0.04).texture;
+    const envTune = () => scene.traverse((o) => { if (o.material && o.material.isMeshStandardMaterial) o.material.envMapIntensity = o === ground ? 0.04 : o === pad ? 0.12 : (o.material.metalness > 0.5 ? 0.8 : 0.35); });
+
+    const camera = new T.PerspectiveCamera(26, 1, 0.1, 200);
+    const camBase = new T.Vector3(20, 10.5, 33);
+    const target = new T.Vector3(0.4, 0.2, 1.0);
+
+    scene.add(new T.HemisphereLight(0xc8d6ff, 0x101114, 0.18));
+    const key = new T.DirectionalLight(0xfff4e6, 2.0);
+    key.position.set(9, 16, 10);
+    key.castShadow = true;
+    key.shadow.mapSize.set(2048, 2048);
+    key.shadow.camera.left = -20; key.shadow.camera.right = 20;
+    key.shadow.camera.top = 14; key.shadow.camera.bottom = -14;
+    key.shadow.bias = -0.0004; key.shadow.radius = 4;
+    scene.add(key);
+    const rim = new T.DirectionalLight(new T.Color(colors.charge), 0.55);
+    rim.position.set(-12, 7, -14);
+    scene.add(rim);
+
+    // ---- yardımcılar
+    const std = (c, r, m) => new T.MeshStandardMaterial({ color: c, roughness: r, metalness: m || 0 });
+    const box = (w, h, d, mat, x, y, z, parent) => {
+      const me = new T.Mesh(new T.BoxGeometry(w, h, d), mat);
+      me.position.set(x, y, z); me.castShadow = true; me.receiveShadow = true;
+      (parent || scene).add(me); return me;
+    };
+    const glowTex = (() => {
+      const c = document.createElement('canvas'); c.width = c.height = 128;
+      const g = c.getContext('2d'); const gr = g.createRadialGradient(64, 64, 0, 64, 64, 64);
+      gr.addColorStop(0, 'rgba(255,255,255,1)'); gr.addColorStop(0.18, 'rgba(255,255,255,0.85)');
+      gr.addColorStop(0.45, 'rgba(255,255,255,0.22)'); gr.addColorStop(1, 'rgba(255,255,255,0)');
+      g.fillStyle = gr; g.fillRect(0, 0, 128, 128);
+      return new T.CanvasTexture(c);
+    })();
+    const glow = (color, s) => {
+      const sp = new T.Sprite(new T.SpriteMaterial({ map: glowTex, color: color, blending: T.AdditiveBlending, depthWrite: false, transparent: true }));
+      sp.scale.set(s, s, 1); return sp;
+    };
+
+    // ---- zemin
+    const ground = new T.Mesh(new T.PlaneGeometry(240, 240), new T.MeshStandardMaterial({ color: colors.ground, roughness: 0.9, metalness: 0.05 }));
+    ground.rotation.x = -Math.PI / 2; ground.receiveShadow = true; scene.add(ground);
+    const pad = box(30, 0.08, 13, std(0x26292e, 0.95), 0.5, 0.04, 0.8);
+    const floorGlow = new T.Mesh(new T.PlaneGeometry(12, 9), new T.MeshBasicMaterial({ map: glowTex, color: new T.Color(colors.accent), transparent: true, opacity: 0.0, blending: T.AdditiveBlending, depthWrite: false }));
+    floorGlow.rotation.x = -Math.PI / 2; floorGlow.position.set(0, 0.1, 0); scene.add(floorGlow);
+
+    // ---- logo dokusu
+    const logoTex = (() => {
+      const c = document.createElement('canvas'); c.width = 1024; c.height = 400;
+      const g = c.getContext('2d'); g.strokeStyle = '#4956A5'; g.fillStyle = '#4956A5'; g.lineWidth = 22; g.lineJoin = 'miter';
+      const hx = (x, y, w) => { const h = w * 0.866; g.beginPath(); g.moveTo(x + w * 0.25, y); g.lineTo(x + w * 0.75, y); g.lineTo(x + w, y + h / 2); g.lineTo(x + w * 0.75, y + h); g.lineTo(x + w * 0.25, y + h); g.lineTo(x, y + h / 2); g.closePath(); g.stroke(); };
+      g.beginPath(); g.moveTo(150, 60); g.lineTo(95, 60); g.lineTo(20, 200); g.lineTo(95, 340); g.lineTo(150, 340); g.stroke();
+      hx(90, 60, 320);
+      g.beginPath(); g.moveTo(260, 60); g.lineTo(335, 200); g.lineTo(260, 340); g.stroke();
+      g.font = '600 150px Georgia, "Times New Roman", serif'; g.textBaseline = 'alphabetic';
+      g.fillText('OSB', 460, 190); g.font = '600 118px Georgia, "Times New Roman", serif'; g.fillText('ENERGY', 460, 330);
+      const t = new T.CanvasTexture(c); t.encoding = T.sRGBEncoding; t.anisotropy = 8; return t;
+    })();
+
+    // ---- konteyner
+    const paint = new T.MeshPhysicalMaterial({ color: 0xeceef1, roughness: 0.42, metalness: 0.2, clearcoat: 0.35, clearcoatRoughness: 0.4 });
+    const frameMat = std(0xd9dce0, 0.5, 0.35);
+    const metal = std(0x9aa0a6, 0.3, 0.85);
+    const dark = std(0x24272c, 0.6, 0.3);
+    const ledMats = []; const socCells = [];
+    const makeContainer = (z) => {
+      const g = new T.Group(); g.position.set(0, 0.3, z); scene.add(g);
+      box(6.6, 0.3, 3.0, std(0x8c8f94, 0.95), 0, -0.15, 0, g);
+      const L = 6.06, H = 2.59, W = 2.44;
+      box(L, H, W, paint, 0, H / 2, 0, g);
+      const rib = new T.BoxGeometry(0.07, H - 0.3, 0.035);
+      const ribs = new T.InstancedMesh(rib, paint, 64); let k = 0; const m4 = new T.Matrix4();
+      for (let s = -1; s <= 1; s += 2) for (let x = -2.85; x <= 2.86; x += 0.19) { m4.makeTranslation(x, H / 2, s * (W / 2 + 0.017)); ribs.setMatrixAt(k++, m4); }
+      ribs.count = k; ribs.castShadow = true; ribs.receiveShadow = true; g.add(ribs);
+      [[-1, -1], [-1, 1], [1, -1], [1, 1]].forEach(([a, b]) => box(0.16, H + 0.02, 0.16, frameMat, a * (L / 2 - 0.08), H / 2, b * (W / 2 - 0.06), g));
+      [0.06, H - 0.06].forEach((y) => { box(L, 0.13, 0.13, frameMat, 0, y, W / 2, g); box(L, 0.13, 0.13, frameMat, 0, y, -W / 2, g); });
+      box(0.05, H - 0.25, W / 2 - 0.12, paint, L / 2 + 0.02, H / 2, W / 4, g);
+      box(0.05, H - 0.25, W / 2 - 0.12, paint, L / 2 + 0.02, H / 2, -W / 4, g);
+      [-0.85, -0.35, 0.35, 0.85].forEach((zz) => { const c = new T.Mesh(new T.CylinderGeometry(0.025, 0.025, H - 0.3, 10), metal); c.position.set(L / 2 + 0.08, H / 2, zz); c.castShadow = true; g.add(c); });
+      const hv = box(0.55, 1.5, 1.7, dark, -L / 2 - 0.3, 1.05, 0, g);
+      for (let i = 0; i < 9; i++) box(0.02, 0.05, 1.5, std(0x3a3e45, 0.5, 0.5), -L / 2 - 0.58, 0.45 + i * 0.13, 0, g);
+      const logo = new T.Mesh(new T.PlaneGeometry(3.3, 1.29), new T.MeshStandardMaterial({ map: logoTex, transparent: true, roughness: 0.5, metalness: 0.1 }));
+      logo.position.set(-0.6, 1.4, W / 2 + 0.045); g.add(logo);
+      const led = new T.MeshStandardMaterial({ color: 0x111111, emissive: new T.Color(colors.charge), emissiveIntensity: 1.5 });
+      ledMats.push(led);
+      const strip = new T.Mesh(new T.BoxGeometry(L - 0.6, 0.08, 0.03), led); strip.position.set(0, H - 0.2, W / 2 + 0.06); g.add(strip);
+      for (let i = 0; i < 10; i++) {
+        const cm = new T.MeshStandardMaterial({ color: 0x111111, emissive: new T.Color(colors.accent), emissiveIntensity: 0 });
+        const c = new T.Mesh(new T.BoxGeometry(0.14, 0.07, 0.02), cm); c.position.set(2.45, 0.55 + i * 0.1, W / 2 + 0.06); g.add(c); socCells.push(cm);
+      }
+      return g;
+    };
+    makeContainer(-1.75); makeContainer(1.75);
+
+    // ---- trafo / şebeke
+    const tr = new T.Group(); tr.position.set(-12, 0, 0.4); scene.add(tr);
+    const trMat = std(0x7a8088, 0.45, 0.55);
+    box(2.4, 0.3, 2.0, std(0x8c8f94, 0.95), 0, 0.15, 0, tr);
+    box(1.8, 2.0, 1.3, trMat, 0, 1.3, 0, tr);
+    for (let i = 0; i < 7; i++) { box(0.05, 1.6, 0.35, trMat, -0.75 + i * 0.25, 1.2, 0.83, tr); box(0.05, 1.6, 0.35, trMat, -0.75 + i * 0.25, 1.2, -0.83, tr); }
+    const porcelain = std(0xd8d2c4, 0.3, 0.05);
+    [-0.5, 0, 0.5].forEach((x) => { for (let r = 0; r < 4; r++) { const d = new T.Mesh(new T.CylinderGeometry(0.13, 0.13, 0.06, 16), porcelain); d.position.set(x, 2.4 + r * 0.16, 0); tr.add(d); } const rod = new T.Mesh(new T.CylinderGeometry(0.05, 0.05, 0.75, 10), porcelain); rod.position.set(x, 2.62, 0); tr.add(rod); });
+    const poleMat = std(0x6c7178, 0.5, 0.7);
+    [[-1.6, -1.2], [-1.6, 1.2], [-3.2, -1.2], [-3.2, 1.2]].forEach(([x, z]) => { const p = new T.Mesh(new T.CylinderGeometry(0.06, 0.08, 7, 8), poleMat); p.position.set(x, 3.5, z); p.castShadow = true; tr.add(p); });
+    box(1.8, 0.1, 2.6, poleMat, -2.4, 6.6, 0, tr); box(1.8, 0.1, 2.6, poleMat, -2.4, 4.6, 0, tr);
+    const gridLampMat = new T.MeshStandardMaterial({ color: 0x111111, emissive: new T.Color(0x6cff9d), emissiveIntensity: 2 });
+    const lamp = new T.Mesh(new T.SphereGeometry(0.09, 16, 16), gridLampMat); lamp.position.set(0.95, 2.05, 0.66); tr.add(lamp);
+    const lampGlow = glow(0x6cff9d, 0.9); lampGlow.position.copy(lamp.position); tr.add(lampGlow);
+
+    // ---- pano (dağıtım)
+    const sw = new T.Group(); sw.position.set(-6, 0, 0.4); scene.add(sw);
+    box(0.9, 1.8, 0.6, std(0xc9ccd1, 0.5, 0.3), 0, 0.9, 0, sw);
+    box(0.02, 1.5, 0.5, std(0xb2b6bc, 0.4, 0.4), 0.46, 0.95, 0, sw);
+
+    // ---- fabrika
+    const fa = new T.Group(); fa.position.set(13.2, 0, 0.6); fa.scale.setScalar(0.72); scene.add(fa);
+    const wall = std(0x3a3f46, 0.85, 0.1);
+    box(8, 4.2, 9, wall, 0, 2.1, 0, fa);
+    const roofShape = new T.Shape(); roofShape.moveTo(0, 0); roofShape.lineTo(2, 0); roofShape.lineTo(2, 1.3); roofShape.lineTo(0, 0);
+    for (let i = 0; i < 4; i++) { const rg = new T.ExtrudeGeometry(roofShape, { depth: 9, bevelEnabled: false }); const r = new T.Mesh(rg, std(0x4a5058, 0.7, 0.2)); r.position.set(-4 + i * 2, 4.2, -4.5); r.castShadow = true; fa.add(r); }
+    const winMat = new T.MeshStandardMaterial({ color: 0x0b0c0e, emissive: new T.Color(0xffd7a0), emissiveIntensity: 0.4 });
+    for (let i = 0; i < 4; i++) { const wm = new T.Mesh(new T.PlaneGeometry(1.6, 1.1), winMat); wm.rotation.y = -Math.PI / 2; wm.position.set(-4.01, 2.4, -3 + i * 2); fa.add(wm); }
+    for (let i = 0; i < 3; i++) { const wm = new T.Mesh(new T.PlaneGeometry(2, 0.7), winMat); wm.position.set(-2.4 + i * 2.4, 3.2, 4.51); fa.add(wm); }
+    const chim = new T.Mesh(new T.CylinderGeometry(0.35, 0.45, 5, 20), std(0x6a6f76, 0.5, 0.4)); chim.position.set(2.5, 6.6, -2.5); chim.castShadow = true; fa.add(chim);
+    box(2.2, 2.6, 0.05, std(0x6c727a, 0.5, 0.6), 1.5, 1.3, 4.52, fa);
+
+    // ---- kablolar ve enerji darbeleri
+    const cableMat = new T.MeshStandardMaterial({ color: 0x1a1c1f, roughness: 0.5, metalness: 0.1, emissive: new T.Color(0x000000) });
+    const Y = 0.18;
+    const P = (pts) => new T.CatmullRomCurve3(pts.map((p) => new T.Vector3(p[0], Y, p[1])), false, 'catmullrom', 0.2);
+    const paths = {
+      grid: P([[-11, 0.4], [-8.5, 0.4], [-6.4, 0.4]]),
+      toBess: P([[-5.6, 0.4], [-4.4, 0.1], [-4.0, -0.9], [-3.8, -1.75], [-3.45, -1.75]]),
+      toBess2: P([[-5.6, 0.4], [-4.4, 0.9], [-4.0, 1.6], [-3.8, 1.75], [-3.45, 1.75]]),
+      bessOut: P([[3.3, -1.75], [4.6, -1.4], [6.5, 0.3], [9.4, 0.5]]),
+      bessOut2: P([[3.3, 1.75], [4.6, 1.9], [6.5, 1.2], [9.4, 0.9]]),
+      direct: P([[-5.6, 0.6], [-5.0, 3.6], [-3, 5.2], [3, 5.6], [7.5, 4.4], [9.4, 2.4]])
+    };
+    const lanes = {};
+    Object.keys(paths).forEach((k) => {
+      const c = paths[k];
+      const tube = new T.Mesh(new T.TubeGeometry(c, 160, 0.075, 10, false), cableMat.clone());
+      tube.castShadow = true; tube.receiveShadow = true; scene.add(tube);
+      const len = c.getLength(); const n = Math.max(4, Math.round(len / 1.1));
+      const SAMP = 320; const samp = c.getSpacedPoints(SAMP - 1);
+      const mkStream = (count, size, spread) => {
+        const pos = new Float32Array(count * 3); const t0 = new Float32Array(count); const off = new Float32Array(count * 3); const sf = new Float32Array(count);
+        for (let i = 0; i < count; i++) { t0[i] = Math.random(); sf[i] = 0.75 + Math.random() * 0.5; off[i * 3] = (Math.random() - 0.5) * spread; off[i * 3 + 1] = (Math.random() - 0.3) * spread; off[i * 3 + 2] = (Math.random() - 0.5) * spread; }
+        const geo = new T.BufferGeometry(); geo.setAttribute('position', new T.BufferAttribute(pos, 3));
+        const mat = new T.PointsMaterial({ size: size, map: glowTex, color: 0xffffff, transparent: true, opacity: 0, depthWrite: false, blending: T.AdditiveBlending, sizeAttenuation: true, toneMapped: false });
+        const pts = new T.Points(geo, mat); pts.frustumCulled = false; scene.add(pts);
+        return { pos: pos, t0: t0, off: off, sf: sf, geo: geo, mat: mat, n: count };
+      };
+      const stream = mkStream(Math.round(len * 120), 0.13, 0.24);
+      const heads = mkStream(Math.max(3, Math.round(len / 1.6)), 0.95, 0.04);
+      lanes[k] = { curve: c, tube: tube, samp: samp, SAMP: SAMP, stream: stream, heads: heads, len: len, fade: 0, color: new T.Color(0xffffff), speed: 2.2, prog: Math.random() };
+    });
+
+    // ---- fazlar
+    const C = { charge: new T.Color(colors.charge), accent: new T.Color(colors.accent), grid: new T.Color(0xdfe7f5), red: new T.Color(0xff5a4f), green: new T.Color(0x6cff9d) };
+    const phases = [
+      { lanes: { grid: [1, 1, 'charge'], toBess: [1, 1, 'charge'], toBess2: [1, 1, 'charge'], direct: [0.35, 1, 'grid'] }, soc: 95, led: 'charge', factory: 0.25, grid: 'green', glow: 'charge' },
+      { lanes: { grid: [1, 1, 'grid'], direct: [1, 1, 'grid'] }, soc: 100, led: 'charge', factory: 0.8, grid: 'green', glow: null },
+      { lanes: { bessOut: [1, 1, 'accent'], bessOut2: [1, 1, 'accent'] }, soc: 15, led: 'accent', factory: 1, grid: 'green', glow: 'accent' },
+      { lanes: { bessOut: [1, 1.6, 'accent'], bessOut2: [1, 1.6, 'accent'] }, soc: 70, led: 'accent', factory: 1, grid: 'red', glow: 'accent' }
+    ];
+    let phase = 0; let soc = 40; let socTarget = 95;
+    const setPhase = (i) => { phase = i; socTarget = phases[i].soc; };
+    const setColors = (cc) => { C.charge.set(cc.charge); C.accent.set(cc.accent); bg.set(cc.bg); scene.fog.color.set(cc.bg); ground.material.color.set(cc.ground); rim.color.set(cc.charge); };
+
+    // ---- enerji halesi (doluluğa göre)
+    const HN = 6000; const hpos = new Float32Array(HN * 3);
+    for (let i = 0; i < HN; i++) { const a = Math.random() * Math.PI * 2; const r = 1 + Math.pow(Math.random(), 1.6) * 0.45; hpos[i * 3] = Math.cos(a) * 5.6 * r; hpos[i * 3 + 1] = 1.4 + (Math.random() + Math.random() - 1) * 0.55 * (1.4 - r); hpos[i * 3 + 2] = Math.sin(a) * 4.1 * r; }
+    const hgeo = new T.BufferGeometry(); hgeo.setAttribute('position', new T.BufferAttribute(hpos, 3));
+    const hmat = new T.PointsMaterial({ size: 0.11, map: glowTex, color: new T.Color(colors.charge), transparent: true, opacity: 0.0, depthWrite: false, blending: T.AdditiveBlending, sizeAttenuation: true, toneMapped: false });
+    const halo = new T.Points(hgeo, hmat); halo.position.set(0, 0.3, 0); scene.add(halo);
+    let haloSpin = 0;
+
+    // ---- etiketler
+    const anchors = [new T.Vector3(-12, 3.6, 0.4), new T.Vector3(0, 3.6, 0), new T.Vector3(13.2, 5.2, 0.6)];
+
+    // ---- boyut
+    let W = 0, H = 0;
+    const resize = () => {
+      const r = canvas.parentElement.getBoundingClientRect();
+      if (r.width === W && r.height === H) return;
+      W = r.width; H = r.height; renderer.setSize(W, H, false); camera.aspect = W / H;
+      camera.fov = W < 700 ? 40 : 26; camera.updateProjectionMatrix();
+    };
+    const ro = new ResizeObserver(resize); ro.observe(canvas.parentElement); resize();
+
+    let mx = 0, my = 0, cmx = 0, cmy = 0;
+    const onMove = (e) => { const r = canvas.getBoundingClientRect(); mx = ((e.clientX - r.left) / r.width - 0.5); my = ((e.clientY - r.top) / r.height - 0.5); };
+    canvas.parentElement.addEventListener('pointermove', onMove);
+
+    let visible = true; let raf = 0; let last = performance.now(); let time = 0;
+    const io = new IntersectionObserver((es) => { visible = es[0].isIntersecting; }, { threshold: 0 });
+    io.observe(canvas);
+
+    const tmp = new T.Vector3();
+    const tick = (now) => {
+      raf = requestAnimationFrame(tick);
+      const dt = Math.max(0, Math.min(0.05, (now - last) / 1000)); last = now;
+      if (!visible) return;
+      time += dt;
+      const ph = phases[phase];
+      // kamera
+      cmx += (mx - cmx) * 0.04; cmy += (my - cmy) * 0.04;
+      const ang = Math.sin(time * 0.12) * 0.06 + cmx * 0.25;
+      const cx = camBase.x * Math.cos(ang) - camBase.z * Math.sin(ang);
+      const cz = camBase.x * Math.sin(ang) + camBase.z * Math.cos(ang);
+      camera.position.set(cx, camBase.y - cmy * 3, cz); camera.lookAt(target);
+      // batarya doluluğu
+      soc += (socTarget - soc) * Math.min(1, dt * 0.55);
+      const lit = Math.round(soc / 10);
+      socCells.forEach((m, i) => { const on = (i % 10) < lit; m.emissive.copy(ph.led === 'accent' ? C.accent : C.charge); m.emissiveIntensity += ((on ? 2.2 : 0.02) - m.emissiveIntensity) * 0.15; });
+      const ledCol = ph.led === 'accent' ? C.accent : C.charge;
+      const pulseRate = phase === 3 ? 9 : phase === 2 ? 3 : 1.4;
+      ledMats.forEach((m) => { m.emissive.lerp(ledCol, 0.08); m.emissiveIntensity = 3 + Math.sin(time * pulseRate) * (phase === 1 ? 0.1 : 0.9); });
+      floorGlow.material.color.lerp(ph.glow === 'accent' ? C.accent : C.charge, 0.08);
+      floorGlow.material.opacity += ((ph.glow ? 0.32 + Math.sin(time * pulseRate) * 0.06 : 0.0) - floorGlow.material.opacity) * 0.06;
+      winMat.emissiveIntensity += (ph.factory * 1.6 - winMat.emissiveIntensity) * 0.06;
+      const gc = ph.grid === 'red' ? C.red : C.green;
+      gridLampMat.emissive.lerp(gc, 0.2); lampGlow.material.color.lerp(gc, 0.2);
+      const blink = ph.grid === 'red' ? (Math.sin(time * 14) > 0 ? 1 : 0.15) : 1;
+      gridLampMat.emissiveIntensity = 2.4 * blink; lampGlow.material.opacity = blink;
+      // şeritler
+      Object.keys(lanes).forEach((k) => {
+        const L = lanes[k]; const st = ph.lanes[k];
+        L.fade += (((st && st[0]) || 0) - L.fade) * Math.min(1, dt * (phase === 3 ? 9 : 3));
+        if (st) { L.color.lerp(C[st[2]], 0.1); L.speed = 2.2 * st[1]; }
+        L.tube.material.emissive.copy(L.color).multiplyScalar(L.fade * 0.3);
+        L.prog += (L.speed * dt) / L.len;
+        const upd = (S, wob) => {
+          for (let i = 0; i < S.n; i++) {
+            let u = (S.t0[i] + L.prog * S.sf[i]) % 1; const f = u * (L.SAMP - 1); const i0 = Math.floor(f); const fr = f - i0; const a0 = L.samp[i0], a1 = L.samp[Math.min(L.SAMP - 1, i0 + 1)];
+            const w = wob ? Math.sin(time * 2.4 + i) * 0.5 + 0.5 : 1;
+            S.pos[i * 3] = a0.x + (a1.x - a0.x) * fr + S.off[i * 3] * w;
+            S.pos[i * 3 + 1] = a0.y + (a1.y - a0.y) * fr + 0.1 + Math.abs(S.off[i * 3 + 1]) * w;
+            S.pos[i * 3 + 2] = a0.z + (a1.z - a0.z) * fr + S.off[i * 3 + 2] * w;
+          }
+          S.geo.attributes.position.needsUpdate = true;
+          S.mat.color.copy(L.color);
+        };
+        if (L.fade > 0.01) { upd(L.stream, true); upd(L.heads, false); }
+        L.stream.mat.opacity = L.fade * 0.9; L.heads.mat.opacity = L.fade;
+        L.stream.mat.visible = L.heads.mat.visible = L.fade > 0.01;
+      });
+      const hs = [0.9, 0.15, -1.3, -3.2][phase];
+      haloSpin += (hs - haloSpin) * Math.min(1, dt * 2); halo.rotation.y += haloSpin * dt * 0.6;
+      const hScale = [0.88, 1.0, 1.12, 1.18][phase] + Math.sin(time * (phase === 3 ? 10 : 1.5)) * 0.015;
+      halo.scale.x += (hScale - halo.scale.x) * 0.05; halo.scale.z = halo.scale.x;
+      hmat.color.lerp(ph.led === 'accent' ? C.accent : C.charge, 0.08);
+      hmat.opacity += ([0.75, 0.22, 0.85, 1][phase] - hmat.opacity) * 0.05;
+      renderer.render(scene, camera);
+      // etiketler
+      anchors.forEach((v, i) => {
+        const el = labelEls[i]; if (!el) return;
+        tmp.copy(v).project(camera);
+        el.style.transform = 'translate(-50%,-100%) translate(' + ((tmp.x + 1) / 2 * W).toFixed(1) + 'px,' + ((1 - tmp.y) / 2 * H).toFixed(1) + 'px)';
+        el.style.opacity = tmp.z < 1 ? 1 : 0;
+      });
+    };
+    envTune();
+    raf = requestAnimationFrame(tick);
+
+    return {
+      setPhase: setPhase, setColors: setColors,
+      dispose: () => { cancelAnimationFrame(raf); ro.disconnect(); io.disconnect(); canvas.parentElement.removeEventListener('pointermove', onMove); renderer.dispose(); pmrem.dispose(); }
+    };
+  }
+  initLiquid() {
+    const Engine = window.OSBLiquidEngine;
+    const hero = document.querySelector('.osb .hero');
+    const cv = document.querySelector('.osb .hero-canvas');
+    const slot = document.querySelector('.osb .hero-slot');
+    const still = document.querySelector('.osb .hero-static');
+    if (!Engine || !hero || !cv || !slot || !still || this.liquid) return;
+    const rm = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    const key = [1, 0.01, 1];
+    let eng;
+    try {
+      eng = new Engine(cv, { interactive: true, strength: 1, radius: 170, density: 1, dotSize: 1, spread: 1, turbulence: 1, returnSpeed: 1, streaks: true, restStyle: 'image', ambient: true, ambientIntensity: 0.2, speed: 1, intro: (this.props.motion ?? true) !== false, reducedMotion: rm, bg: key, imgBg: key, liquid: 1 }, () => { still.style.opacity = '1'; });
+    } catch (e) { return; }
+    this.liquid = eng;
+    const layout = () => {
+      const h = hero.getBoundingClientRect(); const r = slot.getBoundingClientRect();
+      eng.resize(h.width, h.height, { x: r.left - h.left, y: r.top - h.top, w: r.width, h: r.height });
+    };
+    const img = new Image();
+    img.onload = () => {
+      try { eng.onFirstFrame = () => { still.style.opacity = '0'; }; eng.setImage(img); layout(); } catch (e) { still.style.opacity = '1'; }
+    };
+    img.src = still.getAttribute('src');
+    this.liquidRO = new ResizeObserver(layout); this.liquidRO.observe(hero);
+    const pt = (type) => (e) => { const h = hero.getBoundingClientRect(); eng.pointer(type, e.clientX - h.left, e.clientY - h.top, e.pointerType === 'touch'); };
+    const mv = pt('move'), dn = pt('down'), up = pt('up'), lv = pt('leave');
+    hero.addEventListener('pointermove', mv); hero.addEventListener('pointerdown', dn); hero.addEventListener('pointerup', up); hero.addEventListener('pointerleave', lv);
+    this.cleanups.push(() => { hero.removeEventListener('pointermove', mv); hero.removeEventListener('pointerdown', dn); hero.removeEventListener('pointerup', up); hero.removeEventListener('pointerleave', lv); });
+    const io = new IntersectionObserver((es) => eng.setVisible(es[0].isIntersecting));
+    io.observe(hero); this.cleanups.push(() => io.disconnect());
+  }
+  buildStageGL(canvas, nightSrc, sunSrc, colors, onReady) {
+    const T = window.THREE;
+    if (T.ColorManagement) T.ColorManagement.legacyMode = false;
+    const renderer = new T.WebGLRenderer({ canvas: canvas, antialias: false, alpha: false, powerPreference: 'high-performance' });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    renderer.outputEncoding = T.sRGBEncoding;
+    const scene = new T.Scene();
+    const cam = new T.OrthographicCamera(0, 1, 1, 0, -10, 10);
+    const IW = 836, IH = 470;
+    const loader = new T.TextureLoader();
+    let loaded = 0;
+    const mk = (src) => { const t = loader.load(src, () => { loaded++; if (loaded === 2 && onReady) onReady(); }); t.minFilter = T.LinearFilter; t.generateMipmaps = false; return t; };
+    const U = {
+      tA: { value: mk(nightSrc) }, tB: { value: mk(sunSrc) },
+      uMix: { value: 0 }, uDay: { value: 0 }, uOut: { value: 0 }, uTime: { value: 0 },
+      uRes: { value: new T.Vector2(1, 1) }, uImg: { value: new T.Vector2(IW, IH) }, uZoom: { value: 1 },
+      uSweep: { value: new T.Color(colors.accent) }
+    };
+    const mat = new T.ShaderMaterial({
+      uniforms: U,
+      vertexShader: 'varying vec2 vUv; void main(){ vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0); }',
+      fragmentShader: [
+        'uniform sampler2D tA; uniform sampler2D tB; uniform float uMix; uniform float uDay; uniform float uOut; uniform float uTime; uniform vec2 uRes; uniform vec2 uImg; uniform float uZoom; uniform vec3 uSweep; varying vec2 vUv;',
+        'float h(float n){ return fract(sin(n)*43758.5453); }',
+        'float n2(vec2 p){ vec2 i=floor(p), f=fract(p); f=f*f*(3.0-2.0*f); float a=h(i.x+i.y*57.0), b=h(i.x+1.0+i.y*57.0), c=h(i.x+(i.y+1.0)*57.0), d=h(i.x+1.0+(i.y+1.0)*57.0); return mix(mix(a,b,f.x),mix(c,d,f.x),f.y); }',
+        'vec2 cover(vec2 uv){ float s = max(uRes.x/uImg.x, uRes.y/uImg.y) * uZoom; return (uv - 0.5) * uRes / (uImg * s) + 0.5; }',
+        'void main(){',
+        '  vec2 uv = cover(vUv);',
+        '  float g = uOut * step(0.93, h(floor(vUv.y*70.0) + floor(uTime*18.0)));',
+        '  uv.x += g * (h(floor(uTime*30.0)+vUv.y) - 0.5) * 0.06;',
+        '  float ca = uOut * 0.004;',
+        '  vec3 A = vec3(texture2D(tA, uv + vec2(ca,0.0)).r, texture2D(tA, uv).g, texture2D(tA, uv - vec2(ca,0.0)).b);',
+        '  vec3 B = texture2D(tB, uv).rgb;',
+        '  float lum = dot(B, vec3(0.299,0.587,0.114));',
+        '  B = mix(B, mix(vec3(lum), B, 0.5) * 1.12, uDay);',
+        '  float nz = n2(vUv*vec2(6.0,3.0) + uTime*0.15) * 0.18;',
+        '  float edge = uMix * 1.4 - 0.2;',
+        '  float x = vUv.x + nz;',
+        '  float m = smoothstep(edge - 0.12, edge, x);',
+        '  vec3 col = mix(B, A, m);',
+        '  float band = exp(-pow((x - edge + 0.06) * 14.0, 2.0)) * step(0.02, uMix) * step(uMix, 0.98);',
+        '  col += uSweep * band * 0.55;',
+        '  float l2 = dot(col, vec3(0.299,0.587,0.114));',
+        '  col = mix(col, vec3(l2) * vec3(0.8,0.85,0.95) * 0.55, uOut * 0.85);',
+        '  col += uOut * g * 0.15;',
+        '  vec2 vv = vUv - 0.5; col *= 1.0 - dot(vv, vv) * 0.55;',
+        '  gl_FragColor = vec4(col, 1.0);',
+        '}'
+      ].join('\n'),
+      depthWrite: false, depthTest: false
+    });
+    const quad = new T.Mesh(new T.PlaneGeometry(1, 1), mat); quad.position.set(0.5, 0.5, 0); scene.add(quad);
+
+    const glowTex = (() => {
+      const c = document.createElement('canvas'); c.width = c.height = 64;
+      const g = c.getContext('2d'); const gr = g.createRadialGradient(32, 32, 0, 32, 32, 32);
+      gr.addColorStop(0, 'rgba(255,255,255,1)'); gr.addColorStop(0.25, 'rgba(255,255,255,0.7)'); gr.addColorStop(1, 'rgba(255,255,255,0)');
+      g.fillStyle = gr; g.fillRect(0, 0, 64, 64); return new T.CanvasTexture(c);
+    })();
+    const pts = (n, size) => {
+      const geo = new T.BufferGeometry(); const pos = new Float32Array(n * 3);
+      geo.setAttribute('position', new T.BufferAttribute(pos, 3));
+      const m = new T.PointsMaterial({ size: size, map: glowTex, transparent: true, depthWrite: false, depthTest: false, blending: T.AdditiveBlending, sizeAttenuation: false, color: 0xffffff, opacity: 0 });
+      const p = new T.Points(geo, m); p.frustumCulled = false; scene.add(p);
+      return { geo: geo, pos: pos, mat: m, n: n };
+    };
+    // görüntü koordinatları (piksel, sol-üst): [gece, gün batımı]
+    const lerpPt = (a, b, t) => [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t];
+    const LED = [
+      [[[243, 203], [445, 177]], [[250, 219], [461, 189]]],
+      [[[247, 347], [445, 365]], [[248, 368], [461, 385]]],
+      [[[243, 203], [247, 347]], [[250, 219], [248, 368]]]
+    ];
+    const PATH_IN = [[[790, 335], [735, 333], [690, 340], [640, 355], [600, 372]], [[820, 360], [760, 365], [700, 372], [650, 380], [615, 388]]];
+    const PATH_OUT = [[[600, 375], [650, 380], [700, 378], [760, 370], [820, 365]], [[615, 388], [650, 378], [680, 362], [700, 345], [705, 330]]];
+    const led = pts(90, 28);
+    const flow = pts(420, 9);
+    const heads = pts(14, 34);
+    const seeds = Array.from({ length: 420 }, () => [Math.random(), (Math.random() - 0.5) * 10, 0.7 + Math.random() * 0.6]);
+    const hseeds = Array.from({ length: 14 }, (_, i) => [i / 14, 0, 1]);
+
+    let W = 1, H = 1, scale = 1;
+    const toScreen = (p) => {
+      const s = Math.max(W / IW, H / IH) * U.uZoom.value;
+      const x = (p[0] - IW / 2) * s / W + 0.5; const y = (IH / 2 - p[1]) * s / H + 0.5;
+      return [x, y];
+    };
+    const resize = () => {
+      const r = canvas.parentElement.getBoundingClientRect();
+      if (r.width === W && r.height === H) return;
+      W = Math.max(1, r.width); H = Math.max(1, r.height);
+      renderer.setSize(W, H, false); U.uRes.value.set(W, H);
+    };
+    const ro = new ResizeObserver(resize); ro.observe(canvas.parentElement); resize();
+
+    const C = { charge: new T.Color(colors.charge), accent: new T.Color(colors.accent) };
+    const phases = [
+      { mix: 0, day: 0, out: 0, flow: 'in', fc: 'charge', led: 'charge', ledI: 1 },
+      { mix: 1, day: 1, out: 0, flow: null, fc: 'charge', led: 'charge', ledI: 0.25 },
+      { mix: 1, day: 0, out: 0, flow: 'out', fc: 'accent', led: 'accent', ledI: 1 },
+      { mix: 0, day: 0, out: 1, flow: 'out', fc: 'accent', led: 'accent', ledI: 1 }
+    ];
+    let phase = 0; let flowA = 0; let prog = 0; let time = 0; let last = performance.now(); let raf = 0; let visible = true;
+    const io = new IntersectionObserver((es) => { visible = es[0].isIntersecting; }); io.observe(canvas);
+    const along = (path, t, out) => {
+      const segs = path.length - 1; const f = Math.min(segs - 1e-6, t * segs); const i = Math.floor(f); const k = f - i;
+      out[0] = path[i][0] + (path[i + 1][0] - path[i][0]) * k; out[1] = path[i][1] + (path[i + 1][1] - path[i][1]) * k; return out;
+    };
+    const tmp = [0, 0];
+    const tick = (now) => {
+      raf = requestAnimationFrame(tick);
+      const dt = Math.max(0, Math.min(0.05, (now - last) / 1000)); last = now;
+      if (!visible) return;
+      time += dt; const ph = phases[phase];
+      U.uTime.value = time;
+      U.uMix.value += (ph.mix - U.uMix.value) * Math.min(1, dt * 1.6);
+      U.uDay.value += (ph.day - U.uDay.value) * Math.min(1, dt * 2);
+      U.uOut.value += (ph.out - U.uOut.value) * Math.min(1, dt * 6);
+      const mt = U.uMix.value;
+      // LED
+      const lc = ph.led === 'accent' ? C.accent : C.charge;
+      led.mat.color.lerp(lc, 0.06);
+      const pulse = phase === 3 ? (Math.sin(time * 22) > 0 ? 1 : 0.2) : 0.75 + Math.sin(time * (phase === 2 ? 3 : 1.6)) * 0.25;
+      led.mat.opacity += ((ph.ledI * pulse * 0.55) - led.mat.opacity) * 0.12;
+      let k = 0;
+      LED.forEach((seg) => {
+        const a = lerpPt(seg[0][0], seg[1][0], mt), b = lerpPt(seg[0][1], seg[1][1], mt);
+        for (let i = 0; i < 30; i++, k++) { const t = i / 29; const s = toScreen([a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t]); led.pos[k * 3] = s[0]; led.pos[k * 3 + 1] = s[1]; }
+      });
+      led.geo.attributes.position.needsUpdate = true;
+      // akış
+      flowA += ((ph.flow ? 1 : 0) - flowA) * Math.min(1, dt * 3);
+      const fc = C[ph.fc]; flow.mat.color.lerp(fc, 0.08); heads.mat.color.lerp(fc, 0.08);
+      flow.mat.opacity = flowA * 0.9; heads.mat.opacity = flowA;
+      prog += dt * (phase === 3 ? 0.55 : 0.28);
+      const path = (ph.flow === 'out' ? PATH_OUT : PATH_IN).map(() => 0);
+      const P0 = ph.flow === 'out' ? PATH_OUT[0] : PATH_IN[0]; const P1 = ph.flow === 'out' ? PATH_OUT[1] : PATH_IN[1];
+      const P = P0.map((p, i) => lerpPt(p, P1[i], mt));
+      const upd = (S, sd) => {
+        for (let i = 0; i < S.n; i++) {
+          const u = (sd[i][0] + prog * sd[i][2]) % 1; along(P, u, tmp);
+          const s = toScreen([tmp[0], tmp[1] + sd[i][1] * 0.6 * Math.sin(time * 2 + i)]);
+          S.pos[i * 3] = s[0]; S.pos[i * 3 + 1] = s[1];
+        }
+        S.geo.attributes.position.needsUpdate = true;
+      };
+      if (flowA > 0.01) { upd(flow, seeds); upd(heads, hseeds); }
+      renderer.render(scene, cam);
+    };
+    raf = requestAnimationFrame(tick);
+    return {
+      setPhase: (i) => { phase = i; },
+      setZoom: (z) => { U.uZoom.value = z; },
+      setColors: (cc) => { C.charge.set(cc.charge); C.accent.set(cc.accent); U.uSweep.value.set(cc.accent); },
+      dispose: () => { cancelAnimationFrame(raf); ro.disconnect(); io.disconnect(); renderer.dispose(); }
+    };
+  }
+  initStageGL() {
+    if (!window.THREE || this.stageGL) return;
+    const cv = document.querySelector('.osb .stage-gl');
+    if (!cv) return;
+    try {
+      const ready = () => { cv.style.opacity = '1'; const tint = document.querySelector('.osb .stage-tint'); if (tint) tint.style.display = 'none'; };
+      this.stageGL = this.buildStageGL(cv, '../assets/stage-night.jpg', '../assets/stage-sunset.jpg', this.readColors(), ready);
+      this.stageGL.setPhase(this.state.mech);
+    } catch (e) { this.stageGL = null; }
+  }
+  initFootLogo() {
+    const Engine = window.OSBLiquidEngine;
+    const box = document.querySelector('.osb .foot-logo');
+    const cv = document.querySelector('.osb .foot-canvas');
+    const still = document.querySelector('.osb .foot-static');
+    if (!Engine || !box || !cv || !still || this.footEng) return;
+    const rm = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    let eng;
+    try {
+      eng = new Engine(cv, { interactive: true, strength: 1, radius: 150, density: 0.9, dotSize: 1, spread: 1, turbulence: 1, returnSpeed: 1, streaks: true, restStyle: 'image', ambient: true, ambientIntensity: 0.3, speed: 1, intro: true, reducedMotion: rm, bg: [0, 0, 0], imgBg: [0, 0, 0], liquid: 1 }, () => { still.style.opacity = '1'; });
+    } catch (e) { return; }
+    this.footEng = eng;
+    const layout = () => { const b = box.getBoundingClientRect(); const r = still.getBoundingClientRect(); eng.resize(b.width, b.height, { x: r.left - b.left, y: r.top - b.top, w: r.width, h: r.height }); };
+    const img = new Image();
+    img.onload = () => { try { eng.onFirstFrame = () => { still.style.opacity = '0'; }; eng.setImage(img); layout(); } catch (e) { still.style.opacity = '1'; } };
+    img.src = still.getAttribute('src');
+    const ro = new ResizeObserver(layout); ro.observe(box);
+    const pt = (type) => (e) => { const b = box.getBoundingClientRect(); eng.pointer(type, e.clientX - b.left, e.clientY - b.top, e.pointerType === 'touch'); };
+    const mv = pt('move'), dn = pt('down'), up = pt('up'), lv = pt('leave');
+    box.addEventListener('pointermove', mv); box.addEventListener('pointerdown', dn); box.addEventListener('pointerup', up); box.addEventListener('pointerleave', lv);
+    const io = new IntersectionObserver((es) => eng.setVisible(es[0].isIntersecting)); io.observe(box);
+    this.cleanups.push(() => { ro.disconnect(); io.disconnect(); box.removeEventListener('pointermove', mv); box.removeEventListener('pointerdown', dn); box.removeEventListener('pointerup', up); box.removeEventListener('pointerleave', lv); eng.destroy(); });
+  }
+  readColors() {
+    const root = document.querySelector('.osb');
+    const cs = getComputedStyle(root);
+    const g = (n) => cs.getPropertyValue(n).trim() || '#000000';
+    return { bg: g('--dark-2'), ground: g('--dark-2'), charge: g('--charge'), accent: g('--accent') };
+  }
+  initScene() {
+    if (!window.THREE || this.scene3d || this.props.scene3d !== true) return;
+    const cv = document.querySelector('.osb .stage-canvas');
+    if (!cv) return;
+    try {
+      this.scene3d = this.buildScene(cv, Array.prototype.slice.call(document.querySelectorAll('.osb .lbl')), this.readColors());
+      this.scene3d.setPhase(this.state.mech);
+    } catch (e) { this.scene3d = null; }
+  }
+  componentDidUpdate(prev, prevState) {
+    if (this.scene3d && prevState.mech !== this.state.mech) this.scene3d.setPhase(this.state.mech);
+    if (this.stageGL && prevState.mech !== this.state.mech) this.stageGL.setPhase(this.state.mech);
+    if (this.stageGL && prev.palette !== this.props.palette) setTimeout(() => this.stageGL && this.stageGL.setColors(this.readColors()), 30);
+    if (this.scene3d && prev.palette !== this.props.palette) setTimeout(() => this.scene3d && this.scene3d.setColors(this.readColors()), 30);
+  }
+  socAt(h) {
+    const pts = [[0, 20], [6, 95], [12, 98], [17, 100], [22, 10], [24, 20]];
+    for (let i = 0; i < pts.length - 1; i++) {
+      const a = pts[i], b = pts[i + 1];
+      if (h >= a[0] && h <= b[0]) return a[1] + (b[1] - a[1]) * (h - a[0]) / (b[0] - a[0]);
+    }
+    return 20;
+  }
+  phaseOf(h) { return (h >= 6 && h < 17) ? 1 : (h >= 17 && h < 22) ? 2 : 0; }
+  fmt(h) { const hh = Math.floor(h), mm = Math.round((h - hh) * 60); return (hh < 10 ? '0' : '') + hh + ':' + (mm < 10 ? '0' : '') + mm; }
+  renderVals() {
+    const texts = [
+      'Gece tarifesi. Batarya şebekeden en ucuz saatlerde doluyor.',
+      'Batarya dolu, puantı bekliyor. 17:00’de devreye girecek.',
+      'Puant saati. Fabrika şebekeden değil, bataryadan besleniyor.'
+    ];
+    const names = ['Dolar', 'Bekler', 'Besler'];
+    const h = this.state.hour, n = this.state.now;
+    const soc = Math.round(this.socAt(h)), nsoc = this.socAt(n);
+    const phase = this.phaseOf(h), nowPhase = this.phaseOf(n);
+    const o = this.state.open;
+    const acc = {};
+    [0, 1, 2, 3].forEach((i) => {
+      acc['open' + i] = o === i;
+      acc['c' + i] = o === i ? 'on' : '';
+      acc['e' + i] = o === i ? 'true' : 'false';
+      acc['pick' + i] = () => this.setState({ open: o === i ? -1 : i });
+    });
+    const ms = [
+      { title: 'Gece şarj', time: '22:00 – 06:00', text: 'Şebeke en ucuz tarifede. Batarya dolar.', flow: 'Şebeke → Batarya' },
+      { title: 'Gündüz bekleme', time: '06:00 – 17:00', text: 'Fabrika şebekeden beslenir, batarya dolu bekler.', flow: 'Şebeke → Fabrika' },
+      { title: 'Puantta besleme', time: '17:00 – 22:00', text: 'Fabrika bataryadan beslenir; pahalı saat faturaya yansımaz.', flow: 'Batarya → Fabrika' },
+      { title: 'Kesintide devreye girme', time: 'Herhangi bir an', text: 'Şebeke kesilir; batarya milisaniyeler içinde yükü devralır.', flow: 'Batarya → Fabrika, şebeke kesik' }
+    ];
+    const mi = this.state.mech;
+    const mechSteps = ms.map((m, i) => ({ ...m, num: '0' + (i + 1), active: i === mi, idle: i !== mi, pick: () => { this.userPicked = true; this.setState({ mech: i }); } }));
+    const fnt = String(this.props.font || 'A').charAt(0).toLowerCase();
+    const nowPhase2 = [0, 1, 2][this.phaseOf(this.state.now)];
+    const pal = String(this.props.palette || 'A').charAt(0).toLowerCase();
+    return {
+      palClass: 'pal-' + (['a', 'b', 'c'].includes(pal) ? pal : 'a') + ' font-' + (['a', 'b', 'c'].includes(fnt) ? fnt : 'a'),
+      heroStages: ['Gece şarj', 'Gündüz bekleme', 'Puantta besleme', 'Kesintide devreye girme'].map((label, i) => ({ label: label, cls: i === nowPhase2 ? 'on' : '' })),
+      use3d: this.props.scene3d === true,
+      mech: mi,
+      mechSteps, mechTitle: ms[mi].title, mechTime: ms[mi].time, mechFlow: ms[mi].flow,
+      hour: h, clock: this.fmt(h), soc, phase, phaseName: names[phase], status: texts[phase],
+      fillY: Math.round(346 * (1 - soc / 100)),
+      nowClock: this.fmt(n), nowStatus: texts[nowPhase], nowPhase,
+      nowFillY: Math.round(346 * (1 - nsoc / 100)),
+      onHour: (e) => { this.dragged = true; this.setState({ hour: parseFloat(e.target.value) }); },
+      ...acc
+    };
+  }
+}
+</script>
+</body>
+</html>

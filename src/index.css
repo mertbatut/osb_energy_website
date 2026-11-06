@@ -1,223 +1,798 @@
 @import "tailwindcss";
+@import "@fontsource-variable/instrument-sans";
 
-/* ── Design Tokens ── */
-@theme {
-  /* Dark palette */
-  --color-dark-hero: #0A131C;
-  --color-dark-card: #101820;
-  --color-dark-accent: #17232D;
+/* ===================================================================
+   OSB ENERGY — Design Token System
+   Palette A (default), with B/C overrides ready via [data-palette]
+   =================================================================== */
 
-  /* Brand */
-  --color-brand-primary: #4956A5;
-  --color-brand-primary-hover: #394785;
-  --color-brand-primary-light: #7180C5;
+/* ── Palette A: CSS Custom Properties ── */
+:root {
+  --font: "Instrument Sans Variable", "Helvetica Neue", Arial, sans-serif;
+  --disp-w: 500;
+  --disp-track: -0.04em;
 
-  /* Surfaces */
-  --color-surface-page: #F8F9FC;
-  --color-surface-subtle: #EEF0F7;
-  --color-surface-blue: #E9EDFA;
-  --color-surface-pure: #FFFFFF;
-  --color-surface-footer: #060D14;
+  --bg: #ffffff;
+  --bg-alt: #f3f4f6;
+  --card: #ffffff;
+  --ink: #1c1f23;
+  --brand: #2541b2;
+  --brand-on-dark: #8ea2f5;
+  --accent: #f28c28;
+  --on-accent: #1c1f23;
+  --dark: #1c1f23;
+  --dark-2: #121417;
+  --dark-3: #2a2e34;
+  --dark-glow: #2c3340;
+  --on-dark-muted: #c9cdd3;
+  --chip: #e8ecfa;
+  --line: #dfe2e7;
+  --muted: #545b66;
+  --text: #1c1f23;
+  --charge: #8ea2f5;
+  --rest: #e3e6ec;
 
-  /* Text */
-  --color-text-main: #17213B;
-  --color-text-muted: #556176;
-  --color-text-soft: #7E8B9F;
+  --wrap-max: 1440px;
+  --gutter: clamp(20px, 5vw, 80px);
+  --section-pad: clamp(96px, 10vw, 150px);
 
-  /* Border */
-  --color-border-subtle: #DCE1EA;
+  --r-btn: 2px;
+  --r-card: 4px;
+  --r-stage: 6px;
 
-  /* Font families */
-  --font-display: "Inter Tight", sans-serif;
-  --font-body: "Inter", sans-serif;
-  --font-bess-display: "Manrope", sans-serif;
-  --font-bess-body: "DM Sans", sans-serif;
+  --ease-edit: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-scene: cubic-bezier(0.65, 0, 0.35, 1);
 }
 
+/* ── Palette B ── */
+[data-palette="b"] {
+  --bg: #fbf8f3;
+  --bg-alt: #f4edf5;
+  --card: #ffffff;
+  --ink: #2b1640;
+  --brand: #5b2a86;
+  --brand-on-dark: #cdaef0;
+  --accent: #f49ac2;
+  --on-accent: #2b1640;
+  --dark: #2b1640;
+  --dark-2: #1d0e2c;
+  --dark-3: #3b2156;
+  --dark-glow: #4a2870;
+  --on-dark-muted: #e5d8ef;
+  --chip: #efe4f7;
+  --line: #e7dfea;
+  --muted: #5e5468;
+  --text: #2b1640;
+  --charge: #cdaef0;
+  --rest: #eadff1;
+}
+
+/* ── Palette C ── */
+[data-palette="c"] {
+  --bg: #f6fbfa;
+  --bg-alt: #e4f6f2;
+  --card: #ffffff;
+  --ink: #0b1a3a;
+  --brand: #0b7c6c;
+  --brand-on-dark: #6fe6cf;
+  --accent: #a7d3f5;
+  --on-accent: #0b1a3a;
+  --dark: #0b1a3a;
+  --dark-2: #07112a;
+  --dark-3: #142a55;
+  --dark-glow: #173572;
+  --on-dark-muted: #c6d6ee;
+  --chip: #ddf5ef;
+  --line: #d3e4e2;
+  --muted: #4c5a70;
+  --text: #0b1a3a;
+  --charge: #6fe6cf;
+  --rest: #dceaf6;
+}
+
+/* ── Tailwind v4 @theme ── */
+@theme {
+  --color-bg: var(--bg);
+  --color-bg-alt: var(--bg-alt);
+  --color-card: var(--card);
+  --color-ink: var(--ink);
+  --color-brand: var(--brand);
+  --color-brand-on-dark: var(--brand-on-dark);
+  --color-accent: var(--accent);
+  --color-on-accent: var(--on-accent);
+  --color-dark: var(--dark);
+  --color-dark-2: var(--dark-2);
+  --color-dark-3: var(--dark-3);
+  --color-dark-glow: var(--dark-glow);
+  --color-on-dark-muted: var(--on-dark-muted);
+  --color-chip: var(--chip);
+  --color-line: var(--line);
+  --color-muted: var(--muted);
+  --color-text: var(--text);
+  --color-charge: var(--charge);
+  --color-rest: var(--rest);
+}
+
+/* ===================================================================
+   Base
+   =================================================================== */
 html {
-  scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  font-family: var(--font-body);
-  color: var(--color-text-main);
-  background-color: var(--color-surface-page);
+  margin: 0;
+  font-family: var(--font);
+  font-size: 17px;
   line-height: 1.6;
+  color: var(--text);
+  background: var(--bg);
 }
 
-/* ── Typography utility classes ── */
-.text-display-xl {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: clamp(2.5rem, 5vw + 1rem, 4.5rem);
-  line-height: 1.05;
-  letter-spacing: -0.025em;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-.text-display-lg {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: clamp(2rem, 3.5vw + 0.5rem, 3.25rem);
-  line-height: 1.1;
-  letter-spacing: -0.02em;
+h1, h2, h3, p, figure, dl, dd {
+  margin: 0;
 }
 
-.text-headline-lg {
-  font-family: var(--font-display);
+a {
+  color: var(--brand);
+}
+
+a:hover {
+  color: var(--ink);
+}
+
+/* ===================================================================
+   Layout
+   =================================================================== */
+.wrap {
+  max-width: var(--wrap-max);
+  margin: 0 auto;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+
+/* ===================================================================
+   Typography
+   =================================================================== */
+.mont {
+  font-family: var(--font);
+  font-variant-numeric: tabular-nums;
+}
+
+/* heading system */
+.ln {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.04em;
+}
+
+.ln > span {
+  display: block;
+}
+
+.sh-a {
+  font-family: var(--font);
   font-weight: 500;
-  font-size: clamp(1.5rem, 2vw + 0.5rem, 2.25rem);
-  line-height: 1.2;
-  letter-spacing: -0.015em;
-}
-
-.text-headline-md {
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-size: clamp(1.25rem, 1.5vw + 0.25rem, 1.5rem);
+  font-size: clamp(1rem, 1.25vw, 1.15rem);
   line-height: 1.3;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.005em;
+  color: var(--muted);
 }
 
-.text-body-lg {
-  font-family: var(--font-body);
-  font-weight: 400;
-  font-size: 1.125rem;
-  line-height: 1.7;
+.sh-b {
+  font-family: var(--font);
+  font-weight: var(--disp-w);
+  font-size: clamp(2.5rem, 4.8vw, 4.75rem);
+  line-height: 1.0;
+  letter-spacing: var(--disp-track);
+  color: var(--ink);
+  text-wrap: balance;
 }
 
-.text-body {
-  font-family: var(--font-body);
-  font-weight: 400;
-  font-size: 1rem;
-  line-height: 1.6;
+.lead {
+  font-size: clamp(1.05rem, 1.3vw, 1.2rem);
+  line-height: 1.65;
+  color: var(--muted);
+  max-width: 40rem;
 }
 
-.text-label {
-  font-family: var(--font-body);
-  font-weight: 500;
-  font-size: 0.75rem;
+/* ===================================================================
+   Buttons — inherit (transparent, border, blur hover, text slide)
+   =================================================================== */
+.btn {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  min-height: 58px;
+  padding: 0 30px;
+  background: transparent;
+  color: inherit;
+  text-decoration: none;
+  font: inherit;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.01em;
+  border: 1px solid currentColor;
+  border-radius: var(--r-btn);
+  cursor: pointer;
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  transition:
+    background-color 500ms ease,
+    box-shadow 500ms ease,
+    -webkit-backdrop-filter 500ms ease,
+    backdrop-filter 500ms ease,
+    border-color 500ms ease;
+}
+
+.btn:hover {
+  color: inherit;
+  background: color-mix(in srgb, currentColor 7%, transparent);
+  -webkit-backdrop-filter: blur(14px) saturate(1.4);
+  backdrop-filter: blur(14px) saturate(1.4);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.12);
+  border-color: color-mix(in srgb, currentColor 35%, transparent);
+}
+
+.btn.light {
+  background: transparent;
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+.btn.light:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 4px;
+}
+
+/* arrow icon */
+.btn .arr {
+  display: inline-flex;
+  transition: transform 500ms var(--ease-edit), filter 500ms ease;
+}
+
+.btn:hover .arr {
+  transform: translateX(5px);
+}
+
+/* text slide effect */
+.bt {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
   line-height: 1.4;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  vertical-align: middle;
 }
 
-.text-display-hero {
-  font-family: var(--font-display);
-  font-weight: 300;
-  font-size: clamp(3rem, 7vw + 1rem, 6rem);
+.bt > span {
+  display: block;
+  transition:
+    transform 600ms var(--ease-scene),
+    filter 600ms ease,
+    opacity 600ms ease;
+}
+
+.bt > span + span {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translateY(100%);
+  filter: blur(6px);
+  opacity: 0;
+}
+
+.btn:hover .bt > span:first-child {
+  transform: translateY(-100%);
+  filter: blur(6px);
+  opacity: 0;
+}
+
+.btn:hover .bt > span + span {
+  transform: none;
+  filter: blur(0);
+  opacity: 1;
+}
+
+/* ===================================================================
+   Underline Link
+   =================================================================== */
+.ulink {
+  color: var(--ink);
+  font-weight: 700;
+  text-decoration: none;
+  padding: 14px 0;
+  background: linear-gradient(currentColor, currentColor) 0 100% / 100% 1.5px no-repeat;
+  transition: background-size 500ms var(--ease-scene);
+}
+
+.ulink:hover {
+  color: var(--ink);
+  background-size: 0 1.5px;
+  background-position: 100% 100%;
+}
+
+/* ===================================================================
+   Nav Link
+   =================================================================== */
+.navlink {
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 12px 0;
+  background: linear-gradient(var(--accent), var(--accent)) 0 100% / 0 2px no-repeat;
+  transition: background-size 450ms var(--ease-scene);
+}
+
+.navlink:hover {
+  color: var(--ink);
+  background-size: 100% 2px;
+}
+
+/* ===================================================================
+   Navbar
+   =================================================================== */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: color-mix(in srgb, var(--bg) 72%, transparent);
+  -webkit-backdrop-filter: blur(18px) saturate(1.4);
+  backdrop-filter: blur(18px) saturate(1.4);
+  box-shadow: 0 0 0 100vmax color-mix(in srgb, var(--bg) 72%, transparent);
+  clip-path: inset(0 -100vmax);
+}
+
+/* ===================================================================
+   Frames (parallax overflow hidden)
+   =================================================================== */
+.frame {
+  position: relative;
+  overflow: hidden;
+  background: var(--line);
+}
+
+.frame img {
+  position: absolute;
+  left: 0;
+  top: -8%;
+  width: 100%;
+  height: 116%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ===================================================================
+   Hero
+   =================================================================== */
+.backword {
+  position: absolute;
+  left: 50%;
+  bottom: -0.17em;
+  transform: translateX(-50%);
+  margin: 0;
+  font-weight: 600;
+  font-size: clamp(6rem, 19vw, 22rem);
   line-height: 1;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.06em;
+  color: color-mix(in srgb, var(--ink) 5%, transparent);
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 0;
 }
 
-.text-code-metric {
-  font-family: var(--font-display);
-  font-weight: 300;
-  font-size: clamp(2.5rem, 4vw, 4rem);
-  line-height: 1;
-  letter-spacing: -0.03em;
+.stg {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--muted);
 }
 
-/* ── Fade-in animation (used by key-remounted elements) ── */
-@keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+.stg.on {
+  color: var(--ink);
+  font-weight: 600;
 }
 
-.animate-fade-in {
-  animation: fade-in 300ms ease-out both;
+.stg .d {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
 }
 
-/* ── Scrollbar hide utility ── */
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
+.stg.on .d {
+  background: var(--accent);
+  border-color: var(--accent);
 }
 
-/* ── Marquee animation ── */
-@keyframes marquee-left {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+.prod-shadow {
+  position: absolute;
+  left: 6%;
+  right: 4%;
+  bottom: -3%;
+  height: 12%;
+  background: radial-gradient(50% 50% at 50% 50%, rgba(20, 22, 30, 0.32), rgba(20, 22, 30, 0) 70%);
+  filter: blur(4px);
+  pointer-events: none;
 }
 
-@keyframes marquee-right {
-  0% { transform: translateX(-50%); }
-  100% { transform: translateX(0); }
+/* ===================================================================
+   Accordion
+   =================================================================== */
+.q {
+  font: inherit;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: 0;
+  border-top: 1px solid var(--line);
+  padding: 26px 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  color: var(--ink);
 }
 
-.animate-marquee-left {
-  animation: marquee-left 30s linear infinite;
+.q .ic {
+  flex: 0 0 auto;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--chip);
+  color: var(--brand);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 300ms ease, color 300ms ease;
 }
 
-.animate-marquee-right {
-  animation: marquee-right 30s linear infinite;
+.q.on .ic,
+.q:hover .ic {
+  background: var(--brand);
+  color: #ffffff;
 }
 
-/* ── Reduced motion ── */
+.q .qt {
+  flex: 1;
+  font-family: var(--font);
+  font-weight: 600;
+  font-size: clamp(1.15rem, 1.9vw, 1.6rem);
+  line-height: 1.2;
+}
+
+.q .pm {
+  flex: 0 0 auto;
+  width: 20px;
+  height: 20px;
+  position: relative;
+  transition: transform 450ms var(--ease-edit);
+}
+
+.q.on .pm {
+  transform: rotate(135deg);
+}
+
+.q:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 4px;
+}
+
+.ans {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px 48px;
+  align-items: center;
+  padding: 0 0 36px 70px;
+  animation: osb-in 600ms var(--ease-edit) both;
+}
+
+/* ===================================================================
+   Stage Scene
+   =================================================================== */
+.stage-imgs {
+  position: absolute;
+  inset: 0;
+}
+
+.stage-imgs .si {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.03);
+  transition:
+    opacity 1400ms var(--ease-scene),
+    filter 1400ms ease,
+    transform 6s var(--ease-edit);
+}
+
+.stage-imgs .sun {
+  opacity: 0;
+}
+
+.stage-imgs.tone1 .sun,
+.stage-imgs.tone2 .sun {
+  opacity: 1;
+}
+
+.stage-imgs.tone1 .sun {
+  filter: saturate(0.5) brightness(1.12) contrast(0.94);
+}
+
+.stage-imgs.tone2 .sun {
+  transform: scale(1.07);
+}
+
+.stage-imgs.tone0 .night {
+  transform: scale(1.07);
+}
+
+.stage-imgs.tone3 .night {
+  filter: grayscale(0.85) brightness(0.42) contrast(1.15);
+  transform: scale(1.1);
+}
+
+.stage-tint {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  transition: background 1200ms ease;
+}
+
+.stage-tint.tone0,
+.stage-tint.tone1,
+.stage-tint.tone2 {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.25),
+    rgba(0, 0, 0, 0) 35%,
+    rgba(0, 0, 0, 0) 70%,
+    rgba(0, 0, 0, 0.35)
+  );
+}
+
+.stage-tint.tone3 {
+  background: radial-gradient(
+    55% 55% at 45% 60%,
+    color-mix(in srgb, var(--accent) 26%, transparent),
+    rgba(0, 0, 0, 0.5)
+  );
+  animation: osb-alert 1.2s ease-in-out infinite;
+}
+
+@keyframes osb-alert {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Stage step tabs */
+.step {
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  width: 100%;
+  background: transparent;
+  border: 0;
+  padding: 22px 24px 8px 0;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+}
+
+.step .bar {
+  position: absolute;
+  left: 0;
+  right: 24px;
+  top: -1px;
+  height: 2px;
+  background: transparent;
+  overflow: hidden;
+}
+
+.step .fill {
+  position: absolute;
+  inset: 0;
+  background: var(--accent);
+  transform-origin: left center;
+  animation: osb-step 5.2s linear both;
+}
+
+.step .st-n {
+  font-size: 13px;
+  color: var(--on-dark-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.step .st-t {
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  color: rgba(255, 255, 255, 0.6);
+  transition: color 300ms ease;
+}
+
+.step .st-d {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--on-dark-muted);
+  opacity: 0.7;
+  transition: opacity 300ms ease;
+  max-width: 30ch;
+}
+
+.step.on .st-t,
+.step:hover .st-t {
+  color: #ffffff;
+}
+
+.step.on .st-d {
+  opacity: 1;
+}
+
+.step:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+@keyframes osb-step {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* ===================================================================
+   Sector Marquee
+   =================================================================== */
+.mq {
+  display: flex;
+  gap: 0.5em;
+  white-space: nowrap;
+  font-family: var(--font);
+  font-weight: 400;
+  font-size: clamp(3rem, 7vw, 7rem);
+  line-height: 1.04;
+  letter-spacing: -0.045em;
+  will-change: transform;
+}
+
+.mq .o {
+  color: var(--muted);
+  opacity: 0.55;
+}
+
+.mq .s {
+  color: var(--ink);
+}
+
+/* ===================================================================
+   Form
+   =================================================================== */
+.lib {
+  font: inherit;
+  font-weight: 700;
+  color: var(--brand);
+  background: transparent;
+  border: 0;
+  border-bottom: 2px solid var(--brand);
+  padding: 0 2px 2px;
+  margin: 0 4px;
+  font-size: inherit;
+  border-radius: 0;
+  min-height: 48px;
+}
+
+.lib::placeholder {
+  color: var(--muted);
+  opacity: 1;
+}
+
+.lib:focus {
+  outline: none;
+  border-bottom-color: var(--ink);
+  background: color-mix(in srgb, var(--brand) 8%, transparent);
+}
+
+/* ===================================================================
+   Utility
+   =================================================================== */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ===================================================================
+   Focus & Selection
+   =================================================================== */
+input:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 3px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: var(--brand);
+  color: white;
+}
+
+/* ===================================================================
+   Keyframes
+   =================================================================== */
+@keyframes osb-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ===================================================================
+   Reduced Motion
+   =================================================================== */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
+    animation: none !important;
+    transition: none !important;
   }
 }
 
-/* ── Focus visible ── */
-:focus-visible {
-  outline: 2px solid var(--color-brand-primary);
-  outline-offset: 2px;
-}
-
-/* ── Selection ── */
-::selection {
-  background-color: var(--color-brand-primary);
-  color: white;
-}
-
-/* Cinematic engineering process — scoped to the replacement storyboard. */
-.cinematic-process {
-  display: grid;
-  grid-template-columns: minmax(0, 42fr) minmax(0, 58fr);
-  grid-template-rows: auto 1fr;
-  background: var(--color-dark-hero);
-}
-.process-intro { grid-column: 1; padding: 72px clamp(24px, 4vw, 72px) 0; }
-.process-stages { grid-column: 1; padding: 48px clamp(24px, 4vw, 72px) 64px; min-width: 0; }
-.process-film { grid-column: 2; grid-row: 1 / 3; position: relative; overflow: hidden; min-height: 680px; }
-.process-film img, .process-film video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
-.process-film video { opacity: 0; transition: opacity 400ms ease; }
-.process-stage-button { color: rgb(255 255 255 / .35); font-size: 24px; padding: 4px 0; cursor: pointer; transition: color 200ms; }
-.process-stage-button[aria-current="step"] { color: var(--color-brand-primary-light); }
-.process-progress { height: 1px; background: rgb(255 255 255 / .15); margin: 16px 0 24px; overflow: hidden; }
-.process-progress > div { height: 100%; background: var(--color-brand-primary-light); transform: scaleX(0); transform-origin: left; transition: transform 300ms linear; }
-.process-stage-copy { display: grid; }
-.process-stage-copy > div { grid-area: 1 / 1; min-width: 0; }
-@media (max-width: 1023px) {
-  .cinematic-process { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto auto auto; }
-  .process-intro { padding: 48px 24px 32px; max-width: 720px; }
-  .process-film { grid-column: 1; grid-row: 2; min-height: 0; height: clamp(230px, 52vw, 460px); }
-  .process-stages { grid-row: 3; padding: 28px 24px 40px; }
-  .process-stage-copy { max-width: 640px; }
-}
-
-/* Feather the bright sunset locally while keeping the right-hand turbines crisp. */
-.hero-sun-softener {
-  background: radial-gradient(ellipse at 8% 32%, rgb(10 19 28 / .22), transparent 65%);
-  -webkit-backdrop-filter: blur(8px) brightness(.8);
-  backdrop-filter: blur(8px) brightness(.8);
-  -webkit-mask-image: radial-gradient(ellipse 48% 58% at 8% 32%, #000 5%, rgb(0 0 0 / .8) 35%, transparent 100%);
-  mask-image: radial-gradient(ellipse 48% 58% at 8% 32%, #000 5%, rgb(0 0 0 / .8) 35%, transparent 100%);
-}
-@media (max-width: 767px) {
-  .hero-sun-softener {
-    -webkit-backdrop-filter: blur(4px) brightness(.88);
-    backdrop-filter: blur(4px) brightness(.88);
+/* ===================================================================
+   Responsive
+   =================================================================== */
+@media (max-width: 980px) {
+  .navlinks,
+  .navphone {
+    display: none !important;
   }
+}
+
+@media (max-width: 760px) {
+  .ans {
+    padding-left: 0;
+  }
+
 }

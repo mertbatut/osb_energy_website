@@ -1,0 +1,36 @@
+[
+  {
+    "width": 1440,
+    "cta": {
+      "hash": "#hizmetler",
+      "targetTop": 98
+    }
+  },
+  {
+    "width": 390,
+    "cta": {
+      "hash": "#hizmetler",
+      "targetTop": 91.78125
+    }
+  },
+  {
+    "touch": {
+      "scrollY": 299,
+      "overflow": false,
+      "headerTop": 0
+    }
+  },
+  {
+    "menu": {
+      "open": true,
+      "top": 0
+    }
+  },
+  {
+    "heroReturn": {
+      "scrollY": 0,
+      "hash": "#hero",
+      "menuClosed": true
+    }
+  }
+]

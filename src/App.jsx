@@ -1,35 +1,38 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
+import useReducedMotion from "./hooks/useReducedMotion.js";
+import useMotion from "./hooks/useMotion.js";
+
 import Navbar from "./components/layout/Navbar.jsx";
 import Footer from "./components/layout/Footer.jsx";
-import CinematicHero from "./components/hero/CinematicHero.jsx";
-import StoryboardStrip from "./components/sections/StoryboardStrip.jsx";
-import CorporateIntro from "./components/sections/CorporateIntro.jsx";
-import CoreServices from "./components/sections/CoreServices.jsx";
-import IndustrialMarquee from "./components/sections/IndustrialMarquee.jsx";
-import BessTechnology from "./components/sections/BessTechnology.jsx";
-import FinancialKpi from "./components/sections/FinancialKpi.jsx";
-import HybridSynergy from "./components/sections/HybridSynergy.jsx";
-import SectorApplications from "./components/sections/SectorApplications.jsx";
-import EngineeringProcess from "./components/sections/EngineeringProcess.jsx";
-import ProjectsPortfolio from "./components/sections/ProjectsPortfolio.jsx";
-import CtaContact from "./components/sections/CtaContact.jsx";
-import useReducedMotion from "./hooks/useReducedMotion.js";
+import Hero from "./components/sections/Hero.jsx";
+import TrustStrip from "./components/sections/TrustStrip.jsx";
+import Solutions from "./components/sections/Solutions.jsx";
+import StageScene from "./components/sections/StageScene.jsx";
+import FinancialImpact from "./components/sections/FinancialImpact.jsx";
+import Journey from "./components/sections/Journey.jsx";
+import ProcessTimeline from "./components/sections/ProcessTimeline.jsx";
+import SectorMarquee from "./components/sections/SectorMarquee.jsx";
+import Contact from "./components/sections/Contact.jsx";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function App() {
-  const mainRef = useRef(null);
   const prefersReducedMotion = useReducedMotion();
+  const rootRef = useRef(null);
+  const lenisRef = useRef(null);
+  const [scrollPhase, setScrollPhase] = useState(null);
+  const [isPinned, setIsPinned] = useState(false);
 
   // Lenis smooth scroll
   useEffect(() => {
     if (prefersReducedMotion) return;
 
-    const lenis = new Lenis({ lerp: 0.1 });
+    const lenis = new Lenis({ lerp: 0.085, wheelMultiplier: 0.95 });
     lenis.on("scroll", ScrollTrigger.update);
+    lenisRef.current = lenis;
 
     const tickerCallback = (time) => {
       lenis.raf(time * 1000);
@@ -39,117 +42,32 @@ export default function App() {
 
     return () => {
       gsap.ticker.remove(tickerCallback);
+      lenisRef.current = null;
       lenis.destroy();
     };
   }, [prefersReducedMotion]);
 
-  // GSAP section reveal animations
-  useEffect(() => {
-    if (prefersReducedMotion) return;
-
-    const ctx = gsap.context(() => {
-      // Reveal headlines
-      gsap.utils.toArray("[data-animate='headline']").forEach((el) => {
-        gsap.fromTo(
-          el,
-          { y: 60, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 1,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: el,
-              start: "top 85%",
-              toggleActions: "play none none none",
-            },
-          },
-        );
-      });
-
-      // Reveal body text
-      gsap.utils.toArray("[data-animate='body']").forEach((el) => {
-        gsap.fromTo(
-          el,
-          { y: 30, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 0.8,
-            delay: 0.15,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: el,
-              start: "top 85%",
-              toggleActions: "play none none none",
-            },
-          },
-        );
-      });
-
-      // Staggered cards
-      gsap.utils.toArray("[data-animate='stagger-parent']").forEach((parent) => {
-        const children = parent.querySelectorAll("[data-animate='stagger-child']");
-        if (children.length === 0) return;
-        gsap.fromTo(
-          children,
-          { y: 40, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 0.6,
-            stagger: 0.1,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: parent,
-              start: "top 80%",
-              toggleActions: "play none none none",
-            },
-          },
-        );
-      });
-
-      // Scale reveal for images
-      gsap.utils.toArray("[data-animate='scale']").forEach((el) => {
-        gsap.fromTo(
-          el,
-          { scale: 0.95, opacity: 0 },
-          {
-            scale: 1,
-            opacity: 1,
-            duration: 1,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: el,
-              start: "top 85%",
-              toggleActions: "play none none none",
-            },
-          },
-        );
-      });
-    }, mainRef);
-
-    return () => ctx.revert();
-  }, [prefersReducedMotion]);
+  // All GSAP animations — state setters are stable, so this object is safe to recreate
+  useMotion(rootRef, prefersReducedMotion, lenisRef, {
+    onStagePhase: setScrollPhase,
+    onStagePinToggle: setIsPinned,
+  });
 
   return (
-    <>
+    <div ref={rootRef} style={{ overflowX: "clip" }}>
       <Navbar />
-      <main ref={mainRef}>
-        <CinematicHero />
-        <CorporateIntro />
-        <StoryboardStrip />
-        <CoreServices />
-        <IndustrialMarquee />
-        <BessTechnology />
-        <FinancialKpi />
-        <HybridSynergy />
-        <SectorApplications />
-        <EngineeringProcess />
-        <ProjectsPortfolio />
-        <CtaContact />
+      <Hero />
+      <TrustStrip />
+      <main>
+        <Solutions />
+        <StageScene scrollPhase={scrollPhase} isPinned={isPinned} />
+        <FinancialImpact />
+        <Journey />
+        <ProcessTimeline />
+        <SectorMarquee />
+        <Contact />
       </main>
       <Footer />
-    </>
+    </div>
   );
 }

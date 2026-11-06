@@ -1,0 +1,154 @@
+## NAV
+Çözümler
+Finansal etki
+Proje süreci
+İletişim
+0534 949 92 52
+Teklif alın
+## HERO
+OSB ENERGY
+Öz tüketimli fabrikalar için
+Enerji depolama
+yatırımı
+.
+Elektriği ucuz saatlerde depolayın, pahalı saatlerde kullanın. Fabrikanıza özel batarya sistemini projelendirir, kurar ve yıllarca işletiriz.
+Ücretsiz ön değerlendirme
+Nasıl çalışır?
+Aşağı kaydırın
+{{h.label}}
+## GÜVEN ŞERİDİ
+2018
+yılından beri sahada
+100
++
+tamamlanan proje
+%20–30
+faturada ortalama tasarruf potansiyeli
+7/24
+uzaktan izleme ve teknik destek
+## ÇÖZÜMLER
+Depolama sistemi
+Neyi çözer?
+Enerji artık yalnızca tüketilen bir kalem değil; yönetilen bir varlık. Tesisinizde bu dört durumdan biri varsa batarya kendini öder.
+Puant saatlerinde yüksek fatura
+Batarya enerjiyi ucuzken depolar, pahalıyken kullanır. Faturada ortalama %20–30 oranında tasarruf sağlanabilir.
+Pik talep ve güç aşımı cezaları
+Talep belirli saatlerde sıçrar. Batarya bu pikleri karşılar; ceza ödemezsiniz, trafo büyütmeyi erteleyebilirsiniz.
+Elektrik kesintileri ve üretim duruşları
+Her saniye bir kesinti bir kayıptır. Sistem arızayı otomatik algılar, milisaniyeler içinde devreye girer; kritik prosesler durmaz.
+GES ve RES fazlası boşa gidiyor
+Güneş ve rüzgârın üretim fazlası depolanır, ihtiyaç anında kullanılır. Öz tüketim oranınız ve yatırım getiriniz artar.
+## BESS NASIL ÇALIŞIR (3D)
+BESS nasıl çalışır?
+Elektriğin yolunu izleyin.
+Şebeke, batarya ve fabrikanız arasındaki enerji akışı. Bir aşama seçin; sahadaki ışık ve sistemin davranışı değişsin.
+Şebeke
+OSB ENERGY BESS
+Fabrika
+{{mechTime}}
+{{mechTitle}}
+{{mechFlow}}
+{{m.num}}
+{{m.title}}
+{{m.text}}
+{{m.num}}
+{{m.title}}
+{{m.text}}
+## FİNANSAL ETKİ
+Enerji depolamanın
+Finansal etkisi
+Örnek hesaplama: orta ölçekli bir fabrika. Uygun projelendirme ve doğru enerji yönetimiyle yatırım kısa sürede geri döner.
+Yıllık elektrik tüketimi
+10.000.000
+kWh
+Depolama kapasitesi
+2.500
+kWh / 1.000 kW
+Yıllık tahmini tasarruf potansiyeli
+1,5–2
+milyon TL
+Tahmini geri dönüş süresi
+3–5
+yıl
+Hesaplamalar örnektir; gerçek değerler tesisin tüketim profili ve şartlarına göre değişir.
+Kendi rakamlarınızı hesaplatın
+## KONTEYNERİN İÇİNE YOLCULUK
+Kaydırın, içeri girelim
+Dışarıdan bir konteyner.
+İçeride
+Fabrikanızın yedek enerjisi.
+Raf raf batarya modülleri, sıvı soğutma ve 7/24 uzaktan izleme. Kesinti anında milisaniyeler içinde devreye girer.
+Üretim sürekliliği ve
+operasyonel güvenlik.
+Makineleriniz durmaz, ürününüz fireye gitmez, veriniz kaybolmaz.
+## PROJE SÜRECİ
+Uçtan uca
+Proje sürecimiz
+İhtiyaç analizinden işletmeye kadar tek ekip, tek muhatap.
+01
+İhtiyaç analizi ve keşif
+Faturanız ve tüketim profilinizle başlarız.
+02
+Fizibilite ve sistem tasarımı
+Kapasite, tasarruf ve geri dönüş hesabı.
+03
+Projelendirme ve mühendislik
+Tesisinize özel çözüm ve izin süreçleri.
+04
+Tedarik ve kurulum
+Dünya standartlarında ekipman ve saha kurulumu.
+05
+Test, devreye alma ve eğitim
+Ekibinize sistemi teslim ederiz.
+06
+Sürekli destek ve izleme
+7/24 uzaktan izleme, bakım ve raporlama.
+## KULLANIM ALANLARI
+Kullanım alanlarımız
+Demir-çelik
+Otomotiv
+Tekstil
+Çimento
+Kimya
+Demir-çelik
+Otomotiv
+Gıda
+Lojistik
+Soğuk hava depoları
+Veri merkezleri
+Elektronik
+Gıda
+## İLETİŞİM
+Bizimle
+iletişime geçin
+Uzman ekibimiz, fabrikanız için en uygun enerji depolama çözümünü sunmaya hazır.
+Telefon
+0534 949 92 52
+0533 721 16 13
+E-posta
+contact@osbinternational.com
+Web
+osbenergy.com.tr
+Adres
+Central Balat
+Merhaba, ben
+Adınız
+.
+Firma ve OSB
+için enerji depolama değerlendirmesi istiyorum. Beni
+Telefon numaranız
+numarasından arayabilirsiniz.
+Elektrik faturanız
+(isteğe bağlı)
+Son 12 ayın faturası değerlendirmeyi hızlandırır. Fotoğraf da olur.
+Ön değerlendirme isteyin
+Bilgileriniz yalnızca bu değerlendirme için kullanılır.
+## FOOTER
+İmleci logonun üzerinde gezdirin
+Doğru enerji yönetimi,
+geleceğinizi güçlendirir.
+Teklif alın
+0534 949 92 52
+contact@osbinternational.com
+osbenergy.com.tr
+© 2026 OSB ENERGY

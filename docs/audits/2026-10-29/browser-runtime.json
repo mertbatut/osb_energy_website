@@ -1,0 +1,1392 @@
+[
+  {
+    "width": 1440,
+    "height": 900,
+    "documentHeight": 10921,
+    "overflow": false,
+    "sectionCount": 12,
+    "heroImage": "http://127.0.0.1:5174/src/assets/images/hero-wind-turbines.png",
+    "headings": [
+      {
+        "tag": "H1",
+        "text": "ENERJİNİN ÖTESİNDE.",
+        "section": "hero"
+      },
+      {
+        "tag": "H2",
+        "text": "Sanayi için enerji dönüşümü.",
+        "section": "hakkimizda"
+      },
+      {
+        "tag": "H2",
+        "text": "Fikirden enerjiye. Her aşamada mühendislik.",
+        "section": "storyboard"
+      },
+      {
+        "tag": "H2",
+        "text": "Sahadangörüntüler.",
+        "section": ""
+      },
+      {
+        "tag": "H2",
+        "text": "Enerjinizi yalnızca tüketmeyin. Yönetin.",
+        "section": "teknoloji"
+      },
+      {
+        "tag": "H2",
+        "text": "Somut finansal etki.",
+        "section": "finansal"
+      },
+      {
+        "tag": "H2",
+        "text": "Rüzgâr + Depolama:\nKesintisiz güç.",
+        "section": ""
+      },
+      {
+        "tag": "H2",
+        "text": "Her sektöre özel enerji çözümü.",
+        "section": ""
+      },
+      {
+        "tag": "H2",
+        "text": "Uçtan uca mühendislik süreci.",
+        "section": "surec"
+      },
+      {
+        "tag": "H2",
+        "text": "Referans projelerimiz.",
+        "section": "projeler"
+      },
+      {
+        "tag": "H2",
+        "text": "Enerji dönüşümüne\nbugün başlayın.",
+        "section": "iletisim"
+      }
+    ],
+    "sections": [
+      {
+        "index": 1,
+        "id": "hero",
+        "componentTitle": "ENERJİNİN ÖTESİNDE.",
+        "height": 900,
+        "background": "rgb(10, 19, 28)",
+        "grid": "none"
+      },
+      {
+        "index": 2,
+        "id": "hakkimizda",
+        "componentTitle": "Sanayi için enerji dönüşümü.",
+        "height": 900,
+        "background": "rgb(248, 249, 252)",
+        "grid": "none"
+      },
+      {
+        "index": 3,
+        "id": "storyboard",
+        "componentTitle": "Fikirden enerjiye. Her aşamada mühendislik.",
+        "height": 900,
+        "background": "rgb(10, 19, 28)",
+        "grid": "598.5px 826.5px"
+      },
+      {
+        "index": 4,
+        "id": "hizmetler",
+        "height": 1216,
+        "background": "rgb(238, 240, 247)",
+        "grid": "none"
+      },
+      {
+        "index": 5,
+        "id": "",
+        "componentTitle": "Sahadangörüntüler.",
+        "height": 592,
+        "background": "rgb(10, 19, 28)",
+        "grid": "none"
+      },
+      {
+        "index": 6,
+        "id": "teknoloji",
+        "componentTitle": "Enerjinizi yalnızca tüketmeyin. Yönetin.",
+        "height": 880,
+        "background": "rgb(250, 251, 252)",
+        "grid": "none"
+      },
+      {
+        "index": 7,
+        "id": "finansal",
+        "componentTitle": "Somut finansal etki.",
+        "height": 760,
+        "background": "rgb(238, 240, 247)",
+        "grid": "none"
+      },
+      {
+        "index": 8,
+        "id": "",
+        "componentTitle": "Rüzgâr + Depolama:\nKesintisiz güç.",
+        "height": 634,
+        "background": "rgb(10, 19, 28)",
+        "grid": "none"
+      },
+      {
+        "index": 9,
+        "id": "",
+        "componentTitle": "Her sektöre özel enerji çözümü.",
+        "height": 856,
+        "background": "rgb(248, 249, 252)",
+        "grid": "none"
+      },
+      {
+        "index": 10,
+        "id": "surec",
+        "componentTitle": "Uçtan uca mühendislik süreci.",
+        "height": 878,
+        "background": "rgb(10, 19, 28)",
+        "grid": "none"
+      },
+      {
+        "index": 11,
+        "id": "projeler",
+        "componentTitle": "Referans projelerimiz.",
+        "height": 909,
+        "background": "rgb(233, 237, 250)",
+        "grid": "none"
+      },
+      {
+        "index": 12,
+        "id": "iletisim",
+        "componentTitle": "Enerji dönüşümüne\nbugün başlayın.",
+        "height": 535,
+        "background": "rgb(10, 19, 28)",
+        "grid": "none"
+      }
+    ],
+    "triggers": [
+      {
+        "id": "opening-section-story",
+        "start": -0.001,
+        "end": 2340,
+        "pin": true,
+        "scrub": 0.55,
+        "toggleActions": "play",
+        "triggerTag": "DIV",
+        "section": null,
+        "targetText": "ENERJİNİN ÖTESİNDE.Rüzgâr, güneş ve depolama sistemlerini entegre ederek Türkiye'nin enerj",
+        "animation": {
+          "duration": 2.6,
+          "stagger": null,
+          "from": null,
+          "to": {}
+        }
+      },
+      {
+        "id": null,
+        "start": 4283,
+        "end": 5748,
+        "pin": false,
+        "scrub": 0.6,
+        "toggleActions": "play",
+        "triggerTag": "SECTION",
+        "section": "teknoloji",
+        "targetText": "ENERJİ DEPOLAMA TEKNOLOJİSİEnerjinizi yalnızca tüketmeyin. Yönetin.OSB ENERGY batarya ener",
+        "animation": {
+          "duration": 0.5,
+          "ease": "none",
+          "stagger": null,
+          "from": {
+            "scale": 1.06,
+            "y": -18
+          },
+          "to": {
+            "scale": 1,
+            "y": 18,
+            "duration": 0.5,
+            "delay": 0
+          }
+        }
+      },
+      {
+        "id": null,
+        "start": 4328,
+        "end": 4733,
+        "pin": false,
+        "scrub": 0.5,
+        "toggleActions": "play",
+        "triggerTag": "DIV",
+        "section": "teknoloji",
+        "targetText": "ENERJİ DEPOLAMA TEKNOLOJİSİEnerjinizi yalnızca tüketmeyin. Yönetin.OSB ENERGY batarya ener",
+        "animation": {
+          "duration": 0.9,
+          "ease": "power2.out",
+          "stagger": 0.1,
+          "from": {
+            "y": 32,
+            "opacity": 0
+          },
+          "to": {
+            "y": 0,
+            "opacity": 1,
+            "stagger": 0.1,
+            "duration": 0.5,
+            "delay": 0
+          }
+        }
+      },
+      {
+        "id": null,
+        "start": 5361,
+        "end": 6183,
+        "pin": false,
+        "scrub": false,
+        "toggleActions": "play none none none",
+        "triggerTag": "H2",
+        "section": "finansal",
+        "targetText": "Somut finansal etki.",
+        "animation": {
+          "duration": 1,
+          "ease": "power2.out",
+          "stagger": null,
+          "from": {
+            "y": 60,
+            "opacity": 0
+          },
+          "to": {
+            "y": 0,
+            "opacity": 1,
+            "duration": 1,
+            "delay": 0
+          }
+        }
+      },
+      {
+        "id": null,
+        "start": 6120,
+        "end": 7000,
+        "pin": false,
+        "scrub": false,
+        "toggleActions": "play none none none",
+        "triggerTag": "H2",
+        "section": null,
+        "targetText": "Rüzgâr + Depolama:\nKesintisiz güç.",
+        "animation": {
+          "duration": 1,
+          "ease": "power2.out",
+          "stagger": null,
+          "from": {
+            "y": 60,
+            "opacity": 0
+          },
+          "to": {
+            "y": 0,
+            "opacity": 1,
+            "duration": 1,
+            "delay": 0
+          }
+        }
+      },
+      {
+        "id": null,
+        "start": 6754,
+        "end": 7633,
+        "pin": false,
+        "scrub": false,
+        "toggleActions": "play none none none",
+        "triggerTag": "H2",
+        "section": null,
+        "targetText": "Her sektöre özel enerji çözümü.",
+        "animation": {
+          "duration": 1,
+          "ease": "power2.out",
+          "stagger": null,
+          "from": {
+            "y": 60,
+            "opacity": 0
+          },
+          "to": {
+            "y": 0,
+            "opacity": 1,
+            "duration": 1,
+            "delay": 0
+          }
+        }
+      },
+      {
+        "id": null,
+        "start": 7610,
+        "end": 8432,
+        "pin": false,
+        "scrub": false,
+        "toggleActions": "play none none none",
+        "triggerTag": "H2",
+        "section": "surec",
+        "targetText": "Uçtan uca mühendislik süreci.",
+        "animation": {
+          "duration": 1,
+          "ease": "power2.out",
+          "stagger": null,
+          "from": {
+            "y": 60,
+            "opacity": 0
+          },
+          "to": {
+            "y": 0,
+            "opacity": 1,
+            "duration": 1,
+            "delay": 0
+          }
+        }
+      },
+      {
+        "id": null,
+        "start": 8489,
+        "end": 9368,
+        "pin": false,
+        "scrub": false,
+        "toggleActions": "play none none none",
+        "triggerTag": "H2",
+        "section": "projeler",
+        "targetText": "Referans projelerimiz.",
+        "animation": {
+          "duration": 1,
+          "ease": "power2.out",
+          "stagger": null,
+          "from": {
+            "y": 60,
+            "opacity": 0
+          },
+          "to": {
+            "y": 0,
+            "opacity": 1,
+            "duration": 1,
+            "delay": 0
+          }
+        }
+      },
+      {
+        "id": null,
+        "start": 9367,
+        "end": 10247,
+        "pin": false,
+        "scrub": false,
+        "toggleActions": "play none none none",
+        "triggerTag": "H2",
+        "section": "iletisim",
+        "targetText": "Enerji dönüşümüne\nbugün başlayın.",
+        "animation": {
+          "duration": 1,
+          "ease": "power2.out",
+          "stagger": null,
+          "from": {
+            "y": 60,
+            "opacity": 0
+          },
+          "to": {
+            "y": 0,
+            "opacity": 1,
+            "duration": 1,
+            "delay": 0
+          }
+        }
+      },
+      {
+        "id": null,
+        "start": 6229,
+        "end": 7085,
+        "pin": false,
+        "scrub": false,
+        "toggleActions": "play none none none",
+        "triggerTag": "P",
+        "section": null,
+        "targetText": "Rüzgâr enerjisi üretimi ile BESS'i entegre ederek kısıntı kayıplarını sıfırlar, şebeke den",
+        "animation": {
+          "duration": 0.8,
+          "ease": "power2.out",
+          "stagger": null,
+          "from": {
+            "y": 30,
+            "opacity": 0
+          },
+          "to": {
+            "y": 0,
+            "opacity": 1,
+            "duration": 0.8,
+            "delay": 0.15
+          }
+        }
+      },
+      {
+        "id": null,
+        "start": 9476,
+        "end": 10332,
+        "pin": false,
+        "scrub": false,
+        "toggleActions": "play none none none",
+        "triggerTag": "P",
+        "section": "iletisim",
+        "targetText": "Tesisiniz için ücretsiz fizibilite raporu talep edin. Mühendislik ekibimiz 48 saat içinde ",
+        "animation": {
+          "duration": 0.8,
+          "ease": "power2.out",
+          "stagger": null,
+          "from": {
+            "y": 30,
+            "opacity": 0
+          },
+          "to": {
+            "y": 0,
+            "opacity": 1,
+            "duration": 0.8,
+            "delay": 0.15
+          }
+        }
+      },
+      {
+        "id": null,
+        "start": 2690,
+        "end": 4360,
+        "pin": false,
+        "scrub": false,
+        "toggleActions": "play none none none",
+        "triggerTag": "DIV",
+        "section": "hizmetler",
+        "targetText": "RES & GESYenilenebilir Enerji SantralleriRüzgâr ve güneş enerjisi santrallerinin fizibilit",
+        "animation": {
+          "duration": 0.7,
+          "ease": "power2.out",
+          "stagger": 0.1,
+          "from": {
+            "y": 40,
+            "opacity": 0
+          },
+          "to": {
+            "y": 0,
+            "opacity": 1,
+            "duration": 0.6,
+            "stagger": 0.1,
+            "delay": 0
+          }
+        }
+      },
+      {
+        "id": null,
+        "start": 5451,
+        "end": 6383,
+        "pin": false,
+        "scrub": false,
+        "toggleActions": "play none none none",
+        "triggerTag": "DIV",
+        "section": "finansal",
+        "targetText": "%20-30Enerji Maliyeti DüşüşüPik tıraşlama ve optimizasyon ile doğrudan maliyet tasarrufu.0",
+        "animation": {
+          "duration": 0.8,
+          "ease": "power2.out",
+          "stagger": 0.1,
+          "from": {
+            "y": 40,
+            "opacity": 0
+          },
+          "to": {
+            "y": 0,
+            "opacity": 1,
+            "duration": 0.6,
+            "stagger": 0.1,
+            "delay": 0
+          }
+        }
+      },
+      {
+        "id": null,
+        "start": 6901,
+        "end": 8081,
+        "pin": false,
+        "scrub": false,
+        "toggleActions": "play none none none",
+        "triggerTag": "DIV",
+        "section": null,
+        "targetText": "Organize SanayiOtomotivGıda & İçecekTekstilKimyaMadencilikLojistikTarım",
+        "animation": {
+          "duration": 1.3,
+          "ease": "power2.out",
+          "stagger": 0.1,
+          "from": {
+            "y": 40,
+            "opacity": 0
+          },
+          "to": {
+            "y": 0,
+            "opacity": 1,
+            "duration": 0.6,
+            "stagger": 0.1,
+            "delay": 0
+          }
+        }
+      },
+      {
+        "id": null,
+        "start": 7716,
+        "end": 8959,
+        "pin": false,
+        "scrub": false,
+        "toggleActions": "play none none none",
+        "triggerTag": "DIV",
+        "section": "surec",
+        "targetText": "01Adım 01Keşif & AnalizSaha ziyareti, enerji tüketim analizi ve potansiyel değerlendirmesi",
+        "animation": {
+          "duration": 1.1,
+          "ease": "power2.out",
+          "stagger": 0.1,
+          "from": {
+            "y": 40,
+            "opacity": 0
+          },
+          "to": {
+            "y": 0,
+            "opacity": 1,
+            "duration": 0.6,
+            "stagger": 0.1,
+            "delay": 0
+          }
+        }
+      },
+      {
+        "id": null,
+        "start": 8432,
+        "end": 9867,
+        "pin": false,
+        "scrub": false,
+        "toggleActions": "play none none none",
+        "triggerTag": "DIV",
+        "section": "projeler",
+        "targetText": "TamamlandıManisa OSB RESRüzgâr Enerji Santrali50 MWDevam EdiyorKayseri OSB BESSEnerji Depo",
+        "animation": {
+          "duration": 0.8,
+          "ease": "power2.out",
+          "stagger": 0.1,
+          "from": {
+            "y": 40,
+            "opacity": 0
+          },
+          "to": {
+            "y": 0,
+            "opacity": 1,
+            "duration": 0.6,
+            "stagger": 0.1,
+            "delay": 0
+          }
+        }
+      },
+      {
+        "id": null,
+        "start": 5654,
+        "end": 6587,
+        "pin": false,
+        "scrub": false,
+        "toggleActions": "play none none none",
+        "triggerTag": "DIV",
+        "section": "finansal",
+        "targetText": "Yatırım Fizibilitesi4-6 YılGeri Ödeme%18-24IRR3. YılNPV Pozitif15+ YılEkonomik Ömür",
+        "animation": {
+          "duration": 1,
+          "ease": "power2.out",
+          "stagger": null,
+          "from": {
+            "scale": 0.95,
+            "opacity": 0
+          },
+          "to": {
+            "scale": 1,
+            "opacity": 1,
+            "duration": 1,
+            "delay": 0
+          }
+        }
+      },
+      {
+        "id": null,
+        "start": 6240,
+        "end": 7005,
+        "pin": false,
+        "scrub": false,
+        "toggleActions": "play none none none",
+        "triggerTag": "DIV",
+        "section": null,
+        "targetText": "",
+        "animation": {
+          "duration": 1,
+          "ease": "power2.out",
+          "stagger": null,
+          "from": {
+            "scale": 0.95,
+            "opacity": 0
+          },
+          "to": {
+            "scale": 1,
+            "opacity": 1,
+            "duration": 1,
+            "delay": 0
+          }
+        }
+      },
+      {
+        "id": null,
+        "start": 8590,
+        "end": 9620,
+        "pin": false,
+        "scrub": false,
+        "toggleActions": "play none none none",
+        "triggerTag": "DIV",
+        "section": "projeler",
+        "targetText": "Sürdürülebilirlik TaahhüdüProjelerimiz toplam 840.000 ton CO₂ emisyon azaltımı sağlamış, 1",
+        "animation": {
+          "duration": 1,
+          "ease": "power2.out",
+          "stagger": null,
+          "from": {
+            "scale": 0.95,
+            "opacity": 0
+          },
+          "to": {
+            "scale": 1,
+            "opacity": 1,
+            "duration": 1,
+            "delay": 0
+          }
+        }
+      },
+      {
+        "id": null,
+        "start": 9304,
+        "end": 10394,
+        "pin": false,
+        "scrub": false,
+        "toggleActions": "play none none none",
+        "triggerTag": "DIV",
+        "section": "iletisim",
+        "targetText": "İletişim BilgileriE-postainfo@osbenergy.comTelefon+90 (312) 000 00 00AdresOSB ENERGY Merke",
+        "animation": {
+          "duration": 1,
+          "ease": "power2.out",
+          "stagger": null,
+          "from": {
+            "scale": 0.95,
+            "opacity": 0
+          },
+          "to": {
+            "scale": 1,
+            "opacity": 1,
+            "duration": 1,
+            "delay": 0
+          }
+        }
+      }
+    ],
+    "cssAnimations": [
+      {
+        "name": "marquee-left",
+        "duration": 30000,
+        "iterations": "Infinity"
+      },
+      {
+        "name": "marquee-right",
+        "duration": 30000,
+        "iterations": "Infinity"
+      }
+    ],
+    "imageCount": {
+      "total": 43,
+      "unique": 24,
+      "eager": 25,
+      "lazy": 16
+    },
+    "video": {
+      "src": "http://127.0.0.1:5174/videos/osb-engineering-process.mp4",
+      "duration": 9.958333,
+      "rate": 1,
+      "preload": "none",
+      "muted": true,
+      "loop": true
+    },
+    "finalOverflow": false
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "documentHeight": 16368,
+    "overflow": false,
+    "sectionCount": 12,
+    "heroImage": "http://127.0.0.1:5174/src/assets/images/hero-wind-turbines.png",
+    "headings": [
+      {
+        "tag": "H1",
+        "text": "ENERJİNİN ÖTESİNDE.",
+        "section": "hero"
+      },
+      {
+        "tag": "H2",
+        "text": "Sanayi için enerji dönüşümü.",
+        "section": "hakkimizda"
+      },
+      {
+        "tag": "H2",
+        "text": "Fikirden enerjiye. Her aşamada mühendislik.",
+        "section": "storyboard"
+      },
+      {
+        "tag": "H2",
+        "text": "Sahadangörüntüler.",
+        "section": ""
+      },
+      {
+        "tag": "H2",
+        "text": "Enerjinizi yalnızca tüketmeyin. Yönetin.",
+        "section": "teknoloji"
+      },
+      {
+        "tag": "H2",
+        "text": "Somut finansal etki.",
+        "section": "finansal"
+      },
+      {
+        "tag": "H2",
+        "text": "Rüzgâr + Depolama:\nKesintisiz güç.",
+        "section": ""
+      },
+      {
+        "tag": "H2",
+        "text": "Her sektöre özel enerji çözümü.",
+        "section": ""
+      },
+      {
+        "tag": "H2",
+        "text": "Uçtan uca mühendislik süreci.",
+        "section": "surec"
+      },
+      {
+        "tag": "H2",
+        "text": "Referans projelerimiz.",
+        "section": "projeler"
+      },
+      {
+        "tag": "H2",
+        "text": "Enerji dönüşümüne\nbugün başlayın.",
+        "section": "iletisim"
+      }
+    ],
+    "sections": [
+      {
+        "index": 1,
+        "id": "hero",
+        "componentTitle": "ENERJİNİN ÖTESİNDE.",
+        "height": 844,
+        "background": "rgb(10, 19, 28)",
+        "grid": "none"
+      },
+      {
+        "index": 2,
+        "id": "hakkimizda",
+        "componentTitle": "Sanayi için enerji dönüşümü.",
+        "height": 844,
+        "background": "rgb(248, 249, 252)",
+        "grid": "none"
+      },
+      {
+        "index": 3,
+        "id": "storyboard",
+        "componentTitle": "Fikirden enerjiye. Her aşamada mühendislik.",
+        "height": 851,
+        "background": "rgb(10, 19, 28)",
+        "grid": "390px"
+      },
+      {
+        "index": 4,
+        "id": "hizmetler",
+        "height": 1778,
+        "background": "rgb(238, 240, 247)",
+        "grid": "none"
+      },
+      {
+        "index": 5,
+        "id": "",
+        "componentTitle": "Sahadangörüntüler.",
+        "height": 858,
+        "background": "rgb(10, 19, 28)",
+        "grid": "none"
+      },
+      {
+        "index": 6,
+        "id": "teknoloji",
+        "componentTitle": "Enerjinizi yalnızca tüketmeyin. Yönetin.",
+        "height": 997,
+        "background": "rgb(250, 251, 252)",
+        "grid": "none"
+      },
+      {
+        "index": 7,
+        "id": "finansal",
+        "componentTitle": "Somut finansal etki.",
+        "height": 1396,
+        "background": "rgb(238, 240, 247)",
+        "grid": "none"
+      },
+      {
+        "index": 8,
+        "id": "",
+        "componentTitle": "Rüzgâr + Depolama:\nKesintisiz güç.",
+        "height": 1042,
+        "background": "rgb(10, 19, 28)",
+        "grid": "none"
+      },
+      {
+        "index": 9,
+        "id": "",
+        "componentTitle": "Her sektöre özel enerji çözümü.",
+        "height": 2516,
+        "background": "rgb(248, 249, 252)",
+        "grid": "none"
+      },
+      {
+        "index": 10,
+        "id": "surec",
+        "componentTitle": "Uçtan uca mühendislik süreci.",
+        "height": 1592,
+        "background": "rgb(10, 19, 28)",
+        "grid": "none"
+      },
+      {
+        "index": 11,
+        "id": "projeler",
+        "componentTitle": "Referans projelerimiz.",
+        "height": 1737,
+        "background": "rgb(233, 237, 250)",
+        "grid": "none"
+      },
+      {
+        "index": 12,
+        "id": "iletisim",
+        "componentTitle": "Enerji dönüşümüne\nbugün başlayın.",
+        "height": 903,
+        "background": "rgb(10, 19, 28)",
+        "grid": "none"
+      }
+    ],
+    "triggers": [
+      {
+        "id": "opening-section-story",
+        "start": -0.001,
+        "end": 1688,
+        "pin": true,
+        "scrub": 0.25,
+        "toggleActions": "play",
+        "triggerTag": "DIV",
+        "section": null,
+        "targetText": "ENERJİNİN ÖTESİNDE.Rüzgâr, güneş ve depolama sistemlerini entegre ederek Türkiye'nin enerj",
+        "animation": {
+          "duration": 2,
+          "stagger": null,
+          "from": null,
+          "to": {}
+        }
+      },
+      {
+        "id": null,
+        "start": 4711,
+        "end": 5091,
+        "pin": false,
+        "scrub": 0.5,
+        "toggleActions": "play",
+        "triggerTag": "DIV",
+        "section": "teknoloji",
+        "targetText": "ENERJİ DEPOLAMA TEKNOLOJİSİEnerjinizi yalnızca tüketmeyin. Yönetin.OSB ENERGY batarya ener",
+        "animation": {
+          "duration": 0.9,
+          "ease": "power2.out",
+          "stagger": 0.1,
+          "from": {
+            "y": 32,
+            "opacity": 0
+          },
+          "to": {
+            "y": 0,
+            "opacity": 1,
+            "stagger": 0.1,
+            "duration": 0.5,
+            "delay": 0
+          }
+        }
+      },
+      {
+        "id": null,
+        "start": 5644,
+        "end": 6397,
+        "pin": false,
+        "scrub": false,
+        "toggleActions": "play none none none",
+        "triggerTag": "H2",
+        "section": "finansal",
+        "targetText": "Somut finansal etki.",
+        "animation": {
+          "duration": 1,
+          "ease": "power2.out",
+          "stagger": null,
+          "from": {
+            "y": 60,
+            "opacity": 0
+          },
+          "to": {
+            "y": 0,
+            "opacity": 1,
+            "duration": 1,
+            "delay": 0
+          }
+        }
+      },
+      {
+        "id": null,
+        "start": 7040,
+        "end": 7828,
+        "pin": false,
+        "scrub": false,
+        "toggleActions": "play none none none",
+        "triggerTag": "H2",
+        "section": null,
+        "targetText": "Rüzgâr + Depolama:\nKesintisiz güç.",
+        "animation": {
+          "duration": 1,
+          "ease": "power2.out",
+          "stagger": null,
+          "from": {
+            "y": 60,
+            "opacity": 0
+          },
+          "to": {
+            "y": 0,
+            "opacity": 1,
+            "duration": 1,
+            "delay": 0
+          }
+        }
+      },
+      {
+        "id": null,
+        "start": 8082,
+        "end": 8870,
+        "pin": false,
+        "scrub": false,
+        "toggleActions": "play none none none",
+        "triggerTag": "H2",
+        "section": null,
+        "targetText": "Her sektöre özel enerji çözümü.",
+        "animation": {
+          "duration": 1,
+          "ease": "power2.out",
+          "stagger": null,
+          "from": {
+            "y": 60,
+            "opacity": 0
+          },
+          "to": {
+            "y": 0,
+            "opacity": 1,
+            "duration": 1,
+            "delay": 0
+          }
+        }
+      },
+      {
+        "id": null,
+        "start": 10598,
+        "end": 11386,
+        "pin": false,
+        "scrub": false,
+        "toggleActions": "play none none none",
+        "triggerTag": "H2",
+        "section": "surec",
+        "targetText": "Uçtan uca mühendislik süreci.",
+        "animation": {
+          "duration": 1,
+          "ease": "power2.out",
+          "stagger": null,
+          "from": {
+            "y": 60,
+            "opacity": 0
+          },
+          "to": {
+            "y": 0,
+            "opacity": 1,
+            "duration": 1,
+            "delay": 0
+          }
+        }
+      },
+      {
+        "id": null,
+        "start": 12191,
+        "end": 12943,
+        "pin": false,
+        "scrub": false,
+        "toggleActions": "play none none none",
+        "triggerTag": "H2",
+        "section": "projeler",
+        "targetText": "Referans projelerimiz.",
+        "animation": {
+          "duration": 1,
+          "ease": "power2.out",
+          "stagger": null,
+          "from": {
+            "y": 60,
+            "opacity": 0
+          },
+          "to": {
+            "y": 0,
+            "opacity": 1,
+            "duration": 1,
+            "delay": 0
+          }
+        }
+      },
+      {
+        "id": null,
+        "start": 13885,
+        "end": 14673,
+        "pin": false,
+        "scrub": false,
+        "toggleActions": "play none none none",
+        "triggerTag": "H2",
+        "section": "iletisim",
+        "targetText": "Enerji dönüşümüne\nbugün başlayın.",
+        "animation": {
+          "duration": 1,
+          "ease": "power2.out",
+          "stagger": null,
+          "from": {
+            "y": 60,
+            "opacity": 0
+          },
+          "to": {
+            "y": 0,
+            "opacity": 1,
+            "duration": 1,
+            "delay": 0
+          }
+        }
+      },
+      {
+        "id": null,
+        "start": 7104,
+        "end": 7944,
+        "pin": false,
+        "scrub": false,
+        "toggleActions": "play none none none",
+        "triggerTag": "P",
+        "section": null,
+        "targetText": "Rüzgâr enerjisi üretimi ile BESS'i entegre ederek kısıntı kayıplarını sıfırlar, şebeke den",
+        "animation": {
+          "duration": 0.8,
+          "ease": "power2.out",
+          "stagger": null,
+          "from": {
+            "y": 30,
+            "opacity": 0
+          },
+          "to": {
+            "y": 0,
+            "opacity": 1,
+            "duration": 0.8,
+            "delay": 0.15
+          }
+        }
+      },
+      {
+        "id": null,
+        "start": 13949,
+        "end": 14758,
+        "pin": false,
+        "scrub": false,
+        "toggleActions": "play none none none",
+        "triggerTag": "P",
+        "section": "iletisim",
+        "targetText": "Tesisiniz için ücretsiz fizibilite raporu talep edin. Mühendislik ekibimiz 48 saat içinde ",
+        "animation": {
+          "duration": 0.8,
+          "ease": "power2.out",
+          "stagger": null,
+          "from": {
+            "y": 30,
+            "opacity": 0
+          },
+          "to": {
+            "y": 0,
+            "opacity": 1,
+            "duration": 0.8,
+            "delay": 0.15
+          }
+        }
+      },
+      {
+        "id": null,
+        "start": 2026,
+        "end": 4214,
+        "pin": false,
+        "scrub": false,
+        "toggleActions": "play none none none",
+        "triggerTag": "DIV",
+        "section": "hizmetler",
+        "targetText": "RES & GESYenilenebilir Enerji SantralleriRüzgâr ve güneş enerjisi santrallerinin fizibilit",
+        "animation": {
+          "duration": 0.7,
+          "ease": "power2.out",
+          "stagger": 0.1,
+          "from": {
+            "y": 40,
+            "opacity": 0
+          },
+          "to": {
+            "y": 0,
+            "opacity": 1,
+            "duration": 0.6,
+            "stagger": 0.1,
+            "delay": 0
+          }
+        }
+      },
+      {
+        "id": null,
+        "start": 5710,
+        "end": 7020,
+        "pin": false,
+        "scrub": false,
+        "toggleActions": "play none none none",
+        "triggerTag": "DIV",
+        "section": "finansal",
+        "targetText": "%20-30Enerji Maliyeti DüşüşüPik tıraşlama ve optimizasyon ile doğrudan maliyet tasarrufu.0",
+        "animation": {
+          "duration": 0.8,
+          "ease": "power2.out",
+          "stagger": 0.1,
+          "from": {
+            "y": 40,
+            "opacity": 0
+          },
+          "to": {
+            "y": 0,
+            "opacity": 1,
+            "duration": 0.6,
+            "stagger": 0.1,
+            "delay": 0
+          }
+        }
+      },
+      {
+        "id": null,
+        "start": 8183,
+        "end": 11022,
+        "pin": false,
+        "scrub": false,
+        "toggleActions": "play none none none",
+        "triggerTag": "DIV",
+        "section": null,
+        "targetText": "Organize SanayiOtomotivGıda & İçecekTekstilKimyaMadencilikLojistikTarım",
+        "animation": {
+          "duration": 1.3,
+          "ease": "power2.out",
+          "stagger": 0.1,
+          "from": {
+            "y": 40,
+            "opacity": 0
+          },
+          "to": {
+            "y": 0,
+            "opacity": 1,
+            "duration": 0.6,
+            "stagger": 0.1,
+            "delay": 0
+          }
+        }
+      },
+      {
+        "id": null,
+        "start": 10715,
+        "end": 12614,
+        "pin": false,
+        "scrub": false,
+        "toggleActions": "play none none none",
+        "triggerTag": "DIV",
+        "section": "surec",
+        "targetText": "01Adım 01Keşif & AnalizSaha ziyareti, enerji tüketim analizi ve potansiyel değerlendirmesi",
+        "animation": {
+          "duration": 1.1,
+          "ease": "power2.out",
+          "stagger": 0.1,
+          "from": {
+            "y": 40,
+            "opacity": 0
+          },
+          "to": {
+            "y": 0,
+            "opacity": 1,
+            "duration": 0.6,
+            "stagger": 0.1,
+            "delay": 0
+          }
+        }
+      },
+      {
+        "id": null,
+        "start": 12601,
+        "end": 14349,
+        "pin": false,
+        "scrub": false,
+        "toggleActions": "play none none none",
+        "triggerTag": "DIV",
+        "section": "projeler",
+        "targetText": "TamamlandıManisa OSB RESRüzgâr Enerji Santrali50 MWDevam EdiyorKayseri OSB BESSEnerji Depo",
+        "animation": {
+          "duration": 0.8,
+          "ease": "power2.out",
+          "stagger": 0.1,
+          "from": {
+            "y": 40,
+            "opacity": 0
+          },
+          "to": {
+            "y": 0,
+            "opacity": 1,
+            "duration": 0.6,
+            "stagger": 0.1,
+            "delay": 0
+          }
+        }
+      },
+      {
+        "id": null,
+        "start": 6345,
+        "end": 7453,
+        "pin": false,
+        "scrub": false,
+        "toggleActions": "play none none none",
+        "triggerTag": "DIV",
+        "section": "finansal",
+        "targetText": "Yatırım Fizibilitesi4-6 YılGeri Ödeme%18-24IRR3. YılNPV Pozitif15+ YılEkonomik Ömür",
+        "animation": {
+          "duration": 1,
+          "ease": "power2.out",
+          "stagger": null,
+          "from": {
+            "scale": 0.95,
+            "opacity": 0
+          },
+          "to": {
+            "scale": 1,
+            "opacity": 1,
+            "duration": 1,
+            "delay": 0
+          }
+        }
+      },
+      {
+        "id": null,
+        "start": 7566,
+        "end": 8500,
+        "pin": false,
+        "scrub": false,
+        "toggleActions": "play none none none",
+        "triggerTag": "DIV",
+        "section": null,
+        "targetText": "",
+        "animation": {
+          "duration": 1,
+          "ease": "power2.out",
+          "stagger": null,
+          "from": {
+            "scale": 0.95,
+            "opacity": 0
+          },
+          "to": {
+            "scale": 1,
+            "opacity": 1,
+            "duration": 1,
+            "delay": 0
+          }
+        }
+      },
+      {
+        "id": null,
+        "start": 12214,
+        "end": 13220,
+        "pin": false,
+        "scrub": false,
+        "toggleActions": "play none none none",
+        "triggerTag": "DIV",
+        "section": "projeler",
+        "targetText": "Sürdürülebilirlik TaahhüdüProjelerimiz toplam 840.000 ton CO₂ emisyon azaltımı sağlamış, 1",
+        "animation": {
+          "duration": 1,
+          "ease": "power2.out",
+          "stagger": null,
+          "from": {
+            "scale": 0.95,
+            "opacity": 0
+          },
+          "to": {
+            "scale": 1,
+            "opacity": 1,
+            "duration": 1,
+            "delay": 0
+          }
+        }
+      },
+      {
+        "id": null,
+        "start": 14157,
+        "end": 15243,
+        "pin": false,
+        "scrub": false,
+        "toggleActions": "play none none none",
+        "triggerTag": "DIV",
+        "section": "iletisim",
+        "targetText": "İletişim BilgileriE-postainfo@osbenergy.comTelefon+90 (312) 000 00 00AdresOSB ENERGY Merke",
+        "animation": {
+          "duration": 1,
+          "ease": "power2.out",
+          "stagger": null,
+          "from": {
+            "scale": 0.95,
+            "opacity": 0
+          },
+          "to": {
+            "scale": 1,
+            "opacity": 1,
+            "duration": 1,
+            "delay": 0
+          }
+        }
+      }
+    ],
+    "cssAnimations": [
+      {
+        "name": "marquee-left",
+        "duration": 30000,
+        "iterations": "Infinity"
+      },
+      {
+        "name": "marquee-right",
+        "duration": 30000,
+        "iterations": "Infinity"
+      }
+    ],
+    "imageCount": {
+      "total": 43,
+      "unique": 24,
+      "eager": 25,
+      "lazy": 16
+    },
+    "video": {
+      "src": "http://127.0.0.1:5174/videos/osb-engineering-process-mobile.mp4",
+      "duration": 9.958333,
+      "rate": 1,
+      "preload": "none",
+      "muted": true,
+      "loop": true
+    },
+    "finalOverflow": false
+  }
+]
